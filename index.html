@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NomardDesk | Professional Telegram Solutions</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&amp;display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+            color: #0f172a;
+        }
+        .brand-blue { background-color: #00338d; }
+        .text-brand-blue { color: #00338d; }
+        .border-brand-blue { border-color: #00338d; }
+        
+        .brand-gradient {
+            background: linear-gradient(135deg, #00338d 0%, #0055ff 100%);
+        }
+        
+        /* Smooth transitions for Modal */
+        #modal-overlay { transition: opacity 0.3s ease; }
+        #modal-content { transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); }
+        
+        body.modal-active { overflow: hidden; }
+
+        .service-row {
+            transition: all 0.2s ease;
+        }
+        .service-row:hover {
+            background-color: #f1f5f9;
+            padding-left: 1.5rem;
+            padding-right: 1.5rem;
+        }
+
+        .social-icon {
+            transition: transform 0.2s ease, color 0.2s ease;
+        }
+        .social-icon:hover {
+            transform: translateY(-3px);
+            color: #00338d;
+        }
+
+        .heavy-glow {
+            box-shadow: 0 20px 40px -10px rgba(0, 51, 141, 0.3);
+        }
+
+        .pulse-ring {
+            animation: pulse-ring 1.5s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+        }
+        @keyframes pulse-ring {
+            0% { transform: scale(.33); }
+            80%, 100% { opacity: 0; }
+        }
+    </style>
+<style>*, ::before, ::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/* ! tailwindcss v3.4.17 | MIT License | https://tailwindcss.com */*,::after,::before{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}::after,::before{--tw-content:''}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0;padding:0}legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.pointer-events-none{pointer-events:none}.fixed{position:fixed}.absolute{position:absolute}.relative{position:relative}.sticky{position:sticky}.inset-0{inset:0px}.-bottom-12{bottom:-3rem}.-right-12{right:-3rem}.top-0{top:0px}.z-10{z-index:10}.z-50{z-index:50}.mx-auto{margin-left:auto;margin-right:auto}.mb-10{margin-bottom:2.5rem}.mb-2{margin-bottom:0.5rem}.mb-4{margin-bottom:1rem}.mt-1{margin-top:0.25rem}.mt-12{margin-top:3rem}.block{display:block}.inline-block{display:inline-block}.flex{display:flex}.grid{display:grid}.hidden{display:none}.h-10{height:2.5rem}.h-32{height:8rem}.h-4{height:1rem}.h-5{height:1.25rem}.h-6{height:1.5rem}.h-64{height:16rem}.h-8{height:2rem}.h-fit{height:-moz-fit-content;height:fit-content}.h-full{height:100%}.max-h-\[90vh\]{max-height:90vh}.min-h-screen{min-height:100vh}.w-10{width:2.5rem}.w-2{width:0.5rem}.w-32{width:8rem}.w-4{width:1rem}.w-5{width:1.25rem}.w-6{width:1.5rem}.w-64{width:16rem}.w-full{width:100%}.max-w-2xl{max-width:42rem}.max-w-5xl{max-width:64rem}.flex-grow{flex-grow:1}.scale-95{--tw-scale-x:.95;--tw-scale-y:.95;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.grid-cols-1{grid-template-columns:repeat(1, minmax(0, 1fr))}.grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}.flex-col{flex-direction:column}.flex-wrap{flex-wrap:wrap}.items-start{align-items:flex-start}.items-center{align-items:center}.justify-center{justify-content:center}.justify-between{justify-content:space-between}.gap-10{gap:2.5rem}.gap-12{gap:3rem}.gap-2{gap:0.5rem}.gap-3{gap:0.75rem}.gap-4{gap:1rem}.gap-6{gap:1.5rem}.gap-8{gap:2rem}.space-y-3 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.75rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.75rem * var(--tw-space-y-reverse))}.overflow-hidden{overflow:hidden}.overflow-y-auto{overflow-y:auto}.rounded{border-radius:0.25rem}.rounded-2xl{border-radius:1rem}.rounded-3xl{border-radius:1.5rem}.rounded-\[2\.5rem\]{border-radius:2.5rem}.rounded-\[2rem\]{border-radius:2rem}.rounded-full{border-radius:9999px}.border{border-width:1px}.border-2{border-width:2px}.border-b{border-bottom-width:1px}.border-t{border-top-width:1px}.border-slate-100{--tw-border-opacity:1;border-color:rgb(241 245 249 / var(--tw-border-opacity, 1))}.border-slate-200{--tw-border-opacity:1;border-color:rgb(226 232 240 / var(--tw-border-opacity, 1))}.border-slate-50{--tw-border-opacity:1;border-color:rgb(248 250 252 / var(--tw-border-opacity, 1))}.border-white\/20{border-color:rgb(255 255 255 / 0.2)}.bg-green-400{--tw-bg-opacity:1;background-color:rgb(74 222 128 / var(--tw-bg-opacity, 1))}.bg-slate-200{--tw-bg-opacity:1;background-color:rgb(226 232 240 / var(--tw-bg-opacity, 1))}.bg-slate-50\/30{background-color:rgb(248 250 252 / 0.3)}.bg-slate-50\/50{background-color:rgb(248 250 252 / 0.5)}.bg-slate-900\/60{background-color:rgb(15 23 42 / 0.6)}.bg-white{--tw-bg-opacity:1;background-color:rgb(255 255 255 / var(--tw-bg-opacity, 1))}.bg-white\/10{background-color:rgb(255 255 255 / 0.1)}.bg-white\/20{background-color:rgb(255 255 255 / 0.2)}.fill-white{fill:#fff}.stroke-\[2\.5\]{stroke-width:2.5}.p-2{padding:0.5rem}.p-4{padding:1rem}.p-5{padding:1.25rem}.p-6{padding:1.5rem}.p-8{padding:2rem}.px-2{padding-left:0.5rem;padding-right:0.5rem}.px-3{padding-left:0.75rem;padding-right:0.75rem}.px-6{padding-left:1.5rem;padding-right:1.5rem}.px-8{padding-left:2rem;padding-right:2rem}.py-0\.5{padding-top:0.125rem;padding-bottom:0.125rem}.py-1{padding-top:0.25rem;padding-bottom:0.25rem}.py-16{padding-top:4rem;padding-bottom:4rem}.py-4{padding-top:1rem;padding-bottom:1rem}.py-5{padding-top:1.25rem;padding-bottom:1.25rem}.py-6{padding-top:1.5rem;padding-bottom:1.5rem}.pb-8{padding-bottom:2rem}.pt-12{padding-top:3rem}.pt-8{padding-top:2rem}.text-left{text-align:left}.text-center{text-align:center}.text-3xl{font-size:1.875rem;line-height:2.25rem}.text-\[10px\]{font-size:10px}.text-\[11px\]{font-size:11px}.text-\[8px\]{font-size:8px}.text-\[9px\]{font-size:9px}.text-lg{font-size:1.125rem;line-height:1.75rem}.text-sm{font-size:0.875rem;line-height:1.25rem}.text-xl{font-size:1.25rem;line-height:1.75rem}.text-xs{font-size:0.75rem;line-height:1rem}.font-black{font-weight:900}.font-bold{font-weight:700}.font-semibold{font-weight:600}.uppercase{text-transform:uppercase}.leading-none{line-height:1}.leading-tight{line-height:1.25}.tracking-\[0\.2em\]{letter-spacing:0.2em}.tracking-\[0\.3em\]{letter-spacing:0.3em}.tracking-\[0\.4em\]{letter-spacing:0.4em}.tracking-tight{letter-spacing:-0.025em}.tracking-tighter{letter-spacing:-0.05em}.tracking-widest{letter-spacing:0.1em}.text-blue-100\/80{color:rgb(219 234 254 / 0.8)}.text-blue-50{--tw-text-opacity:1;color:rgb(239 246 255 / var(--tw-text-opacity, 1))}.text-green-600{--tw-text-opacity:1;color:rgb(22 163 74 / var(--tw-text-opacity, 1))}.text-orange-500{--tw-text-opacity:1;color:rgb(249 115 22 / var(--tw-text-opacity, 1))}.text-slate-300{--tw-text-opacity:1;color:rgb(203 213 225 / var(--tw-text-opacity, 1))}.text-slate-400{--tw-text-opacity:1;color:rgb(148 163 184 / var(--tw-text-opacity, 1))}.text-slate-500{--tw-text-opacity:1;color:rgb(100 116 139 / var(--tw-text-opacity, 1))}.text-slate-600{--tw-text-opacity:1;color:rgb(71 85 105 / var(--tw-text-opacity, 1))}.text-slate-800{--tw-text-opacity:1;color:rgb(30 41 59 / var(--tw-text-opacity, 1))}.text-white{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}.underline{-webkit-text-decoration-line:underline;text-decoration-line:underline}.decoration-white\/30{-webkit-text-decoration-color:rgb(255 255 255 / 0.3);text-decoration-color:rgb(255 255 255 / 0.3)}.decoration-2{text-decoration-thickness:2px}.underline-offset-4{text-underline-offset:4px}.opacity-0{opacity:0}.shadow-2xl{--tw-shadow:0 25px 50px -12px rgb(0 0 0 / 0.25);--tw-shadow-colored:0 25px 50px -12px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-sm{--tw-shadow:0 1px 2px 0 rgb(0 0 0 / 0.05);--tw-shadow-colored:0 1px 2px 0 var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-xl{--tw-shadow:0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 20px 25px -5px var(--tw-shadow-color), 0 8px 10px -6px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.blur-3xl{--tw-blur:blur(64px);filter:var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)}.backdrop-blur-sm{--tw-backdrop-blur:blur(4px);-webkit-backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia)}.transition-all{transition-property:all;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.transition-colors{transition-property:color, background-color, border-color, fill, stroke, -webkit-text-decoration-color;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke, -webkit-text-decoration-color;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.hover\:scale-\[1\.01\]:hover{--tw-scale-x:1.01;--tw-scale-y:1.01;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.hover\:bg-slate-100:hover{--tw-bg-opacity:1;background-color:rgb(241 245 249 / var(--tw-bg-opacity, 1))}.hover\:bg-slate-50:hover{--tw-bg-opacity:1;background-color:rgb(248 250 252 / var(--tw-bg-opacity, 1))}.group:hover .group-hover\:bg-blue-50{--tw-bg-opacity:1;background-color:rgb(239 246 255 / var(--tw-bg-opacity, 1))}.group:hover .group-hover\:bg-white\/20{background-color:rgb(255 255 255 / 0.2)}@media (min-width: 640px){.sm\:flex{display:flex}}@media (min-width: 768px){.md\:h-40{height:10rem}.md\:w-40{width:10rem}.md\:grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}.md\:p-10{padding:2.5rem}.md\:text-2xl{font-size:1.5rem;line-height:2rem}}</style></head>
+<body class="min-h-screen flex flex-col">
+
+    <!-- Hero / Header -->
+    <header class="pt-12 pb-8 px-6 flex flex-col items-center">
+        <div class="w-32 h-32 md:w-40 md:h-40 mb-4 flex items-center justify-center">
+            <!-- Brand Logo -->
+            <svg viewBox="0 0 400 450" class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="200" cy="180" r="150" fill="#00338d"></circle>
+                <text x="200" y="250" font-family="Arial, sans-serif" font-weight="900" font-size="220" text-anchor="middle" fill="white">N</text>
+                <text x="200" y="420" font-family="monospace" font-weight="bold" font-size="36" text-anchor="middle" fill="#0f172a" letter-spacing="4">NOMARDDESK</text>
+            </svg>
+        </div>
+        <h1 class="text-[10px] font-black text-slate-400 uppercase tracking-[0.4em] text-center">Premium Telegram Solutions</h1>
+    </header>
+
+    <!-- MAIN DASHBOARD -->
+    <main class="max-w-2xl mx-auto w-full px-6 py-4 flex-grow">
+        
+        <!-- REDESIGNED HIGH-VISIBILITY BOT SECTION -->
+        <div class="mb-10">
+            <a href="https://t.me/Nomardbot" target="_blank" class="heavy-glow block brand-gradient rounded-[2.5rem] p-8 text-white hover:scale-[1.01] transition-all relative overflow-hidden group">
+                <!-- Decorative Elements -->
+                <div class="absolute -right-12 -bottom-12 w-64 h-64 bg-white/10 rounded-full blur-3xl group-hover:bg-white/20 transition-all"></div>
+                
+                <div class="relative z-10 flex flex-col gap-6">
+                    <div class="flex items-start justify-between">
+                        <div class="flex items-center gap-4">
+                            <div class="relative">
+                                <div class="pulse-ring absolute inset-0 bg-green-400 rounded-full"></div>
+                                <div class="bg-white text-brand-blue p-5 rounded-3xl shadow-2xl relative z-10">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="bot" aria-hidden="true" class="lucide lucide-bot w-10 h-10"><path d="M12 8V4H8"></path><rect width="16" height="12" x="4" y="8" rx="2"></rect><path d="M2 14h2"></path><path d="M20 14h2"></path><path d="M15 13v2"></path><path d="M9 13v2"></path></svg>
+                                </div>
+                            </div>
+                            <div>
+                                <span class="bg-white/20 text-white text-[10px] font-black uppercase tracking-widest px-3 py-1 rounded-full border border-white/20 mb-2 inline-block">
+                                    Instant Response Available
+                                </span>
+                                <h3 class="text-3xl font-black tracking-tighter leading-none">Fast Response Bot</h3>
+                            </div>
+                        </div>
+                        <div class="hidden sm:flex bg-white/10 p-2 rounded-full h-fit">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="zap" aria-hidden="true" class="lucide lucide-zap w-5 h-5 fill-white"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"></path></svg>
+                        </div>
+                    </div>
+
+                    <div class="space-y-3">
+                        <p class="text-lg font-bold text-blue-50 leading-tight">
+                            Message here for <span class="text-white underline decoration-white/30 decoration-2 underline-offset-4">instant replies</span>, 24/7 order updates, and monthly news.
+                        </p>
+                        <div class="grid grid-cols-2 gap-3 text-[11px] font-bold text-blue-100/80">
+                            <div class="flex items-center gap-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="check-circle-2" aria-hidden="true" class="lucide lucide-check-circle-2 w-4 h-4"><circle cx="12" cy="12" r="10"></circle><path d="m9 12 2 2 4-4"></path></svg>
+                                <span>No Premium Needed</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="check-circle-2" aria-hidden="true" class="lucide lucide-check-circle-2 w-4 h-4"><circle cx="12" cy="12" r="10"></circle><path d="m9 12 2 2 4-4"></path></svg>
+                                <span>Instant Setup Info</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white text-brand-blue py-4 rounded-2xl font-black text-center text-sm uppercase tracking-widest group-hover:bg-blue-50 transition-colors">
+                        Click for Instant Response @Nomardbot
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <div class="bg-white rounded-[2rem] shadow-sm border border-slate-100 overflow-hidden">
+            <div class="px-8 py-6 bg-slate-50/50 border-b border-slate-50 flex items-center justify-between">
+                <h2 class="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em]">Service Catalog</h2>
+                <span class="text-[9px] font-bold bg-slate-200 text-slate-500 px-2 py-0.5 rounded uppercase">Live Rates</span>
+            </div>
+            
+            <!-- Item 1 -->
+            <button onclick="openModal('ad_services')" class="service-row w-full flex items-center justify-between p-8 border-b border-slate-50 text-left">
+                <div>
+                    <h3 class="font-bold text-xl text-slate-800">Telegram Ad Services</h3>
+                    <p class="text-xs text-slate-400 mt-1 uppercase font-semibold">Fix, Setup &amp; Optimize</p>
+                </div>
+                <div class="text-slate-300">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="arrow-right" aria-hidden="true" class="lucide lucide-arrow-right w-6 h-6 stroke-[2.5]"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+                </div>
+            </button>
+
+            <!-- Item 2 -->
+            <button onclick="openModal('prohibited')" class="service-row w-full flex items-center justify-between p-8 border-b border-slate-50 text-left">
+                <div>
+                    <h3 class="font-bold text-xl text-slate-800">Prohibited Content Fix</h3>
+                    <p class="text-xs text-orange-500 mt-1 uppercase font-semibold">Casino / Gambling / Adult</p>
+                </div>
+                <div class="text-slate-300">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="arrow-right" aria-hidden="true" class="lucide lucide-arrow-right w-6 h-6 stroke-[2.5]"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+                </div>
+            </button>
+
+            <!-- Item 3 -->
+            <button onclick="openModal('bot_dev')" class="service-row w-full flex items-center justify-between p-8 border-b border-slate-50 text-left">
+                <div>
+                    <h3 class="font-bold text-xl text-slate-800">Bot Development</h3>
+                    <p class="text-xs text-slate-400 mt-1 uppercase font-semibold">Automation &amp; Custom Tools</p>
+                </div>
+                <div class="text-slate-300">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="arrow-right" aria-hidden="true" class="lucide lucide-arrow-right w-6 h-6 stroke-[2.5]"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+                </div>
+            </button>
+
+            <!-- Item 4 -->
+            <button onclick="openModal('error_fixes')" class="service-row w-full flex items-center justify-between p-8 border-b border-slate-50 text-left">
+                <div>
+                    <h3 class="font-bold text-xl text-slate-800">Error Fix Services</h3>
+                    <p class="text-xs text-slate-400 mt-1 uppercase font-semibold">Irrelevant / Link / Editorial</p>
+                </div>
+                <div class="text-slate-300">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="arrow-right" aria-hidden="true" class="lucide lucide-arrow-right w-6 h-6 stroke-[2.5]"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+                </div>
+            </button>
+
+            <!-- Item 5 -->
+            <button onclick="openModal('management')" class="service-row w-full flex items-center justify-between p-8 text-left">
+                <div>
+                    <h3 class="font-bold text-xl text-slate-800">Account Management</h3>
+                    <p class="text-xs text-green-600 mt-1 uppercase font-semibold">Growth on Autopilot</p>
+                </div>
+                <div class="text-slate-300">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="arrow-right" aria-hidden="true" class="lucide lucide-arrow-right w-6 h-6 stroke-[2.5]"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+                </div>
+            </button>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-16 px-6 flex flex-col items-center gap-12 bg-white mt-12 border-t border-slate-100">
+        
+        <!-- Contact Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-2xl">
+            <div class="flex flex-col gap-3">
+                <span class="text-[9px] font-black uppercase text-slate-400 tracking-widest text-center">Fastest Reply</span>
+                <a href="https://t.me/Nomardbot" target="_blank" class="brand-gradient text-white px-8 py-5 rounded-3xl font-black text-xs uppercase tracking-[0.2em] shadow-xl text-center flex items-center justify-center gap-3">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="bot" aria-hidden="true" class="lucide lucide-bot w-5 h-5"><path d="M12 8V4H8"></path><rect width="16" height="12" x="4" y="8" rx="2"></rect><path d="M2 14h2"></path><path d="M20 14h2"></path><path d="M15 13v2"></path><path d="M9 13v2"></path></svg>
+                    Message @Nomardbot
+                </a>
+            </div>
+            <div class="flex flex-col gap-3">
+                <span class="text-[9px] font-black uppercase text-slate-400 tracking-widest text-center">Direct Consultant</span>
+                <a href="https://t.me/ads2defiCEO" target="_blank" class="border-2 border-slate-200 text-slate-600 px-8 py-5 rounded-3xl font-black text-xs uppercase tracking-[0.2em] text-center flex items-center justify-center gap-3 hover:bg-slate-50 transition-all">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="user" aria-hidden="true" class="lucide lucide-user w-5 h-5"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                    Message @ads2defiCEO
+                </a>
+            </div>
+        </div>
+
+        <!-- Social Ecosystem -->
+        <div class="flex flex-col items-center gap-8">
+            <p class="text-slate-400 text-[9px] font-black uppercase tracking-[0.4em]">Connect With Us</p>
+            <div class="flex flex-wrap justify-center gap-10 text-slate-300">
+                <a href="https://t.me/Ads2defi1" target="_blank" class="social-icon flex flex-col items-center gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="send" aria-hidden="true" class="lucide lucide-send w-6 h-6"><path d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z"></path><path d="m21.854 2.147-10.94 10.939"></path></svg>
+                    <span class="text-[8px] font-black uppercase">Channel</span>
+                </a>
+                <a href="https://www.instagram.com/nomarddesk?igsh=MTNybnNtOTUxcTdlYQ%3D%3D&amp;utm_source=qr" target="_blank" class="social-icon flex flex-col items-center gap-2">
+                    <i data-lucide="instagram" class="w-6 h-6"></i>
+                    <span class="text-[8px] font-black uppercase">Instagram</span>
+                </a>
+                <a href="https://www.youtube.com/@nomarddesk1" target="_blank" class="social-icon flex flex-col items-center gap-2">
+                    <i data-lucide="youtube" class="w-6 h-6"></i>
+                    <span class="text-[8px] font-black uppercase">YouTube</span>
+                </a>
+                <a href="https://www.facebook.com/nomarddesk" target="_blank" class="social-icon flex flex-col items-center gap-2">
+                    <i data-lucide="facebook" class="w-6 h-6"></i>
+                    <span class="text-[8px] font-black uppercase">Facebook</span>
+                </a>
+                <a href="https://www.tiktok.com/@nomarddesk1" target="_blank" class="social-icon flex flex-col items-center gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="music-2" aria-hidden="true" class="lucide lucide-music-2 w-6 h-6"><circle cx="8" cy="18" r="4"></circle><path d="M12 18V2l7 4"></path></svg>
+                    <span class="text-[8px] font-black uppercase">TikTok</span>
+                </a>
+                <a href="https://medium.com/@ads2defiCEO" target="_blank" class="social-icon flex flex-col items-center gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="book-open" aria-hidden="true" class="lucide lucide-book-open w-6 h-6"><path d="M12 7v14"></path><path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"></path></svg>
+                    <span class="text-[8px] font-black uppercase">Medium</span>
+                </a>
+            </div>
+        </div>
+        
+        <div class="text-center pt-8 border-t border-slate-50 w-full">
+            <p class="text-slate-300 text-[10px] font-black uppercase tracking-[0.3em]">© 2024 NomardDesk • Global Telegram Agency</p>
+        </div>
+    </footer>
+
+    <!-- MODAL SYSTEM -->
+    <div id="modal-overlay" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 opacity-0 pointer-events-none flex items-center justify-center p-4">
+        <div id="modal-content" class="bg-white w-full max-w-5xl max-h-[90vh] rounded-[2.5rem] overflow-hidden relative shadow-2xl scale-95 flex flex-col">
+            
+            <!-- Header -->
+            <div class="px-8 py-6 border-b border-slate-50 flex items-center justify-between sticky top-0 bg-white z-10">
+                <div class="flex items-center gap-3">
+                    <div class="w-2 h-8 brand-blue rounded-full"></div>
+                    <h2 id="modal-title" class="text-xl md:text-2xl font-black text-brand-blue uppercase tracking-tight">Service Rates</h2>
+                </div>
+                <button onclick="closeModal()" class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-slate-100 transition-colors">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="x" aria-hidden="true" class="lucide lucide-x w-6 h-6 stroke-[2.5]"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>
+                </button>
+            </div>
+
+            <!-- Scrollable Body -->
+            <div id="modal-body" class="p-6 md:p-10 overflow-y-auto bg-slate-50/30">
+                <!-- Content injected here -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        lucide.createIcons();
+
+        const modalOverlay = document.getElementById('modal-overlay');
+        const modalContent = document.getElementById('modal-content');
+        const modalBody = document.getElementById('modal-body');
+        const modalTitle = document.getElementById('modal-title');
+
+        const rateCards = {
+            'ad_services': {
+                title: 'Telegram Ad Services',
+                packages: [
+                    {
+                        name: 'Basic Package',
+                        subtitle: 'Fix & Get Approved',
+                        price: '$200',
+                        delivery: '3-7 Days',
+                        items: ['Bot AD Destination Error Fixing', 'Channel AD Destination Error Fixing', 'Profile AD Destination Error Fixing'],
+                        accent: 'slate-500'
+                    },
+                    {
+                        name: 'Standard Package',
+                        subtitle: 'Fix, Setup & Optimize',
+                        note: 'Growing Business Pack',
+                        price: '$350',
+                        delivery: '24hrs Delivery',
+                        items: ['Already Approved Channel/Bot', 'Rebranding to Your Name', 'Telegram Ad Setup', 'Ownership Transfer', 'Traffic Redirect System'],
+                        accent: 'brand-blue',
+                        popular: true
+                    },
+                    {
+                        name: 'Premium Package',
+                        subtitle: 'Profit $1M From Telegram Ads',
+                        price: '$500',
+                        delivery: '1 Month',
+                        items: ['Bot Ad Fixing + Setup + Management', 'Channel Ad Fixing + Setup + Management', 'Profile Ad Fixing + Setup + Management'],
+                        accent: 'slate-800'
+                    }
+                ],
+                footer: "This service focuses only on resolving Telegram Ad destination errors."
+            },
+            'prohibited': {
+                title: 'Prohibited Content Fix',
+                header_info: 'For Casino / Gambling / Adult / Betting Channels & Bots',
+                packages: [
+                    {
+                        name: 'Basic Package',
+                        subtitle: 'Fix & Get Approved',
+                        price: '$200',
+                        delivery: '3-7 Days',
+                        items: ['Channel/Bot/Profile Content Modification', 'Profile Logo Modification (if needed)', 'Bio Optimization', 'Telegram-Approved Ad Text', 'Banner Design', 'Telegram Indexing'],
+                        accent: 'orange-500'
+                    },
+                    {
+                        name: 'Standard Package',
+                        subtitle: 'Instant Approval Service',
+                        note: 'Buy, Edit & Use',
+                        price: '$350',
+                        delivery: '24hrs Delivery',
+                        items: ['Already Approved Channel/Bot', 'Rebranding to Your Name', 'Telegram Ad Setup', 'Ownership Transfer', 'Traffic Redirect System'],
+                        accent: 'brand-blue'
+                    },
+                    {
+                        name: 'Premium Package',
+                        subtitle: 'Profit $1M From Telegram Ads',
+                        price: '$500',
+                        delivery: '1 Month Management',
+                        items: ['Everything in Standard Package', 'Profitable Target Research', 'Attention-Grabbing Ad Creatives', 'CPM Optimization', 'Ad Spend Management', 'Weekly Performance Reports'],
+                        accent: 'slate-800'
+                    }
+                ]
+            },
+            'bot_dev': {
+                title: 'Bot Development',
+                packages: [
+                    {
+                        name: 'Basic Package',
+                        subtitle: 'Rapid-Response Basic Bot',
+                        price: '$150',
+                        delivery: '24-48 Hours',
+                        desc: 'I will deploy a high-performance Telegram bot featuring custom interactive buttons and automated command handling.',
+                        items: ['Custom interactive buttons', 'Automated command handling', '1-click deployment after delivery'],
+                        accent: 'slate-500'
+                    },
+                    {
+                        name: 'Standard Package',
+                        subtitle: 'The Ready-to-Work Bot',
+                        price: '$250',
+                        delivery: '1-2 Hours',
+                        desc: 'Our team will provide a bot that has already passed bot moderation, then edit the code and commands to match your needs.',
+                        items: ['Already approved Telegram bot', 'Code modification for your use case', 'Custom commands setup', 'Instant ownership transfer', 'Ready to run Telegram advertising'],
+                        accent: 'brand-blue'
+                    },
+                    {
+                        name: 'Premium Package',
+                        subtitle: 'God-Mode Custom Automation',
+                        price: '$500',
+                        delivery: '1-5 Days',
+                        desc: 'The "Zero-Effort" solution - fully bespoke, high-performance bot capable of managing thousands of users and complex automations.',
+                        items: ['Arbitrage bot', 'Trading bot', 'Editing bot', 'Moderator bot', 'Volume bot', 'Automation bots'],
+                        accent: 'slate-800'
+                    }
+                ]
+            },
+            'error_fixes': {
+                title: 'Ad Error Fix Services',
+                header_info: 'Fix Telegram Ads rejected for Irrelevant Destinations, Link Format Errors, and Editorial Requirements.',
+                packages: [
+                    {
+                        name: 'Irrelevant Destinations Fix',
+                        price: '$50',
+                        delivery: '24 Hours',
+                        desc: 'Our team will either guide you step-by-step to fix the irrelevant destination error, or request access to your ad account and fix this issue.',
+                        items: ['Diagnosis of destination error', 'Step-by-step fix guidance or full service fix', 'Telegram ad compliance check'],
+                        accent: 'brand-blue'
+                    },
+                    {
+                        name: 'Link Format Error Fix',
+                        price: '$120',
+                        delivery: '24 Hours',
+                        desc: 'Our team will need temporary access to your Telegram channel and ad account to fix this complex error.',
+                        items: ['Link format error correction', 'Ad destination verification', 'Channel configuration fixes', 'Telegram ad compliance adjustments'],
+                        accent: 'slate-800'
+                    },
+                    {
+                        name: 'Editorial Requirements Fix',
+                        price: '$80',
+                        delivery: '24 Hours',
+                        desc: 'We will correct grammar, spelling, and formatting issues and create optimized ad text that meets Telegram editorial standards.',
+                        items: ['Grammar and spelling correction', 'Symbol and formatting adjustments', 'High-converting ad copy', 'Optimized banner suggestion'],
+                        accent: 'slate-500'
+                    }
+                ]
+            },
+            'management': {
+                title: 'Optimization & Management',
+                packages: [
+                    {
+                        name: 'ASI Package',
+                        subtitle: 'Advertising Sustainability Index',
+                        price: '$100',
+                        delivery: '5 Days',
+                        desc: 'Fix low views, low clicks, and low user joins in your Telegram ads. Builds a profitable ad structure.',
+                        items: ['5 professional ad banners', '5 attention-grabbing ad texts', 'Research of 20 profitable channels', 'Ad performance optimization strategy', 'Sustainable campaign setup'],
+                        accent: 'brand-blue'
+                    },
+                    {
+                        name: 'Account Management Package',
+                        subtitle: 'Profit $1M From Telegram Ads',
+                        price: '$250',
+                        delivery: 'Goal: Scale toward $1M',
+                        desc: 'Grow on autopilot without stress. Our team will manage your Telegram advertising and turn your channel into a cash-generating system.',
+                        items: ['Access to/use of ad account', 'Telegram ad campaign setup', 'Banner design & ad creatives', 'Target research and audience discovery', 'Weekly performance reports', 'Error detection and troubleshooting', 'Everything included in the ASI Package'],
+                        accent: 'slate-800',
+                        important: 'Ad funding is NOT included in this package.'
+                    }
+                ]
+            }
+        };
+
+        function openModal(key) {
+            const group = rateCards[key];
+            modalTitle.innerText = group.title;
+            
+            let html = `<div class="grid grid-cols-1 lg:grid-cols-${group.packages.length} gap-6">`;
+            
+            group.packages.forEach(pkg => {
+                const isBlue = pkg.accent === 'brand-blue';
+                const accentColor = isBlue ? '#00338d' : (pkg.accent === 'orange-500' ? '#f97316' : '#1e293b');
+                
+                html += `
+                    <div class="bg-white rounded-[2.5rem] border ${isBlue ? 'border-brand-blue ring-8 ring-brand-blue/5' : 'border-slate-100'} p-8 flex flex-col relative shadow-sm">
+                        ${pkg.popular ? '<span class="absolute top-0 right-0 bg-brand-blue text-white text-[9px] px-4 py-2 font-black uppercase rounded-bl-3xl">Most Popular</span>' : ''}
+                        
+                        <div class="mb-8">
+                            <h4 class="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-2">${pkg.name}</h4>
+                            <div class="text-4xl font-black text-slate-900 mb-1">${pkg.price}</div>
+                            <p class="text-xs font-bold text-brand-blue uppercase tracking-tighter">${pkg.subtitle || ''}</p>
+                        </div>
+
+                        <div class="flex-grow space-y-6">
+                            ${pkg.desc ? `<p class="text-[11px] text-slate-500 leading-relaxed font-medium bg-slate-50 p-4 rounded-2xl italic">"${pkg.desc}"</p>` : ''}
+                            
+                            <ul class="space-y-4">
+                                ${pkg.items.map(item => `
+                                    <li class="flex items-start gap-3 text-[13px] font-bold text-slate-700 leading-snug">
+                                        <i data-lucide="check-circle-2" class="mt-0.5 shrink-0 w-4 h-4" style="color: ${accentColor}"></i>
+                                        <span>${item}</span>
+                                    </li>
+                                `).join('')}
+                            </ul>
+                        </div>
+
+                        ${pkg.important ? `<div class="mt-6 p-4 bg-red-50 text-red-700 text-[10px] font-black rounded-2xl border border-red-100 uppercase tracking-tight">Important: ${pkg.important}</div>` : ''}
+
+                        <div class="mt-8 pt-8 border-t border-slate-50">
+                            <div class="flex justify-between items-center mb-6">
+                                <span class="text-[10px] font-black text-slate-300 uppercase">Est. Delivery</span>
+                                <span class="text-[10px] font-black text-brand-blue uppercase">${pkg.delivery}</span>
+                            </div>
+                            <button onclick="handleOrder('${pkg.name}', '${group.title}', '${pkg.price}')" 
+                                class="w-full py-5 rounded-3xl font-black text-xs uppercase tracking-[0.2em] shadow-xl transform active:scale-95 transition-all
+                                ${isBlue ? 'brand-gradient text-white' : 'bg-slate-900 text-white'}">
+                                Order Now
+                            </button>
+                        </div>
+                    </div>
+                `;
+            });
+
+            html += `</div>`;
+            modalBody.innerHTML = html;
+            lucide.createIcons();
+            
+            modalOverlay.classList.remove('opacity-0', 'pointer-events-none');
+            modalContent.classList.remove('scale-95', 'opacity-0');
+            modalContent.classList.add('scale-100', 'opacity-100');
+            document.body.classList.add('modal-active');
+        }
+
+        function closeModal() {
+            modalOverlay.classList.add('opacity-0', 'pointer-events-none');
+            modalContent.classList.remove('scale-100', 'opacity-100');
+            modalContent.classList.add('scale-95', 'opacity-0');
+            document.body.classList.remove('modal-active');
+        }
+
+        function handleOrder(pkg, group, price) {
+            const message = `Hello! I am interested in the ${pkg} for ${group} (${price}).`;
+            window.open(`https://t.me/ads2defiCEO?text=${encodeURIComponent(message)}`, '_blank');
+        }
+
+        modalOverlay.addEventListener('click', (e) => { if(e.target === modalOverlay) closeModal(); });
+    </script>
+
+</body></html>
