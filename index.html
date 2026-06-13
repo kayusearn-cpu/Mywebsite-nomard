@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en"><head>
     <meta charset="UTF-8">
@@ -65,12 +66,51 @@
             border-color: #1b8a8a;
             box-shadow: 0 0 0 4px rgba(27, 138, 138, 0.08);
         }
+
+        /* Sticky nav + smooth anchor scrolling */
+        html { scroll-behavior: smooth; }
+        #top, #services, #case-studies, #reviews, #contact { scroll-margin-top: 84px; }
+        .nav-link { transition: color 0.2s ease; }
+        .nav-link:hover { color: #1b8a8a; }
+        #review-overlay { transition: opacity 0.3s ease; }
+        #review-card { transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); }
     </style>
-</head>
+<style>*, ::before, ::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/* ! tailwindcss v3.4.17 | MIT License | https://tailwindcss.com */*,::after,::before{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}::after,::before{--tw-content:''}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0;padding:0}legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.pointer-events-none{pointer-events:none}.fixed{position:fixed}.absolute{position:absolute}.relative{position:relative}.sticky{position:sticky}.inset-0{inset:0px}.-bottom-12{bottom:-3rem}.-right-12{right:-3rem}.top-0{top:0px}.z-10{z-index:10}.z-50{z-index:50}.mx-auto{margin-left:auto;margin-right:auto}.mb-10{margin-bottom:2.5rem}.mb-2{margin-bottom:0.5rem}.mb-4{margin-bottom:1rem}.mt-1{margin-top:0.25rem}.mt-12{margin-top:3rem}.block{display:block}.inline-block{display:inline-block}.flex{display:flex}.grid{display:grid}.hidden{display:none}.h-10{height:2.5rem}.h-32{height:8rem}.h-4{height:1rem}.h-5{height:1.25rem}.h-6{height:1.5rem}.h-64{height:16rem}.h-8{height:2rem}.h-fit{height:-moz-fit-content;height:fit-content}.h-full{height:100%}.max-h-\[90vh\]{max-height:90vh}.min-h-screen{min-height:100vh}.w-10{width:2.5rem}.w-2{width:0.5rem}.w-32{width:8rem}.w-4{width:1rem}.w-5{width:1.25rem}.w-6{width:1.5rem}.w-64{width:16rem}.w-full{width:100%}.max-w-2xl{max-width:42rem}.max-w-5xl{max-width:64rem}.flex-grow{flex-grow:1}.scale-95{--tw-scale-x:.95;--tw-scale-y:.95;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.grid-cols-1{grid-template-columns:repeat(1, minmax(0, 1fr))}.grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}.flex-col{flex-direction:column}.flex-wrap{flex-wrap:wrap}.items-start{align-items:flex-start}.items-center{align-items:center}.justify-center{justify-content:center}.justify-between{justify-content:space-between}.gap-10{gap:2.5rem}.gap-12{gap:3rem}.gap-2{gap:0.5rem}.gap-3{gap:0.75rem}.gap-4{gap:1rem}.gap-6{gap:1.5rem}.gap-8{gap:2rem}.space-y-3 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.75rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.75rem * var(--tw-space-y-reverse))}.overflow-hidden{overflow:hidden}.overflow-y-auto{overflow-y:auto}.rounded{border-radius:0.25rem}.rounded-2xl{border-radius:1rem}.rounded-3xl{border-radius:1.5rem}.rounded-\[2\.5rem\]{border-radius:2.5rem}.rounded-\[2rem\]{border-radius:2rem}.rounded-full{border-radius:9999px}.border{border-width:1px}.border-2{border-width:2px}.border-b{border-bottom-width:1px}.border-t{border-top-width:1px}.border-slate-100{--tw-border-opacity:1;border-color:rgb(241 245 249 / var(--tw-border-opacity, 1))}.border-slate-200{--tw-border-opacity:1;border-color:rgb(226 232 240 / var(--tw-border-opacity, 1))}.border-slate-50{--tw-border-opacity:1;border-color:rgb(248 250 252 / var(--tw-border-opacity, 1))}.border-white\/20{border-color:rgb(255 255 255 / 0.2)}.bg-green-400{--tw-bg-opacity:1;background-color:rgb(74 222 128 / var(--tw-bg-opacity, 1))}.bg-slate-200{--tw-bg-opacity:1;background-color:rgb(226 232 240 / var(--tw-bg-opacity, 1))}.bg-slate-50\/30{background-color:rgb(248 250 252 / 0.3)}.bg-slate-50\/50{background-color:rgb(248 250 252 / 0.5)}.bg-slate-900\/60{background-color:rgb(15 23 42 / 0.6)}.bg-white{--tw-bg-opacity:1;background-color:rgb(255 255 255 / var(--tw-bg-opacity, 1))}.bg-white\/10{background-color:rgb(255 255 255 / 0.1)}.bg-white\/20{background-color:rgb(255 255 255 / 0.2)}.fill-white{fill:#fff}.stroke-\[2\.5\]{stroke-width:2.5}.p-2{padding:0.5rem}.p-4{padding:1rem}.p-5{padding:1.25rem}.p-6{padding:1.5rem}.p-8{padding:2rem}.px-2{padding-left:0.5rem;padding-right:0.5rem}.px-3{padding-left:0.75rem;padding-right:0.75rem}.px-6{padding-left:1.5rem;padding-right:1.5rem}.px-8{padding-left:2rem;padding-right:2rem}.py-0\.5{padding-top:0.125rem;padding-bottom:0.125rem}.py-1{padding-top:0.25rem;padding-bottom:0.25rem}.py-16{padding-top:4rem;padding-bottom:4rem}.py-4{padding-top:1rem;padding-bottom:1rem}.py-5{padding-top:1.25rem;padding-bottom:1.25rem}.py-6{padding-top:1.5rem;padding-bottom:1.5rem}.pb-8{padding-bottom:2rem}.pt-12{padding-top:3rem}.pt-8{padding-top:2rem}.text-left{text-align:left}.text-center{text-align:center}.text-3xl{font-size:1.875rem;line-height:2.25rem}.text-\[10px\]{font-size:10px}.text-\[11px\]{font-size:11px}.text-\[8px\]{font-size:8px}.text-\[9px\]{font-size:9px}.text-lg{font-size:1.125rem;line-height:1.75rem}.text-sm{font-size:0.875rem;line-height:1.25rem}.text-xl{font-size:1.25rem;line-height:1.75rem}.text-xs{font-size:0.75rem;line-height:1rem}.font-black{font-weight:900}.font-bold{font-weight:700}.font-semibold{font-weight:600}.uppercase{text-transform:uppercase}.leading-none{line-height:1}.leading-tight{line-height:1.25}.tracking-\[0\.2em\]{letter-spacing:0.2em}.tracking-\[0\.3em\]{letter-spacing:0.3em}.tracking-\[0\.4em\]{letter-spacing:0.4em}.tracking-tight{letter-spacing:-0.025em}.tracking-tighter{letter-spacing:-0.05em}.tracking-widest{letter-spacing:0.1em}.text-blue-100\/80{color:rgb(219 234 254 / 0.8)}.text-blue-50{--tw-text-opacity:1;color:rgb(239 246 255 / var(--tw-text-opacity, 1))}.text-green-600{--tw-text-opacity:1;color:rgb(22 163 74 / var(--tw-text-opacity, 1))}.text-orange-500{--tw-text-opacity:1;color:rgb(249 115 22 / var(--tw-text-opacity, 1))}.text-slate-300{--tw-text-opacity:1;color:rgb(203 213 225 / var(--tw-text-opacity, 1))}.text-slate-400{--tw-text-opacity:1;color:rgb(148 163 184 / var(--tw-text-opacity, 1))}.text-slate-500{--tw-text-opacity:1;color:rgb(100 116 139 / var(--tw-text-opacity, 1))}.text-slate-600{--tw-text-opacity:1;color:rgb(71 85 105 / var(--tw-text-opacity, 1))}.text-slate-800{--tw-text-opacity:1;color:rgb(30 41 59 / var(--tw-text-opacity, 1))}.text-white{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}.underline{-webkit-text-decoration-line:underline;text-decoration-line:underline}.decoration-white\/30{-webkit-text-decoration-color:rgb(255 255 255 / 0.3);text-decoration-color:rgb(255 255 255 / 0.3)}.decoration-2{text-decoration-thickness:2px}.underline-offset-4{text-underline-offset:4px}.opacity-0{opacity:0}.shadow-2xl{--tw-shadow:0 25px 50px -12px rgb(0 0 0 / 0.25);--tw-shadow-colored:0 25px 50px -12px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-sm{--tw-shadow:0 1px 2px 0 rgb(0 0 0 / 0.05);--tw-shadow-colored:0 1px 2px 0 var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-xl{--tw-shadow:0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 20px 25px -5px var(--tw-shadow-color), 0 8px 10px -6px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.blur-3xl{--tw-blur:blur(64px);filter:var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)}.backdrop-blur-sm{--tw-backdrop-blur:blur(4px);-webkit-backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia)}.transition-all{transition-property:all;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.transition-colors{transition-property:color, background-color, border-color, fill, stroke, -webkit-text-decoration-color;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke, -webkit-text-decoration-color;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.hover\:scale-\[1\.01\]:hover{--tw-scale-x:1.01;--tw-scale-y:1.01;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.hover\:bg-slate-100:hover{--tw-bg-opacity:1;background-color:rgb(241 245 249 / var(--tw-bg-opacity, 1))}.hover\:bg-slate-50:hover{--tw-bg-opacity:1;background-color:rgb(248 250 252 / var(--tw-bg-opacity, 1))}.group:hover .group-hover\:bg-blue-50{--tw-bg-opacity:1;background-color:rgb(239 246 255 / var(--tw-bg-opacity, 1))}.group:hover .group-hover\:bg-white\/20{background-color:rgb(255 255 255 / 0.2)}@media (min-width: 640px){.sm\:flex{display:flex}}@media (min-width: 768px){.md\:h-40{height:10rem}.md\:w-40{width:10rem}.md\:grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}.md\:p-10{padding:2.5rem}.md\:text-2xl{font-size:1.5rem;line-height:2rem}}</style></head>
 <body class="min-h-screen flex flex-col">
 
+    <!-- STICKY TOP NAV (NEW) -->
+    <nav class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-100">
+        <div class="max-w-2xl mx-auto px-5 h-16 flex items-center justify-between gap-4">
+            <a href="#top" class="flex items-center gap-2 shrink-0">
+                <svg viewBox="0 0 400 400" class="w-9 h-9" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <circle cx="200" cy="200" r="190" fill="#1b8a8a"></circle>
+                    <text x="200" y="285" font-family="Arial, sans-serif" font-weight="900" font-size="280" text-anchor="middle" fill="white">N</text>
+                </svg>
+                <span class="font-black text-slate-800 tracking-tight text-lg">NomardDesk</span>
+            </a>
+            <div class="hidden md:flex items-center gap-7 text-[13px] font-bold text-slate-600 uppercase tracking-wide">
+                <a href="#services" class="nav-link">Services</a>
+                <a href="#case-studies" class="nav-link">Case Studies</a>
+                <a href="#reviews" class="nav-link">Reviews</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </div>
+            <a href="https://t.me/Nomardbot" target="_blank" class="hidden md:flex brand-gradient text-white text-[11px] font-black uppercase tracking-widest px-5 py-3 rounded-full items-center gap-2 shadow-md">Message Bot</a>
+            <button id="nav-toggle" onclick="toggleMobileMenu()" aria-label="Open menu" aria-expanded="false" class="md:hidden w-11 h-11 flex items-center justify-center rounded-xl hover:bg-slate-100 transition-colors">
+                <svg id="nav-open-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6 text-slate-800"><path d="M4 6h16"></path><path d="M4 12h16"></path><path d="M4 18h16"></path></svg>
+                <svg id="nav-close-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6 text-slate-800 hidden"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>
+            </button>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden border-t border-slate-100 bg-white px-5 py-4 flex-col gap-1">
+            <a href="#services" onclick="closeMobileMenu()" class="block py-3 px-2 rounded-xl font-bold text-slate-700 hover:bg-slate-50 transition-colors">Services</a>
+            <a href="#case-studies" onclick="closeMobileMenu()" class="block py-3 px-2 rounded-xl font-bold text-slate-700 hover:bg-slate-50 transition-colors">Case Studies</a>
+            <a href="#reviews" onclick="closeMobileMenu()" class="block py-3 px-2 rounded-xl font-bold text-slate-700 hover:bg-slate-50 transition-colors">Reviews</a>
+            <a href="#contact" onclick="closeMobileMenu()" class="block py-3 px-2 rounded-xl font-bold text-slate-700 hover:bg-slate-50 transition-colors">Contact</a>
+            <a href="https://t.me/Nomardbot" target="_blank" class="mt-2 brand-gradient text-white text-center py-3 rounded-xl font-black text-xs uppercase tracking-widest">Message Bot</a>
+        </div>
+    </nav>
+
     <!-- Hero / Header -->
-    <header class="pt-12 pb-8 px-6 flex flex-col items-center">
+    <header id="top" class="pt-12 pb-8 px-6 flex flex-col items-center">
         <div class="w-32 h-32 md:w-40 md:h-40 mb-4 flex items-center justify-center">
             <!-- Brand Logo -->
             <svg viewBox="0 0 400 450" class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
@@ -141,7 +181,7 @@
             </a>
         </div>
 
-        <div class="bg-white rounded-[2rem] shadow-sm border border-slate-100 overflow-hidden">
+        <div id="services" class="bg-white rounded-[2rem] shadow-sm border border-slate-100 overflow-hidden">
             <div class="px-8 py-6 bg-slate-50/50 border-b border-slate-50 flex items-center justify-between">
                 <h2 class="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em]">Service Catalog</h2>
                 <span class="text-[9px] font-bold bg-slate-200 text-slate-500 px-2 py-0.5 rounded uppercase">Live Rates</span>
@@ -172,6 +212,7 @@
             <!-- Item 2 -->
             <button onclick="openModal('prohibited')" class="service-row w-full flex items-center justify-between p-8 border-b border-slate-50 text-left">
                 <div>
+                    <span class="inline-block bg-red-500 text-white text-[9px] font-black uppercase tracking-widest px-2 py-0.5 rounded-full mb-1.5">Most Used Service</span>
                     <h3 class="font-bold text-xl text-slate-800">Prohibited Content Fix</h3>
                     <p class="text-xs text-orange-500 mt-1 uppercase font-semibold">Casino / Gambling / Adult</p>
                 </div>
@@ -224,6 +265,34 @@
                 </div>
             </button>
         </div>
+        <!-- CASE STUDIES (NEW) -->
+        <section id="case-studies" class="mb-10">
+            <div class="text-center mb-6">
+                <h2 class="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em]">Case Studies</h2>
+                <p class="text-sm text-slate-500 font-semibold mt-1">Real results from real campaigns.</p>
+            </div>
+            <div id="case-studies-list" class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                <div class="md:col-span-2 text-center text-slate-400 text-sm py-8">Loading case studies…</div>
+            </div>
+        </section>
+
+        <!-- REVIEWS (NEW) -->
+        <section id="reviews" class="mb-10">
+            <div class="flex items-center justify-between gap-4 mb-6">
+                <div>
+                    <h2 class="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em]">Reviews</h2>
+                    <p class="text-sm text-slate-500 font-semibold mt-1">What our clients say.</p>
+                </div>
+                <button onclick="openReviewForm()" class="shrink-0 brand-gradient text-white text-[11px] font-black uppercase tracking-widest px-5 py-3 rounded-full shadow-md active:scale-95 transition-all flex items-center gap-2">
+                    <i data-lucide="star" class="w-4 h-4"></i>
+                    Leave a Review
+                </button>
+            </div>
+            <div id="reviews-list" class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                <div class="md:col-span-2 text-center text-slate-400 text-sm py-8">Loading reviews…</div>
+            </div>
+        </section>
+
         <!-- LEARN & EARN (NEW) -->
         <div class="mb-10">
             <div class="text-center mb-6">
@@ -256,7 +325,7 @@
     </main>
 
     <!-- Footer -->
-    <footer class="py-16 px-6 flex flex-col items-center gap-12 bg-white mt-12 border-t border-slate-100">
+    <footer id="contact" class="py-16 px-6 flex flex-col items-center gap-12 bg-white mt-12 border-t border-slate-100">
         
         <!-- Contact Grid -->
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-2xl">
@@ -368,6 +437,20 @@
                 <p class="text-sm text-slate-500">Thanks for subscribing. Watch your inbox &amp; our Telegram for updates.</p>
                 <button type="button" onclick="closeSubscribe(true)" class="mt-2 brand-gradient text-white px-8 py-3 rounded-2xl font-black text-[11px] uppercase tracking-widest active:scale-95 transition-all">Browse Site</button>
             </div>
+        </div>
+    </div>
+
+    <!-- REVIEW FORM MODAL (NEW) -->
+    <div id="review-overlay" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 opacity-0 pointer-events-none flex items-center justify-center p-4">
+        <div id="review-card" class="bg-white w-full max-w-lg max-h-[90vh] overflow-hidden rounded-[2rem] relative shadow-2xl scale-95 flex flex-col">
+            <div class="px-6 py-4 border-b border-slate-100 flex items-center justify-between">
+                <h3 class="font-black text-slate-800 text-lg">Leave a Review</h3>
+                <button onclick="closeReviewForm()" aria-label="Close" class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-slate-100 transition-colors">
+                    <i data-lucide="x" class="w-5 h-5"></i>
+                </button>
+            </div>
+            <div id="review-form-body" class="overflow-y-auto flex-grow"></div>
+            <p class="text-[11px] text-slate-400 text-center px-6 py-3 border-t border-slate-100">Reviews are checked before they appear on the site.</p>
         </div>
     </div>
 
@@ -601,6 +684,9 @@
             'community': {
                 title: 'Community Membership',
                 header_info: 'A private community where Telegram advertisers share rejection patterns, get help on their ads, and access weekly live office hours.',
+                order_handle: 'SkillDropBot',
+                cta_label: 'Join The Community',
+                order_bot: true,
                 packages: [
                     {
                         name: 'Community Membership',
@@ -664,7 +750,7 @@
                                 <span class="text-[10px] font-black text-slate-300 uppercase">Est. Delivery</span>
                                 <span class="text-[10px] font-black text-brand-blue uppercase">${pkg.delivery}</span>
                             </div>
-                            <button onclick="handleOrder('${pkg.name}', '${group.title}', '${pkg.price}', '${group.order_handle || 'ads2defiCEO'}')"
+                            <button onclick="handleOrder('${pkg.name}', '${group.title}', '${pkg.price}', '${group.order_handle || 'ads2defiCEO'}', ${group.order_bot ? 'true' : 'false'})"
                                 class="w-full py-5 rounded-3xl font-black text-xs uppercase tracking-[0.2em] shadow-xl transform active:scale-95 transition-all
                                 ${isBlue ? 'brand-gradient text-white' : 'bg-slate-900 text-white'}">
                                 ${group.cta_label || 'Order Now'}
@@ -694,8 +780,13 @@
             document.body.classList.remove('modal-active');
         }
 
-        function handleOrder(pkg, group, price, handle) {
+        function handleOrder(pkg, group, price, handle, isBot) {
             const dest = handle || 'ads2defiCEO';
+            if (isBot) {
+                // Bot handles its own join / onboarding flow — open it directly
+                window.open(`https://t.me/${dest}`, '_blank');
+                return;
+            }
             const message = `Hello! I am interested in the ${pkg} for ${group} (${price}).`;
             window.open(`https://t.me/${dest}?text=${encodeURIComponent(message)}`, '_blank');
         }
@@ -796,6 +887,191 @@
         if (!alreadySubscribed()) {
             subscribeTimer = setTimeout(showSubscribe, 3000);
         }
+    </script>
+
+    <script>
+        /* ============================================================
+           NomardDesk dynamic content — Reviews + Case Studies
+           Powered by a Google Sheet you control (no code, no API key).
+
+           ONE-TIME SETUP:
+           1) Create a Google FORM for reviews with these questions:
+                Name  |  Role / Company (optional)  |  Rating (1-5)  |  Review
+              Then Responses -> "Link to Sheets" to create the Google Sheet.
+           2) In that Sheet's responses tab, add ONE column with header:  Show
+              Type  yes  in it to APPROVE a review (delete the row to decline).
+           3) Add a 2nd tab named exactly:  CaseStudies
+              Header row:  Headline | Summary | PDF | Image | Published
+              Add a row, paste your PDF link + type a headline, put  yes  under Published.
+           4) Share the Sheet: Share -> "Anyone with the link" = Viewer.
+           5) Paste the Sheet ID (between /d/ and /edit in its URL) into SHEET_ID,
+              and the Form's embed URL (Send -> < >) into REVIEW_FORM_URL.
+           ============================================================ */
+        const SHEET_ID = "1mswOy0udUi1Nom23UmtixsQER6o0Kwn1vP5rM5tMARM";  // reviews + case studies sheet
+        const REVIEWS_TAB = "Form Responses 1";    // responses tab name (Google's default)
+        const CASESTUDIES_TAB = "CaseStudies";     // 2nd tab name
+        const REVIEW_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSfIE8VJ3JLGHBCtueKQEPsyZuhebsaD7Jlqt78NJt6oLBKb4A/viewform?embedded=true";  // Leave a Review form
+
+        /* ---------- Mobile nav ---------- */
+        function toggleMobileMenu() {
+            const m = document.getElementById('mobile-menu');
+            if (m.classList.contains('hidden')) {
+                m.classList.remove('hidden'); m.classList.add('flex');
+                document.getElementById('nav-open-icon').classList.add('hidden');
+                document.getElementById('nav-close-icon').classList.remove('hidden');
+                document.getElementById('nav-toggle').setAttribute('aria-expanded', 'true');
+            } else { closeMobileMenu(); }
+        }
+        function closeMobileMenu() {
+            const m = document.getElementById('mobile-menu');
+            m.classList.add('hidden'); m.classList.remove('flex');
+            document.getElementById('nav-open-icon').classList.remove('hidden');
+            document.getElementById('nav-close-icon').classList.add('hidden');
+            document.getElementById('nav-toggle').setAttribute('aria-expanded', 'false');
+        }
+
+        /* ---------- Review form modal (Google Form) ---------- */
+        const reviewOverlay = document.getElementById('review-overlay');
+        const reviewCard = document.getElementById('review-card');
+        const reviewBody = document.getElementById('review-form-body');
+        function openReviewForm() {
+            if (REVIEW_FORM_URL && !reviewBody.dataset.loaded) {
+                reviewBody.innerHTML = '<iframe src="' + REVIEW_FORM_URL + '" title="Leave a review" style="width:100%;height:68vh;border:0;"></iframe>';
+                reviewBody.dataset.loaded = '1';
+            } else if (!REVIEW_FORM_URL) {
+                reviewBody.innerHTML = '<p class="p-8 text-center text-sm text-slate-500">The review form is not connected yet. Add your Google Form link in the site settings.</p>';
+            }
+            reviewOverlay.classList.remove('opacity-0', 'pointer-events-none');
+            reviewCard.classList.remove('scale-95');
+            document.body.classList.add('modal-active');
+        }
+        function closeReviewForm() {
+            reviewOverlay.classList.add('opacity-0', 'pointer-events-none');
+            reviewCard.classList.add('scale-95');
+            document.body.classList.remove('modal-active');
+        }
+        reviewOverlay.addEventListener('click', function (e) { if (e.target === reviewOverlay) closeReviewForm(); });
+
+        /* ---------- Google Sheet reader (keyless, JSONP — works cross-origin) ---------- */
+        function fetchSheet(tab) {
+            return new Promise(function (resolve) {
+                if (!SHEET_ID) { resolve([]); return; }
+                var cb = '__gviz_' + Math.random().toString(36).slice(2);
+                var s = document.createElement('script');
+                var done = false;
+                function cleanup() {
+                    done = true;
+                    try { delete window[cb]; } catch (e) { window[cb] = undefined; }
+                    if (s.parentNode) s.parentNode.removeChild(s);
+                    clearTimeout(timer);
+                }
+                var timer = setTimeout(function () { if (!done) { cleanup(); resolve([]); } }, 15000);
+                window[cb] = function (resp) {
+                    if (done) return;
+                    cleanup();
+                    try {
+                        var cols = (resp.table.cols || []).map(function (c) { return (c.label || '').trim().toLowerCase(); });
+                        var rows = (resp.table.rows || []).map(function (r) {
+                            var o = {};
+                            (r.c || []).forEach(function (cell, i) { o[cols[i] || ('col' + i)] = (cell && cell.v != null) ? cell.v : ''; });
+                            return o;
+                        });
+                        resolve(rows);
+                    } catch (e) { resolve([]); }
+                };
+                s.onerror = function () { if (!done) { cleanup(); resolve([]); } };
+                s.src = 'https://docs.google.com/spreadsheets/d/' + SHEET_ID +
+                    '/gviz/tq?tqx=out:json;responseHandler:' + cb + '&headers=1&sheet=' + encodeURIComponent(tab);
+                document.head.appendChild(s);
+            });
+        }
+        function pick(row) {
+            const names = Array.prototype.slice.call(arguments, 1);
+            for (const key in row) {
+                for (let j = 0; j < names.length; j++) { if (key.indexOf(names[j]) !== -1) return row[key]; }
+            }
+            return '';
+        }
+        function truthy(v) {
+            const s = String(v).toLowerCase().trim();
+            return s === 'yes' || s === 'true' || s === 'approved' || s === 'y' || s === '1' || s === 'published' || s === 'x';
+        }
+        function esc(s) {
+            return String(s).replace(/[&<>"']/g, function (c) {
+                return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+            });
+        }
+
+        function parseRating(v) {
+            var s = String(v).toLowerCase().trim();
+            var n = parseInt(s, 10);
+            if (n >= 1 && n <= 5) return n;
+            if (s.indexOf('very dissatisf') !== -1) return 1;
+            if (s.indexOf('dissatisf') !== -1) return 2;
+            if (s.indexOf('neutral') !== -1) return 3;
+            if (s.indexOf('very satisf') !== -1 || s.indexOf('extremely') !== -1) return 5;
+            if (s.indexOf('satisf') !== -1) return 4;
+            return 5;
+        }
+
+        /* ---------- Render Reviews ---------- */
+        async function loadReviews() {
+            const box = document.getElementById('reviews-list');
+            try {
+                const rows = await fetchSheet(REVIEWS_TAB);
+                const ok = rows.filter(function (r) { return truthy(pick(r, 'show', 'approve', 'status', 'display')); });
+                if (!ok.length) {
+                    box.innerHTML = '<div class="md:col-span-2 text-center bg-white border border-slate-100 rounded-2xl py-10 px-6"><p class="text-slate-500 font-semibold">No reviews yet — be the first!</p><button onclick="openReviewForm()" class="mt-4 brand-gradient text-white text-[11px] font-black uppercase tracking-widest px-5 py-3 rounded-full">Leave a Review</button></div>';
+                    return;
+                }
+                box.innerHTML = ok.map(function (r) {
+                    const name = esc(pick(r, 'name') || 'Verified Client');
+                    const role = esc(pick(r, 'role', 'company', 'business'));
+                    const text = esc(pick(r, 'summary', 'experience', 'review', 'message', 'feedback', 'comment', 'testimonial'));
+                    const rating = parseRating(pick(r, 'satisfied', 'rating', 'star'));
+                    const stars = '★★★★★☆☆☆☆☆'.slice(5 - rating, 10 - rating);
+                    return '<div class="bg-white border border-slate-100 rounded-2xl p-6 shadow-sm flex flex-col gap-3">' +
+                        '<div class="text-base tracking-widest" style="color:#f5a623">' + stars + '</div>' +
+                        '<p class="text-sm text-slate-700 leading-relaxed flex-grow">"' + text + '"</p>' +
+                        '<div class="pt-3 border-t border-slate-50"><p class="font-black text-slate-800 text-sm">' + name + '</p>' +
+                        (role ? '<p class="text-xs text-slate-400 font-semibold">' + role + '</p>' : '') +
+                        '</div></div>';
+                }).join('');
+            } catch (e) {
+                box.innerHTML = '<div class="md:col-span-2 text-center text-slate-400 text-sm py-8">Reviews will appear here once your Google Sheet is connected.</div>';
+            }
+        }
+
+        /* ---------- Render Case Studies ---------- */
+        async function loadCaseStudies() {
+            const box = document.getElementById('case-studies-list');
+            try {
+                const rows = await fetchSheet(CASESTUDIES_TAB);
+                const ok = rows.filter(function (r) { return truthy(pick(r, 'publish', 'show', 'live', 'status')); });
+                if (!ok.length) {
+                    box.innerHTML = '<div class="md:col-span-2 text-center text-slate-400 text-sm py-8">Case studies coming soon.</div>';
+                    return;
+                }
+                box.innerHTML = ok.map(function (r) {
+                    const head = esc(pick(r, 'headline', 'title') || 'Case Study');
+                    const summary = esc(pick(r, 'summary', 'description', 'detail', 'result'));
+                    const pdf = String(pick(r, 'pdf', 'link', 'file', 'url'));
+                    const img = String(pick(r, 'image', 'cover', 'photo', 'thumbnail'));
+                    return '<div class="bg-white border border-slate-100 rounded-2xl overflow-hidden shadow-sm flex flex-col">' +
+                        (img ? '<img src="' + esc(img) + '" alt="' + head + '" loading="lazy" class="w-full h-40 object-cover">' : '<div class="w-full h-2 brand-gradient"></div>') +
+                        '<div class="p-6 flex flex-col gap-2 flex-grow"><h3 class="font-black text-slate-800 text-lg leading-tight">' + head + '</h3>' +
+                        (summary ? '<p class="text-sm text-slate-500 leading-relaxed flex-grow line-clamp-4">' + summary + '</p>' : '<div class="flex-grow"></div>') +
+                        (pdf ? '<a href="' + esc(pdf) + '" target="_blank" rel="noopener" class="mt-3 inline-flex items-center gap-2 text-brand-blue font-black text-[11px] uppercase tracking-widest">View Case Study <i data-lucide="arrow-right" class="w-4 h-4"></i></a>' : '') +
+                        '</div></div>';
+                }).join('');
+                lucide.createIcons();
+            } catch (e) {
+                box.innerHTML = '<div class="md:col-span-2 text-center text-slate-400 text-sm py-8">Case studies coming soon.</div>';
+            }
+        }
+
+        loadReviews();
+        loadCaseStudies();
     </script>
 
 </body></html>
