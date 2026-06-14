@@ -70,7 +70,7 @@
 
         /* Sticky nav + smooth anchor scrolling */
         html { scroll-behavior: smooth; }
-        #top, #services, #case-studies, #reviews, #contact { scroll-margin-top: 84px; }
+        #top, #about, #services, #case-studies, #reviews, #contact { scroll-margin-top: 84px; }
         .nav-link { transition: color 0.2s ease; }
         .nav-link:hover { color: #1b8a8a; }
         #review-overlay { transition: opacity 0.3s ease; }
@@ -90,6 +90,7 @@
                 <span class="font-black text-slate-800 tracking-tight text-lg">NomardDesk</span>
             </a>
             <div class="hidden md:flex items-center gap-7 text-[13px] font-bold text-slate-600 uppercase tracking-wide">
+                <a href="#about" class="nav-link">About Us</a>
                 <a href="#services" class="nav-link">Services</a>
                 <a href="#case-studies" class="nav-link">Case Studies</a>
                 <a href="#reviews" class="nav-link">Reviews</a>
@@ -102,6 +103,7 @@
             </button>
         </div>
         <div id="mobile-menu" class="hidden md:hidden border-t border-slate-100 bg-white px-5 py-4 flex-col gap-1">
+            <a href="#about" onclick="closeMobileMenu()" class="block py-3 px-2 rounded-xl font-bold text-slate-700 hover:bg-slate-50 transition-colors">About Us</a>
             <a href="#services" onclick="closeMobileMenu()" class="block py-3 px-2 rounded-xl font-bold text-slate-700 hover:bg-slate-50 transition-colors">Services</a>
             <a href="#case-studies" onclick="closeMobileMenu()" class="block py-3 px-2 rounded-xl font-bold text-slate-700 hover:bg-slate-50 transition-colors">Case Studies</a>
             <a href="#reviews" onclick="closeMobileMenu()" class="block py-3 px-2 rounded-xl font-bold text-slate-700 hover:bg-slate-50 transition-colors">Reviews</a>
@@ -181,6 +183,32 @@
                 </div>
             </a>
         </div>
+
+
+        <!-- ABOUT US -->
+        <section id="about" class="mb-10 bg-white rounded-[2rem] shadow-sm border border-slate-100 overflow-hidden">
+            <div class="px-8 py-6 bg-slate-50/50 border-b border-slate-50">
+                <h2 class="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em]">About Us</h2>
+            </div>
+            <div class="p-8 space-y-5">
+                <span class="inline-flex items-center rounded-full bg-teal-50 text-brand-blue px-3 py-1 text-[10px] font-black uppercase tracking-widest">Crypto Marketing Agency</span>
+                <h3 class="text-2xl font-black text-slate-900 tracking-tight leading-tight">
+                    All-in-one crypto marketing built for serious growth.
+                </h3>
+                <p class="text-sm md:text-base text-slate-600 font-semibold leading-relaxed">
+                    NomardDesk is the new all-in-one cryptocurrency marketing agency handling crypto advertising, video production, TikTok advertising, Telegram marketing, and more.
+                </p>
+                <p class="text-sm md:text-base text-slate-600 font-semibold leading-relaxed">
+                    We are a digital advertising agency that works to deliver beyond customer satisfaction through strong strategy, clean execution, and marketing systems built to help crypto brands grow.
+                </p>
+                <div class="grid grid-cols-2 gap-3 pt-2 text-[11px] font-black uppercase tracking-widest text-slate-500">
+                    <div class="rounded-2xl bg-slate-50 p-4">Crypto Ads</div>
+                    <div class="rounded-2xl bg-slate-50 p-4">Video Production</div>
+                    <div class="rounded-2xl bg-slate-50 p-4">TikTok Ads</div>
+                    <div class="rounded-2xl bg-slate-50 p-4">Telegram Marketing</div>
+                </div>
+            </div>
+        </section>
 
         <div id="services" class="bg-white rounded-[2rem] shadow-sm border border-slate-100 overflow-hidden">
             <div class="px-8 py-6 bg-slate-50/50 border-b border-slate-50 flex items-center justify-between">
