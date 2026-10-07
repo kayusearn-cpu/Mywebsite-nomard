@@ -216,6 +216,15 @@ footer{background:white;border-top:1px solid var(--line);padding:32px 0}
 .lb-nav{display:flex;gap:8px;flex:none}
 @media(max-width:650px){.proof .shot{height:300px}}
 
+
+/* payment plans */
+.payplans{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:26px}
+.plan{background:white;border:1px solid var(--line);border-radius:20px;padding:22px 24px}
+.plan h3{margin:6px 0 6px;font-size:18px;letter-spacing:-.3px}
+.plan p{margin:0;font-size:14px;color:var(--muted)}
+.plan.plan-2{border:2px solid var(--teal);background:#f0f8f6}
+@media(max-width:650px){.payplans{grid-template-columns:1fr}}
+
 @media(max-width:1000px){.cols-4{grid-template-columns:repeat(2,1fr)}.cols-3{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:850px){.navlinks{gap:16px}.navlinks .button{display:none}.hero{gap:30px}.hero-card{padding:24px}.grid{gap:14px}.card{padding:22px}.split{gap:35px}.section-head h2,.split h2{font-size:30px}}
 @media(max-width:650px){
@@ -263,10 +272,10 @@ footer{background:white;border-top:1px solid var(--line);padding:32px 0}
         <h1>Telegram, TikTok &amp; web<br><span>growth agency.</span></h1>
         <p class="lead">We fix rejected Telegram ads, set up and manage campaigns, make TikTok UGC video ads, build bots, and design websites. Real people, clear prices, fast replies.</p>
         <div class="actions">
-          <a class="button" href="https://t.me/Nomardbot" target="_blank" rel="noopener">Message @Nomardbot <span aria-hidden="true">↗</span></a>
+          <a class="button" href="https://t.me/ads2defiCEO" target="_blank" rel="noopener">Message @ads2defiCEO <span aria-hidden="true">↗</span></a>
           <a class="button light" href="#services">See services &amp; prices</a>
         </div>
-        <p class="fine">Not sure what you need? Send your channel or bot link and we'll point you to the right service.</p>
+        <p class="fine">Talk to me directly, or use the bot for instant replies. Send your channel or bot link and we'll point you to the right service.</p>
       </div>
 
       <a class="hero-card" href="https://t.me/Nomardbot" target="_blank" rel="noopener" aria-label="Message the NomardDesk fast response bot">
@@ -293,14 +302,14 @@ footer{background:white;border-top:1px solid var(--line);padding:32px 0}
     <div class="wrap">
       <div class="section-head">
         <div><p class="eyebrow">Service catalog · live rates</p><h2>Pick your service.</h2></div>
-        <p>Tap any service to see its packages, prices, and delivery times. Order straight from the card.</p>
+        <p>Tap “See packages” on any service to see prices and delivery times. Order straight from the card.</p>
       </div>
       <div class="grid cols-4" id="service-grid">
         <article class="card">
           <span class="tag">Fix, setup &amp; optimize</span>
           <h3>Telegram Ad Services</h3>
           <p>Get rejected ads approved, set up campaigns, and grow your channel or bot.</p>
-          <div class="from">From <b data-from="ad_services">$200</b></div>
+          <div class="from"></div>
           <button class="button full" data-open="ad_services">See packages</button>
           <a class="more" href="/telegram-ads">Telegram Ads guide ↗</a>
         </article>
@@ -308,7 +317,7 @@ footer{background:white;border-top:1px solid var(--line);padding:32px 0}
           <span class="tag">UGC video ads that convert</span>
           <h3>TikTok Ad Services</h3>
           <p>Ad fixing, setup, and management for TikTok, plus UGC video ads.</p>
-          <div class="from">From <b data-from="tiktok_ads">$200</b></div>
+          <div class="from"></div>
           <button class="button light full" data-open="tiktok_ads">See packages</button>
         </article>
         <article class="card featured">
@@ -316,35 +325,35 @@ footer{background:white;border-top:1px solid var(--line);padding:32px 0}
           <span class="tag">Casino / gambling / adult</span>
           <h3>Prohibited Content Fix</h3>
           <p>Content, bio, ad text, and banner changes for channels and bots in strict niches.</p>
-          <div class="from">From <b data-from="prohibited">$200</b></div>
+          <div class="from"></div>
           <button class="button full" data-open="prohibited">See packages</button>
         </article>
         <article class="card">
           <span class="tag">Irrelevant / link / editorial</span>
           <h3>Error Fix Services</h3>
           <p>Fast fixes for irrelevant destination, link format, and editorial rejections.</p>
-          <div class="from">From <b data-from="error_fixes">$50</b></div>
+          <div class="from"></div>
           <button class="button light full" data-open="error_fixes">See packages</button>
         </article>
         <article class="card">
           <span class="tag">Growth on autopilot</span>
           <h3>Account Management</h3>
           <p>We run your Telegram ads: creatives, channel research, and weekly reports.</p>
-          <div class="from">From <b data-from="management">$100</b></div>
+          <div class="from"></div>
           <button class="button light full" data-open="management">See packages</button>
         </article>
         <article class="card">
           <span class="tag">Automation &amp; custom tools</span>
           <h3>Bot Development</h3>
           <p>Telegram bots with buttons, commands, and custom automation.</p>
-          <div class="from">From <b data-from="bot_dev">$150</b></div>
+          <div class="from"></div>
           <button class="button light full" data-open="bot_dev">See packages</button>
         </article>
         <article class="card">
           <span class="tag">Yes, we build websites too</span>
           <h3>Website Design</h3>
           <p>Fast, mobile-ready websites, from one landing page to a full web app.</p>
-          <div class="from">From <b data-from="website_design">$150</b></div>
+          <div class="from"></div>
           <button class="button light full" data-open="website_design">See packages</button>
         </article>
         <article class="card ask">
@@ -354,6 +363,10 @@ footer{background:white;border-top:1px solid var(--line);padding:32px 0}
           <div class="from"></div>
           <a class="button full" href="https://t.me/Nomardbot" target="_blank" rel="noopener">Message @Nomardbot ↗</a>
         </article>
+      </div>
+      <div class="payplans" id="payment">
+        <div class="plan"><span class="tag">Option 1</span><h3>Pay in full</h3><p>Pay once before we start. Best if you've worked with us before.</p></div>
+        <div class="plan plan-2"><span class="tag">Option 2 · New clients</span><h3>Pay in 2 parts</h3><p>Pay part before we start, and the rest only when the work is done and you've checked it.</p></div>
       </div>
       <p class="note">Prices are service fees. Ad budget is separate. Telegram and TikTok make the final call on ad approval, and results vary.</p>
     </div>
@@ -536,7 +549,7 @@ footer{background:white;border-top:1px solid var(--line);padding:32px 0}
 <script>
 /* =====================================================================
    RATE CARDS — your packages and prices (unchanged from your old site).
-   Edit prices here. The "From $X" on each service card updates itself.
+   Edit prices here. They show when a visitor taps "See packages".
    ===================================================================== */
 const rateCards = {
     'ad_services': {
@@ -656,14 +669,6 @@ function esc(s) {
 }
 function priceNum(p) { var n = parseFloat(String(p).replace(/[^0-9.]/g, '')); return isNaN(n) ? Infinity : n; }
 
-/* "From $X" on each service card, always matching the rate cards */
-document.querySelectorAll('[data-from]').forEach(function (el) {
-    var g = rateCards[el.dataset.from];
-    if (!g) return;
-    var min = Math.min.apply(null, g.packages.map(function (p) { return priceNum(p.price); }));
-    if (isFinite(min)) el.textContent = '$' + min;
-});
-
 /* ---------- rate card modal ---------- */
 const modalOverlay = document.getElementById('modal-overlay');
 const modalBody = document.getElementById('modal-body');
@@ -695,6 +700,7 @@ function openModal(key) {
     });
     html += '</div>';
     if (group.footer) html += '<p class="modal-foot">' + esc(group.footer) + '</p>';
+    if (!group.order_bot) html += '<p class="modal-foot" style="font-style:normal;margin-top:10px">New client? You can pay in 2 parts: part before we start, the rest when the work is done.</p>';
     modalBody.innerHTML = html;
     modalBody.scrollTop = 0;
     modalOverlay.classList.add('open');
@@ -739,7 +745,7 @@ document.addEventListener('keydown', function (e) {
    3) Add one line below (newest first)
    ===================================================================== */
 const PROOFS = [
-  { src: '/proofs/proof-1.webp', amount: '70 USDT fee paid', quote: '“Seems like u did it. Great job.”', name: 'Mini App ads client', text: 'Mini App ads went live. The client said "great job" and paid the 70 USDT fee.' },
+  { src: '/proofs/proof-1.webp', amount: 'Final 70 USDT paid', quote: '“Seems like u did it. Great job.”', name: 'Mini App ads · 2-part payment', text: 'This client paid part upfront. Once his Mini App ads went live, he said "great job" and paid the final 70 USDT.' },
   { src: '/proofs/proof-2.webp', amount: 'Ads live same day', quote: '“Can’t believe this man. It’s insane.”', name: 'Telegram Ads client', text: 'The client could not believe his ads went live, then paid the service fee.' },
   { src: '/proofs/proof-5.webp', amount: 'In review → approved', quote: 'A batch of ads stuck “In Review,” fixed and approved.', name: 'Telegram Ads client', text: 'A batch of ads stuck "In Review." We fixed them and got them approved.' },
   { src: '/proofs/proof-3.webp', amount: '12–15 deposits / day', quote: '“This bot is good… in last 20 days deposit up to 175.”', name: 'Bot client', text: 'The client says the bot he got from us brings 12-15 deposits a day, about 175 in 20 days.' },
