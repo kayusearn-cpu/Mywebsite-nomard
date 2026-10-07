@@ -1,1106 +1,993 @@
-<!DOCTYPE html>
-<html lang="en"><head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NomardDesk | Telegram, TikTok &amp; Web Solutions</title>
-    <link rel="icon" type="image/png" href="favicon.png">
-    <link rel="apple-touch-icon" href="favicon.png">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&amp;display=swap" rel="stylesheet">
-    <!-- Lucide Icons -->
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #f8fafc;
-            color: #0f172a;
-        }
-        .brand-blue { background-color: #1b8a8a; }
-        .text-brand-blue { color: #1b8a8a; }
-        .border-brand-blue { border-color: #1b8a8a; }
-        
-        .brand-gradient {
-            background: linear-gradient(135deg, #147a7a 0%, #20b2b2 100%);
-        }
-        
-        /* Smooth transitions for Modal */
-        #modal-overlay { transition: opacity 0.3s ease; }
-        #modal-content { transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); }
-        
-        body.modal-active { overflow: hidden; }
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NomardDesk | Telegram, TikTok &amp; Web Solutions</title>
+<meta name="description" content="NomardDesk is a Telegram, TikTok and web growth agency. Telegram ad fixes, campaign setup and management, TikTok UGC ads, bot development and websites.">
+<link rel="canonical" href="https://nomarddesk.com/">
+<meta name="theme-color" content="#147a7a">
+<meta property="og:type" content="website">
+<meta property="og:title" content="NomardDesk | Telegram, TikTok & Web Solutions">
+<meta property="og:description" content="Telegram ad fixes, campaign setup and management, TikTok UGC ads, bot development and websites.">
+<meta property="og:url" content="https://nomarddesk.com/">
+<meta property="og:site_name" content="NomardDesk">
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="apple-touch-icon" href="/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;650;750;800;850;900&display=swap" rel="stylesheet">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","@id":"https://nomarddesk.com/#organization","name":"NomardDesk","url":"https://nomarddesk.com/","sameAs":["https://t.me/Ads2defi1","https://www.youtube.com/@nomarddesk1","https://www.tiktok.com/@ads2defi","https://www.facebook.com/nomarddesk","https://medium.com/@ads2defiCEO"]}</script>
+<style>
+:root{--teal:#147a7a;--brand:#1b8a8a;--ink:#0f172a;--muted:#52616f;--line:#dde7e8;--paper:#f8fafc;--pale:#eaf5f3}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:100px}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.65}
+body.modal-active{overflow:hidden}
+a{color:var(--teal);text-underline-offset:4px}
+a:hover{color:#0d5353}
+a:focus-visible,summary:focus-visible,button:focus-visible{outline:3px solid #ab7610;outline-offset:5px}
+button{font:inherit;cursor:pointer}
+.wrap{width:min(1120px,calc(100% - 48px));margin:auto}
+.skip{position:absolute;top:-100px;left:15px;background:white;padding:12px;z-index:100}
+.skip:focus{top:10px}
 
-        .service-row {
-            transition: all 0.2s ease;
-        }
-        .service-row:hover {
-            background-color: #f1f5f9;
-            padding-left: 1.5rem;
-            padding-right: 1.5rem;
-        }
+/* header */
+header{position:sticky;top:0;z-index:30;background:#ffffffed;backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:24px;min-height:80px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink);font-weight:850;font-size:21px;letter-spacing:-.8px}
+.brand:hover{color:var(--ink)}
+.mark{width:36px;height:36px;border-radius:50%;background:var(--brand);display:grid;place-items:center;color:white;font-size:24px;font-weight:900;flex:none}
+.navlinks{display:flex;align-items:center;gap:26px}
+.navlinks a{font-size:13px;font-weight:650;text-decoration:none;color:var(--ink)}
+.navlinks a:not(.button):hover{color:var(--teal)}
 
-        .social-icon {
-            transition: transform 0.2s ease, color 0.2s ease;
-        }
-        .social-icon:hover {
-            transform: translateY(-3px);
-            color: #1b8a8a;
-        }
+/* buttons */
+.button{display:inline-flex;align-items:center;justify-content:center;gap:10px;border-radius:12px;background:var(--teal);color:white!important;padding:14px 23px;text-decoration:none;font-size:14px;font-weight:750;border:1px solid var(--teal);transition:background .15s,transform .15s;text-align:center}
+.button:hover{background:#0f6262;transform:translateY(-1px)}
+.button.light{background:white;color:var(--ink)!important;border-color:var(--line)}
+.button.light:hover{background:var(--pale)}
+.button.dark{background:var(--ink);border-color:var(--ink)}
+.button.dark:hover{background:#1e293b}
+.button.small{padding:10px 16px;font-size:12px}
+.button.full{width:100%}
 
-        .heavy-glow {
-            box-shadow: 0 20px 40px -10px rgba(27, 138, 138, 0.3);
-        }
+.eyebrow{text-transform:uppercase;letter-spacing:2px;font-weight:750;font-size:11px;color:var(--teal);margin:0 0 17px}
+.tag{font-size:10px;font-weight:800;letter-spacing:1.5px;color:var(--teal);text-transform:uppercase}
 
-        .pulse-ring {
-            animation: pulse-ring 1.5s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
-        }
-        @keyframes pulse-ring {
-            0% { transform: scale(.33); }
-            80%, 100% { opacity: 0; }
-        }
+/* hero */
+.hero{display:grid;grid-template-columns:1.35fr 1fr;gap:68px;align-items:center;padding:62px 0 72px}
+h1{font-size:clamp(40px,5.5vw,64px);line-height:1.06;letter-spacing:-3px;margin:0 0 24px;font-weight:850}
+h1 span{color:var(--teal)}
+.lead{font-size:17px;color:var(--muted);max-width:540px;margin:0}
+.actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:29px}
+.fine{font-size:12px;color:var(--muted);margin-top:18px}
+.hero-card{display:block;text-decoration:none;background:linear-gradient(150deg,#126d6d,#174343);color:white;border-radius:28px;padding:32px;box-shadow:0 24px 50px -28px #147a7a99;transition:transform .15s}
+.hero-card:hover{color:white;transform:translateY(-2px)}
+.hero-card .eyebrow{color:#b9e4da}
+.live{display:inline-flex;align-items:center;gap:8px}
+.live i{width:8px;height:8px;border-radius:50%;background:#4ade80;box-shadow:0 0 0 4px #4ade8033}
+.hero-card h2{font-size:28px;line-height:1.2;letter-spacing:-.8px;margin:0 0 12px}
+.hero-card p.sub{color:#d0e4e3;font-size:14px;margin:0 0 22px}
+.route{padding:14px 0;border-top:1px solid #ffffff25;display:grid;grid-template-columns:24px 1fr;gap:10px;font-size:14px;font-weight:650}
+.route svg{width:18px;height:18px;margin-top:3px;color:#b8e3d9}
+.hero-cta{margin-top:18px;background:white;color:var(--teal);border-radius:14px;padding:14px;text-align:center;font-weight:800;font-size:13px;letter-spacing:.3px}
 
-        /* Subscribe popup */
-        #subscribe-overlay { transition: opacity 0.3s ease; }
-        #subscribe-card { transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1); }
-        .sub-input:focus {
-            border-color: #1b8a8a;
-            box-shadow: 0 0 0 4px rgba(27, 138, 138, 0.08);
-        }
+/* band */
+.band{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:white}
+.band .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:18px;padding-top:20px;padding-bottom:20px;font-size:12px;color:var(--muted)}
+.band strong{color:var(--ink)}
 
-        /* Sticky nav + smooth anchor scrolling */
-        html { scroll-behavior: smooth; }
-        #top, #about, #services, #case-studies, #reviews, #contact { scroll-margin-top: 84px; }
-        .nav-link { transition: color 0.2s ease; }
-        .nav-link:hover { color: #1b8a8a; }
-        #review-overlay { transition: opacity 0.3s ease; }
-        #review-card { transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); }
-    </style>
-<style>*, ::before, ::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/* ! tailwindcss v3.4.17 | MIT License | https://tailwindcss.com */*,::after,::before{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}::after,::before{--tw-content:''}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0;padding:0}legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.pointer-events-none{pointer-events:none}.fixed{position:fixed}.absolute{position:absolute}.relative{position:relative}.sticky{position:sticky}.inset-0{inset:0px}.-bottom-12{bottom:-3rem}.-right-12{right:-3rem}.top-0{top:0px}.z-10{z-index:10}.z-50{z-index:50}.mx-auto{margin-left:auto;margin-right:auto}.mb-10{margin-bottom:2.5rem}.mb-2{margin-bottom:0.5rem}.mb-4{margin-bottom:1rem}.mt-1{margin-top:0.25rem}.mt-12{margin-top:3rem}.block{display:block}.inline-block{display:inline-block}.flex{display:flex}.grid{display:grid}.hidden{display:none}.h-10{height:2.5rem}.h-32{height:8rem}.h-4{height:1rem}.h-5{height:1.25rem}.h-6{height:1.5rem}.h-64{height:16rem}.h-8{height:2rem}.h-fit{height:-moz-fit-content;height:fit-content}.h-full{height:100%}.max-h-\[90vh\]{max-height:90vh}.min-h-screen{min-height:100vh}.w-10{width:2.5rem}.w-2{width:0.5rem}.w-32{width:8rem}.w-4{width:1rem}.w-5{width:1.25rem}.w-6{width:1.5rem}.w-64{width:16rem}.w-full{width:100%}.max-w-2xl{max-width:42rem}.max-w-5xl{max-width:64rem}.flex-grow{flex-grow:1}.scale-95{--tw-scale-x:.95;--tw-scale-y:.95;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.grid-cols-1{grid-template-columns:repeat(1, minmax(0, 1fr))}.grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}.flex-col{flex-direction:column}.flex-wrap{flex-wrap:wrap}.items-start{align-items:flex-start}.items-center{align-items:center}.justify-center{justify-content:center}.justify-between{justify-content:space-between}.gap-10{gap:2.5rem}.gap-12{gap:3rem}.gap-2{gap:0.5rem}.gap-3{gap:0.75rem}.gap-4{gap:1rem}.gap-6{gap:1.5rem}.gap-8{gap:2rem}.space-y-3 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.75rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.75rem * var(--tw-space-y-reverse))}.overflow-hidden{overflow:hidden}.overflow-y-auto{overflow-y:auto}.rounded{border-radius:0.25rem}.rounded-2xl{border-radius:1rem}.rounded-3xl{border-radius:1.5rem}.rounded-\[2\.5rem\]{border-radius:2.5rem}.rounded-\[2rem\]{border-radius:2rem}.rounded-full{border-radius:9999px}.border{border-width:1px}.border-2{border-width:2px}.border-b{border-bottom-width:1px}.border-t{border-top-width:1px}.border-slate-100{--tw-border-opacity:1;border-color:rgb(241 245 249 / var(--tw-border-opacity, 1))}.border-slate-200{--tw-border-opacity:1;border-color:rgb(226 232 240 / var(--tw-border-opacity, 1))}.border-slate-50{--tw-border-opacity:1;border-color:rgb(248 250 252 / var(--tw-border-opacity, 1))}.border-white\/20{border-color:rgb(255 255 255 / 0.2)}.bg-green-400{--tw-bg-opacity:1;background-color:rgb(74 222 128 / var(--tw-bg-opacity, 1))}.bg-slate-200{--tw-bg-opacity:1;background-color:rgb(226 232 240 / var(--tw-bg-opacity, 1))}.bg-slate-50\/30{background-color:rgb(248 250 252 / 0.3)}.bg-slate-50\/50{background-color:rgb(248 250 252 / 0.5)}.bg-slate-900\/60{background-color:rgb(15 23 42 / 0.6)}.bg-white{--tw-bg-opacity:1;background-color:rgb(255 255 255 / var(--tw-bg-opacity, 1))}.bg-white\/10{background-color:rgb(255 255 255 / 0.1)}.bg-white\/20{background-color:rgb(255 255 255 / 0.2)}.fill-white{fill:#fff}.stroke-\[2\.5\]{stroke-width:2.5}.p-2{padding:0.5rem}.p-4{padding:1rem}.p-5{padding:1.25rem}.p-6{padding:1.5rem}.p-8{padding:2rem}.px-2{padding-left:0.5rem;padding-right:0.5rem}.px-3{padding-left:0.75rem;padding-right:0.75rem}.px-6{padding-left:1.5rem;padding-right:1.5rem}.px-8{padding-left:2rem;padding-right:2rem}.py-0\.5{padding-top:0.125rem;padding-bottom:0.125rem}.py-1{padding-top:0.25rem;padding-bottom:0.25rem}.py-16{padding-top:4rem;padding-bottom:4rem}.py-4{padding-top:1rem;padding-bottom:1rem}.py-5{padding-top:1.25rem;padding-bottom:1.25rem}.py-6{padding-top:1.5rem;padding-bottom:1.5rem}.pb-8{padding-bottom:2rem}.pt-12{padding-top:3rem}.pt-8{padding-top:2rem}.text-left{text-align:left}.text-center{text-align:center}.text-3xl{font-size:1.875rem;line-height:2.25rem}.text-\[10px\]{font-size:10px}.text-\[11px\]{font-size:11px}.text-\[8px\]{font-size:8px}.text-\[9px\]{font-size:9px}.text-lg{font-size:1.125rem;line-height:1.75rem}.text-sm{font-size:0.875rem;line-height:1.25rem}.text-xl{font-size:1.25rem;line-height:1.75rem}.text-xs{font-size:0.75rem;line-height:1rem}.font-black{font-weight:900}.font-bold{font-weight:700}.font-semibold{font-weight:600}.uppercase{text-transform:uppercase}.leading-none{line-height:1}.leading-tight{line-height:1.25}.tracking-\[0\.2em\]{letter-spacing:0.2em}.tracking-\[0\.3em\]{letter-spacing:0.3em}.tracking-\[0\.4em\]{letter-spacing:0.4em}.tracking-tight{letter-spacing:-0.025em}.tracking-tighter{letter-spacing:-0.05em}.tracking-widest{letter-spacing:0.1em}.text-blue-100\/80{color:rgb(219 234 254 / 0.8)}.text-blue-50{--tw-text-opacity:1;color:rgb(239 246 255 / var(--tw-text-opacity, 1))}.text-green-600{--tw-text-opacity:1;color:rgb(22 163 74 / var(--tw-text-opacity, 1))}.text-orange-500{--tw-text-opacity:1;color:rgb(249 115 22 / var(--tw-text-opacity, 1))}.text-slate-300{--tw-text-opacity:1;color:rgb(203 213 225 / var(--tw-text-opacity, 1))}.text-slate-400{--tw-text-opacity:1;color:rgb(148 163 184 / var(--tw-text-opacity, 1))}.text-slate-500{--tw-text-opacity:1;color:rgb(100 116 139 / var(--tw-text-opacity, 1))}.text-slate-600{--tw-text-opacity:1;color:rgb(71 85 105 / var(--tw-text-opacity, 1))}.text-slate-800{--tw-text-opacity:1;color:rgb(30 41 59 / var(--tw-text-opacity, 1))}.text-white{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}.underline{-webkit-text-decoration-line:underline;text-decoration-line:underline}.decoration-white\/30{-webkit-text-decoration-color:rgb(255 255 255 / 0.3);text-decoration-color:rgb(255 255 255 / 0.3)}.decoration-2{text-decoration-thickness:2px}.underline-offset-4{text-underline-offset:4px}.opacity-0{opacity:0}.shadow-2xl{--tw-shadow:0 25px 50px -12px rgb(0 0 0 / 0.25);--tw-shadow-colored:0 25px 50px -12px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-sm{--tw-shadow:0 1px 2px 0 rgb(0 0 0 / 0.05);--tw-shadow-colored:0 1px 2px 0 var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-xl{--tw-shadow:0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 20px 25px -5px var(--tw-shadow-color), 0 8px 10px -6px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.blur-3xl{--tw-blur:blur(64px);filter:var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)}.backdrop-blur-sm{--tw-backdrop-blur:blur(4px);-webkit-backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia)}.transition-all{transition-property:all;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.transition-colors{transition-property:color, background-color, border-color, fill, stroke, -webkit-text-decoration-color;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke, -webkit-text-decoration-color;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.hover\:scale-\[1\.01\]:hover{--tw-scale-x:1.01;--tw-scale-y:1.01;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.hover\:bg-slate-100:hover{--tw-bg-opacity:1;background-color:rgb(241 245 249 / var(--tw-bg-opacity, 1))}.hover\:bg-slate-50:hover{--tw-bg-opacity:1;background-color:rgb(248 250 252 / var(--tw-bg-opacity, 1))}.group:hover .group-hover\:bg-blue-50{--tw-bg-opacity:1;background-color:rgb(239 246 255 / var(--tw-bg-opacity, 1))}.group:hover .group-hover\:bg-white\/20{background-color:rgb(255 255 255 / 0.2)}@media (min-width: 640px){.sm\:flex{display:flex}}@media (min-width: 768px){.md\:h-40{height:10rem}.md\:w-40{width:10rem}.md\:grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}.md\:p-10{padding:2.5rem}.md\:text-2xl{font-size:1.5rem;line-height:2rem}}</style></head>
-<body class="min-h-screen flex flex-col">
+/* sections */
+section{padding:76px 0}
+.section-head{display:flex;justify-content:space-between;align-items:end;gap:35px;margin-bottom:30px}
+.section-head h2,.split h2{font-size:36px;line-height:1.16;letter-spacing:-1.5px;margin:0}
+.section-head p{max-width:370px;color:var(--muted);font-size:14px;margin:0}
+.grid{display:grid;gap:20px}
+.cols-4{grid-template-columns:repeat(4,1fr)}
+.cols-3{grid-template-columns:repeat(3,1fr)}
+.cols-2{grid-template-columns:repeat(2,1fr)}
+.card{background:white;border:1px solid var(--line);border-radius:22px;padding:28px;display:flex;flex-direction:column;position:relative}
+.card h3{font-size:21px;line-height:1.25;letter-spacing:-.5px;margin:10px 0 8px}
+.card p{font-size:14px;color:var(--muted);margin:0}
+.card .from{font-size:13px;color:var(--muted);margin:18px 0 18px;flex:1;display:flex;align-items:flex-end}
+.card .from b{font-size:30px;font-weight:800;letter-spacing:-1.2px;color:var(--ink);margin-left:6px;line-height:1}
+.card .more{font-size:12px;font-weight:700;margin-top:12px;text-align:center}
+.featured{border:2px solid var(--teal);background:#f0f8f6}
+.badge{position:absolute;top:-11px;left:24px;background:#ef4444;color:white;font-size:10px;font-weight:800;letter-spacing:1px;text-transform:uppercase;padding:4px 10px;border-radius:999px}
+.badge.teal{background:var(--teal)}
+.card.ask{background:var(--ink);border-color:var(--ink);color:white}
+.card.ask p{color:#becbd3}
+.card.ask .tag{color:#a8e4d5}
+.card.ask .button{background:#a8e4d5;border-color:#a8e4d5;color:#143f3a!important;margin-top:auto}
+.note{font-size:12px;color:var(--muted);margin:20px 0 0;max-width:780px}
+.split{display:grid;grid-template-columns:1fr 1.1fr;gap:70px;align-items:center}
+.split p{color:var(--muted);font-size:14px}
+.tint{background:var(--pale);border-top:1px solid #d9e8e4;border-bottom:1px solid #d9e8e4}
 
-    <!-- STICKY TOP NAV (NEW) -->
-    <nav class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-100">
-        <div class="max-w-2xl mx-auto px-5 h-16 flex items-center justify-between gap-4">
-            <a href="#top" class="flex items-center gap-2 shrink-0">
-                <svg viewBox="0 0 400 400" class="w-9 h-9" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                    <circle cx="200" cy="200" r="190" fill="#1b8a8a"></circle>
-                    <text x="200" y="285" font-family="Arial, sans-serif" font-weight="900" font-size="280" text-anchor="middle" fill="white">N</text>
-                </svg>
-                <span class="font-black text-slate-800 tracking-tight text-lg">NomardDesk</span>
-            </a>
-            <div class="hidden md:flex items-center gap-7 text-[13px] font-bold text-slate-600 uppercase tracking-wide">
-                <a href="#services" class="nav-link">Services</a>
-                <a href="#case-studies" class="nav-link">Case Studies</a>
-                <a href="#reviews" class="nav-link">Reviews</a>
-                <a href="#contact" class="nav-link">Contact</a>
-                <a href="#about" class="nav-link">About Us</a>
-            </div>
-            <a href="https://t.me/Nomardbot" target="_blank" class="hidden md:flex brand-gradient text-white text-[11px] font-black uppercase tracking-widest px-5 py-3 rounded-full items-center gap-2 shadow-md">Message Bot</a>
-            <button id="nav-toggle" onclick="toggleMobileMenu()" aria-label="Open menu" aria-expanded="false" class="md:hidden w-11 h-11 flex items-center justify-center rounded-xl hover:bg-slate-100 transition-colors">
-                <svg id="nav-open-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6 text-slate-800"><path d="M4 6h16"></path><path d="M4 12h16"></path><path d="M4 18h16"></path></svg>
-                <svg id="nav-close-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6 text-slate-800 hidden"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>
-            </button>
-        </div>
-        <div id="mobile-menu" class="hidden md:hidden border-t border-slate-100 bg-white px-5 py-4 flex-col gap-1">
-            <a href="#services" onclick="closeMobileMenu()" class="block py-3 px-2 rounded-xl font-bold text-slate-700 hover:bg-slate-50 transition-colors">Services</a>
-            <a href="#case-studies" onclick="closeMobileMenu()" class="block py-3 px-2 rounded-xl font-bold text-slate-700 hover:bg-slate-50 transition-colors">Case Studies</a>
-            <a href="#reviews" onclick="closeMobileMenu()" class="block py-3 px-2 rounded-xl font-bold text-slate-700 hover:bg-slate-50 transition-colors">Reviews</a>
-            <a href="#contact" onclick="closeMobileMenu()" class="block py-3 px-2 rounded-xl font-bold text-slate-700 hover:bg-slate-50 transition-colors">Contact</a>
-            <a href="#about" onclick="closeMobileMenu()" class="block py-3 px-2 rounded-xl font-bold text-slate-700 hover:bg-slate-50 transition-colors">About Us</a>
-            <a href="https://t.me/Nomardbot" target="_blank" class="mt-2 brand-gradient text-white text-center py-3 rounded-xl font-black text-xs uppercase tracking-widest">Message Bot</a>
-        </div>
-    </nav>
+/* dynamic: case studies + reviews */
+.empty{grid-column:1/-1;text-align:center;color:var(--muted);font-size:14px;padding:34px;background:white;border:1px dashed var(--line);border-radius:22px}
+.cs{padding:0;overflow:hidden}
+.cs img{width:100%;height:180px;object-fit:cover;display:block}
+.cs .bar{height:6px;background:linear-gradient(90deg,#147a7a,#20b2b2)}
+.cs .body{padding:24px;display:flex;flex-direction:column;gap:8px;flex:1}
+.cs .body p{flex:1}
+.cs a.link{font-weight:750;font-size:13px;margin-top:8px}
+.stars{color:#f5a623;letter-spacing:3px;font-size:15px}
+.review blockquote{margin:12px 0 18px;font-size:14px;color:var(--ink);flex:1}
+.review .who{border-top:1px solid var(--line);padding-top:12px;font-size:13px}
+.review .who b{display:block}
+.review .who span{color:var(--muted);font-size:12px}
 
-    <!-- Hero / Header -->
-    <header id="top" class="pt-12 pb-8 px-6 flex flex-col items-center">
-        <div class="w-32 h-32 md:w-40 md:h-40 mb-4 flex items-center justify-center">
-            <!-- Brand Logo -->
-            <svg viewBox="0 0 400 450" class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
-                <defs>
-                    <pattern id="ndStripes" patternUnits="userSpaceOnUse" width="12" height="12" patternTransform="rotate(45)">
-                        <rect width="12" height="12" fill="white"></rect>
-                        <line x1="0" y1="0" x2="0" y2="12" stroke="#1b8a8a" stroke-width="3"></line>
-                    </pattern>
-                </defs>
-                <circle cx="200" cy="180" r="150" fill="#1b8a8a"></circle>
-                <text x="200" y="258" font-family="Arial, sans-serif" font-weight="900" font-size="235" text-anchor="middle" fill="url(#ndStripes)">N</text>
-                <text x="200" y="425" font-family="Arial, sans-serif" font-weight="800" font-size="40" text-anchor="middle" fill="#2d3748" letter-spacing="2">NOMARDDESK</text>
-            </svg>
-        </div>
-        <h1 class="text-[10px] font-black text-slate-400 uppercase tracking-[0.4em] text-center">Telegram • TikTok • Web Growth Agency</h1>
-    </header>
+/* community price card */
+.price-card{background:white;border:2px solid var(--teal);border-radius:24px;padding:30px}
+.price-card .price{font-size:44px;font-weight:850;letter-spacing:-1.6px;margin:8px 0 0;line-height:1}
+.price-card .price small{font-size:13px;font-weight:500;color:var(--muted);letter-spacing:0}
+.price-card ul,.pkg ul{padding-left:19px;margin:18px 0 24px;font-size:13px;line-height:1.9}
 
-    <!-- MAIN DASHBOARD -->
-    <main class="max-w-2xl mx-auto w-full px-6 py-4 flex-grow">
-        
-        <!-- REDESIGNED HIGH-VISIBILITY BOT SECTION -->
-        <div class="mb-10">
-            <a href="https://t.me/Nomardbot" target="_blank" class="heavy-glow block brand-gradient rounded-[2.5rem] p-8 text-white hover:scale-[1.01] transition-all relative overflow-hidden group">
-                <!-- Decorative Elements -->
-                <div class="absolute -right-12 -bottom-12 w-64 h-64 bg-white/10 rounded-full blur-3xl group-hover:bg-white/20 transition-all"></div>
-                
-                <div class="relative z-10 flex flex-col gap-6">
-                    <div class="flex items-start justify-between">
-                        <div class="flex items-center gap-4">
-                            <div class="relative">
-                                <div class="pulse-ring absolute inset-0 bg-green-400 rounded-full"></div>
-                                <div class="bg-white text-brand-blue p-5 rounded-3xl shadow-2xl relative z-10">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="bot" aria-hidden="true" class="lucide lucide-bot w-10 h-10"><path d="M12 8V4H8"></path><rect width="16" height="12" x="4" y="8" rx="2"></rect><path d="M2 14h2"></path><path d="M20 14h2"></path><path d="M15 13v2"></path><path d="M9 13v2"></path></svg>
-                                </div>
-                            </div>
-                            <div>
-                                <span class="bg-white/20 text-white text-[10px] font-black uppercase tracking-widest px-3 py-1 rounded-full border border-white/20 mb-2 inline-block">
-                                    Instant Response Available
-                                </span>
-                                <h3 class="text-3xl font-black tracking-tighter leading-none">Fast Response Bot</h3>
-                            </div>
-                        </div>
-                        <div class="hidden sm:flex bg-white/10 p-2 rounded-full h-fit">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="zap" aria-hidden="true" class="lucide lucide-zap w-5 h-5 fill-white"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"></path></svg>
-                        </div>
-                    </div>
+/* about */
+.pills{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:22px}
+.pills span{background:white;border:1px solid var(--line);border-radius:14px;padding:14px;font-size:13px;font-weight:700}
 
-                    <div class="space-y-3">
-                        <p class="text-lg font-bold text-blue-50 leading-tight">
-                            Message here for <span class="text-white underline decoration-white/30 decoration-2 underline-offset-4">instant replies</span>, 24/7 order updates, and monthly news.
-                        </p>
-                        <div class="grid grid-cols-2 gap-3 text-[11px] font-bold text-blue-100/80">
-                            <div class="flex items-center gap-2">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="check-circle-2" aria-hidden="true" class="lucide lucide-check-circle-2 w-4 h-4"><circle cx="12" cy="12" r="10"></circle><path d="m9 12 2 2 4-4"></path></svg>
-                                <span>No Premium Needed</span>
-                            </div>
-                            <div class="flex items-center gap-2">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="check-circle-2" aria-hidden="true" class="lucide lucide-check-circle-2 w-4 h-4"><circle cx="12" cy="12" r="10"></circle><path d="m9 12 2 2 4-4"></path></svg>
-                                <span>Instant Setup Info</span>
-                            </div>
-                        </div>
-                    </div>
+/* contact */
+.contact{background:var(--ink);color:white;border-radius:28px;padding:44px;display:flex;justify-content:space-between;align-items:center;gap:40px;margin:0 0 70px}
+.contact h2{font-size:32px;letter-spacing:-1px;line-height:1.18;margin:0 0 14px}
+.contact p{color:#becbd3;max-width:560px;font-size:14px;margin:0}
+.contact .btns{display:flex;flex-direction:column;gap:10px;flex-shrink:0;min-width:260px}
+.contact .button{background:#a8e4d5;color:#143f3a!important;border-color:#a8e4d5}
+.contact .button.ghost{background:transparent;color:white!important;border-color:#ffffff40}
+.contact .button.ghost:hover{background:#ffffff14}
 
-                    <div class="bg-white text-brand-blue py-4 rounded-2xl font-black text-center text-sm uppercase tracking-widest group-hover:bg-blue-50 transition-colors">
-                        Click for Instant Response @Nomardbot
-                    </div>
-                </div>
-            </a>
-        </div>
+/* footer */
+footer{background:white;border-top:1px solid var(--line);padding:32px 0}
+.foot{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.foot p{font-size:11px;color:var(--muted);margin:6px 0 0}
+.socials{display:flex;flex-wrap:wrap;gap:18px}
+.socials a{color:#94a3b8;display:flex;align-items:center;gap:6px;font-size:12px;font-weight:650;text-decoration:none}
+.socials a:hover{color:var(--teal)}
+.socials svg{width:18px;height:18px}
+.legal{font-size:11px;color:var(--muted);margin:22px 0 0}
+
+/* modals */
+.overlay{position:fixed;inset:0;background:#0f172a99;backdrop-filter:blur(4px);z-index:50;display:flex;align-items:center;justify-content:center;padding:16px;opacity:0;pointer-events:none;transition:opacity .25s}
+.overlay.open{opacity:1;pointer-events:auto}
+.sheet{background:var(--paper);width:100%;max-height:90vh;border-radius:28px;overflow:hidden;display:flex;flex-direction:column;transform:scale(.96);transition:transform .25s}
+.overlay.open .sheet{transform:scale(1)}
+.sheet.wide{max-width:1040px}
+.sheet.narrow{max-width:460px;background:white}
+.sheet.mid{max-width:560px;background:white}
+.sheet-head{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:20px 28px;background:white;border-bottom:1px solid var(--line)}
+.sheet-head h2{margin:0;font-size:22px;letter-spacing:-.6px}
+.x{width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:white;display:grid;place-items:center;flex:none}
+.x:hover{background:var(--pale)}
+.x svg{width:18px;height:18px}
+.sheet-body{padding:28px;overflow-y:auto}
+.modal-info{text-align:center;color:var(--muted);font-size:14px;max-width:640px;margin:0 auto 26px}
+.modal-foot{text-align:center;color:var(--muted);font-size:12px;margin:24px auto 0;max-width:640px;font-style:italic}
+.pkg{background:white}
+.pkg .price{font-size:38px;font-weight:850;letter-spacing:-1.4px;margin:6px 0 2px;line-height:1.1}
+.pkg .subtitle{font-size:12px;font-weight:750;color:var(--teal);text-transform:uppercase;letter-spacing:.4px}
+.pkg .pill{display:inline-block;margin-top:10px;background:var(--pale);color:var(--teal);font-size:10px;font-weight:800;letter-spacing:1px;text-transform:uppercase;padding:4px 10px;border-radius:999px;align-self:flex-start}
+.pkg .desc{background:var(--paper);border-radius:14px;padding:14px;margin-top:16px;font-size:13px;color:var(--muted)}
+.pkg ul{flex:1}
+.important{background:#fef2f2;border:1px solid #fee2e2;color:#b91c1c;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.3px;border-radius:14px;padding:12px;margin-bottom:18px}
+.delivery{display:flex;justify-content:space-between;border-top:1px solid var(--line);padding-top:16px;margin-bottom:16px;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.5px;color:#94a3b8}
+.delivery b{color:var(--teal)}
+
+/* subscribe */
+.sub-top{background:linear-gradient(150deg,#126d6d,#174343);color:white;padding:34px 52px 30px;text-align:center;position:relative}
+.sub-top h2{margin:0 0 8px;font-size:24px;letter-spacing:-.6px;line-height:1.2}
+.sub-top p{margin:0;color:#d0e4e3;font-size:14px}
+.sub-top .x{position:absolute;top:14px;right:14px;background:#ffffff1f;border-color:#ffffff33;color:white}
+.sub-form{padding:28px;display:flex;flex-direction:column;gap:12px}
+.sub-form input{width:100%;padding:15px 16px;border-radius:14px;border:1.5px solid var(--line);font:inherit;font-size:15px;outline:none}
+.sub-form input:focus{border-color:var(--teal);box-shadow:0 0 0 4px #147a7a14}
+.sub-error{display:none;color:#ef4444;font-size:12px;font-weight:700;text-align:center;margin:0}
+.textlink{background:none;border:0;color:var(--muted);font-size:12px;font-weight:700;padding:6px}
+.sub-done{display:none;padding:30px;text-align:center}
+.sub-done h3{margin:0 0 6px;font-size:22px}
+.sub-done p{color:var(--muted);font-size:14px;margin:0 0 18px}
+.review-body iframe{width:100%;height:68vh;border:0;display:block}
+.review-note{font-size:11px;color:var(--muted);text-align:center;padding:12px;border-top:1px solid var(--line);margin:0}
 
 
-        <div id="services" class="bg-white rounded-[2rem] shadow-sm border border-slate-100 overflow-hidden">
-            <div class="px-8 py-6 bg-slate-50/50 border-b border-slate-50 flex items-center justify-between">
-                <h2 class="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em]">Service Catalog</h2>
-                <span class="text-[9px] font-bold bg-slate-200 text-slate-500 px-2 py-0.5 rounded uppercase">Live Rates</span>
-            </div>
-            
-            <!-- Item 1 -->
-            <button onclick="openModal('ad_services')" class="service-row w-full flex items-center justify-between p-8 border-b border-slate-50 text-left">
-                <div>
-                    <h3 class="font-bold text-xl text-slate-800">Telegram Ad Services</h3>
-                    <p class="text-xs text-slate-400 mt-1 uppercase font-semibold">Fix, Setup &amp; Optimize</p>
-                </div>
-                <div class="text-slate-300">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="arrow-right" aria-hidden="true" class="lucide lucide-arrow-right w-6 h-6 stroke-[2.5]"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
-                </div>
-            </button>
+/* proof of work: auto-scrolling slider (Secret EA style) */
+.proof-marquee{position:relative;margin-top:8px;overflow:hidden;padding:6px 0 30px;
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);
+  mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
+.proof-track{display:flex;gap:18px;width:max-content;animation:proofscroll 48s linear infinite}
+.proof-marquee:hover .proof-track,.proof-marquee:focus-within .proof-track{animation-play-state:paused}
+@keyframes proofscroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.proof{flex:0 0 auto;width:230px;padding:0;text-align:left;cursor:zoom-in;background:white;border:1px solid var(--line);border-radius:22px;overflow:hidden;box-shadow:0 22px 44px -22px rgba(15,23,42,.28);transition:transform .15s}
+.proof:hover{transform:translateY(-3px)}
+.proof img{display:block;width:100%;height:400px;object-fit:cover;object-position:top center;background:#e7efe9}
+.proof-meta{padding:14px 16px}
+.proof-amount{font-size:17px;font-weight:800;color:var(--teal);letter-spacing:-.3px;line-height:1.25}
+.proof-quote{font-size:12.5px;color:var(--muted);line-height:1.5;margin-top:4px}
+.proof-name{font-size:10.5px;font-weight:800;color:#334155;margin-top:8px;letter-spacing:.8px;text-transform:uppercase}
+.proof-cta{text-align:center;margin-top:8px}
+@media(max-width:650px){.proof{width:200px}.proof img{height:350px}}
+@media(prefers-reduced-motion:reduce){.proof-track{animation:none}.proof-marquee{overflow-x:auto;-webkit-mask-image:none;mask-image:none}}
+.lightbox .sheet{max-width:560px;background:white}
+.lightbox .sheet-body{padding:0;background:#e7efe9}
+.lightbox img{width:100%;display:block}
+.lb-cap{padding:16px 22px;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:14px}
+.lb-cap p{margin:0;font-size:13px;color:var(--muted)}
+.lb-nav{display:flex;gap:8px;flex:none}
+@media(max-width:650px){.proof .shot{height:300px}}
 
-            <!-- TikTok Ad Services (NEW) -->
-            <button onclick="openModal('tiktok_ads')" class="service-row w-full flex items-center justify-between p-8 border-b border-slate-50 text-left">
-                <div>
-                    <h3 class="font-bold text-xl text-slate-800">TikTok Ad Services</h3>
-                    <p class="text-xs text-pink-500 mt-1 uppercase font-semibold">UGC Video Ads That Convert</p>
-                </div>
-                <div class="text-slate-300">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="arrow-right" aria-hidden="true" class="lucide lucide-arrow-right w-6 h-6 stroke-[2.5]"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
-                </div>
-            </button>
+@media(max-width:1000px){.cols-4{grid-template-columns:repeat(2,1fr)}.cols-3{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:850px){.navlinks{gap:16px}.navlinks .button{display:none}.hero{gap:30px}.hero-card{padding:24px}.grid{gap:14px}.card{padding:22px}.split{gap:35px}.section-head h2,.split h2{font-size:30px}}
+@media(max-width:650px){
+  .wrap{width:calc(100% - 36px)}header{position:relative}
+  .nav{flex-wrap:wrap;gap:10px;padding:16px 0}
+  .navlinks{width:100%;justify-content:space-between;overflow-x:auto;padding-top:6px;gap:14px}
+  .navlinks a{font-size:12px;white-space:nowrap}
+  .hero{grid-template-columns:1fr;padding:34px 0 40px;gap:32px}
+  h1{letter-spacing:-1.8px;font-size:42px}.lead{font-size:16px}
+  .band .wrap{display:grid;grid-template-columns:1fr 1fr;font-size:11px;gap:12px}
+  .section-head{display:block}.section-head p{margin-top:14px}
+  .cols-4,.cols-3,.cols-2,.split{grid-template-columns:1fr}
+  section{padding:50px 0}.section-head h2,.split h2{font-size:28px}
+  .contact{padding:28px;display:block;margin-bottom:40px}.contact h2{font-size:26px}.contact .btns{margin-top:24px;min-width:0}
+  .actions .button{flex:1;white-space:nowrap;padding:13px 16px}
+  .sheet-body{padding:18px}.sheet-head{padding:16px 18px}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
 
-            <!-- Item 2 -->
-            <button onclick="openModal('prohibited')" class="service-row w-full flex items-center justify-between p-8 border-b border-slate-50 text-left">
-                <div>
-                    <span class="inline-block bg-red-500 text-white text-[9px] font-black uppercase tracking-widest px-2 py-0.5 rounded-full mb-1.5">Most Used Service</span>
-                    <h3 class="font-bold text-xl text-slate-800">Prohibited Content Fix</h3>
-                    <p class="text-xs text-orange-500 mt-1 uppercase font-semibold">Casino / Gambling / Adult</p>
-                </div>
-                <div class="text-slate-300">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="arrow-right" aria-hidden="true" class="lucide lucide-arrow-right w-6 h-6 stroke-[2.5]"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
-                </div>
-            </button>
-
-            <!-- Item 3 -->
-            <button onclick="openModal('bot_dev')" class="service-row w-full flex items-center justify-between p-8 border-b border-slate-50 text-left">
-                <div>
-                    <h3 class="font-bold text-xl text-slate-800">Bot Development</h3>
-                    <p class="text-xs text-slate-400 mt-1 uppercase font-semibold">Automation &amp; Custom Tools</p>
-                </div>
-                <div class="text-slate-300">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="arrow-right" aria-hidden="true" class="lucide lucide-arrow-right w-6 h-6 stroke-[2.5]"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
-                </div>
-            </button>
-
-            <!-- Website Design (NEW) -->
-            <button onclick="openModal('website_design')" class="service-row w-full flex items-center justify-between p-8 border-b border-slate-50 text-left">
-                <div>
-                    <h3 class="font-bold text-xl text-slate-800">Website Design</h3>
-                    <p class="text-xs text-indigo-500 mt-1 uppercase font-semibold">Yes — We Build Websites Too</p>
-                </div>
-                <div class="text-slate-300">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="arrow-right" aria-hidden="true" class="lucide lucide-arrow-right w-6 h-6 stroke-[2.5]"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
-                </div>
-            </button>
-
-            <!-- Item 4 -->
-            <button onclick="openModal('error_fixes')" class="service-row w-full flex items-center justify-between p-8 border-b border-slate-50 text-left">
-                <div>
-                    <h3 class="font-bold text-xl text-slate-800">Error Fix Services</h3>
-                    <p class="text-xs text-slate-400 mt-1 uppercase font-semibold">Irrelevant / Link / Editorial</p>
-                </div>
-                <div class="text-slate-300">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="arrow-right" aria-hidden="true" class="lucide lucide-arrow-right w-6 h-6 stroke-[2.5]"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
-                </div>
-            </button>
-
-            <!-- Item 5 -->
-            <button onclick="openModal('management')" class="service-row w-full flex items-center justify-between p-8 text-left">
-                <div>
-                    <h3 class="font-bold text-xl text-slate-800">Account Management</h3>
-                    <p class="text-xs text-green-600 mt-1 uppercase font-semibold">Growth on Autopilot</p>
-                </div>
-                <div class="text-slate-300">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="arrow-right" aria-hidden="true" class="lucide lucide-arrow-right w-6 h-6 stroke-[2.5]"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
-                </div>
-            </button>
-        </div>
-        <!-- CASE STUDIES (NEW) -->
-        <section id="case-studies" class="mb-10">
-            <div class="text-center mb-6">
-                <h2 class="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em]">Case Studies</h2>
-                <p class="text-sm text-slate-500 font-semibold mt-1">Real results from real campaigns.</p>
-            </div>
-            <div id="case-studies-list" class="grid grid-cols-1 md:grid-cols-2 gap-5">
-                <div class="md:col-span-2 text-center text-slate-400 text-sm py-8">Loading case studies…</div>
-            </div>
-        </section>
-
-        <!-- REVIEWS (NEW) -->
-        <section id="reviews" class="mb-10">
-            <div class="flex items-center justify-between gap-4 mb-6">
-                <div>
-                    <h2 class="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em]">Reviews</h2>
-                    <p class="text-sm text-slate-500 font-semibold mt-1">What our clients say.</p>
-                </div>
-                <button onclick="openReviewForm()" class="shrink-0 brand-gradient text-white text-[11px] font-black uppercase tracking-widest px-5 py-3 rounded-full shadow-md active:scale-95 transition-all flex items-center gap-2">
-                    <i data-lucide="star" class="w-4 h-4"></i>
-                    Leave a Review
-                </button>
-            </div>
-            <div id="reviews-list" class="grid grid-cols-1 md:grid-cols-2 gap-5">
-                <div class="md:col-span-2 text-center text-slate-400 text-sm py-8">Loading reviews…</div>
-            </div>
-        </section>
-
-        <!-- LEARN & EARN (NEW) -->
-        <div class="mb-10">
-            <div class="text-center mb-6">
-                <h2 class="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em]">Join Our Community</h2>
-            </div>
-            <div class="grid grid-cols-1 gap-6">
-                <!-- Community -->
-                <button onclick="openModal('community')" class="text-left brand-gradient text-white rounded-[2rem] p-8 shadow-xl heavy-glow hover:scale-[1.01] transition-all flex flex-col gap-4 relative overflow-hidden group">
-                    <div class="absolute -right-10 -bottom-10 w-48 h-48 bg-white/10 rounded-full blur-3xl group-hover:bg-white/20 transition-all"></div>
-                    <div class="relative z-10 flex items-center justify-between">
-                        <div class="bg-white/20 p-4 rounded-2xl border border-white/20">
-                            <i data-lucide="users" class="w-7 h-7"></i>
-                        </div>
-                        <span class="bg-white/20 text-white text-[9px] font-black uppercase tracking-widest px-3 py-1 rounded-full border border-white/20">Membership</span>
-                    </div>
-                    <div class="relative z-10">
-                        <h3 class="text-2xl font-black tracking-tight leading-tight">Community Membership</h3>
-                        <p class="text-sm text-blue-50 font-semibold mt-1">Share rejection patterns, get ad help &amp; join weekly live office hours.</p>
-                    </div>
-                    <div class="relative z-10 mt-auto flex items-center justify-between pt-4 border-t border-white/20">
-                        <span class="text-[11px] font-bold text-blue-100 uppercase tracking-widest"><span class="text-white text-lg">$20</span> / month</span>
-                        <span class="flex items-center gap-1 text-white font-black text-[11px] uppercase tracking-widest">Join Now
-                            <i data-lucide="arrow-right" class="w-4 h-4"></i>
-                        </span>
-                    </div>
-                </button>
-            </div>
-        </div>
-
-        <!-- ABOUT US -->
-        <section id="about" class="mb-10 bg-white rounded-[2rem] shadow-sm border border-slate-100 overflow-hidden">
-            <div class="px-8 py-6 bg-slate-50/50 border-b border-slate-50">
-                <h2 class="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em]">About Us</h2>
-            </div>
-            <div class="p-8 space-y-5">
-                <span class="inline-flex items-center rounded-full bg-teal-50 text-brand-blue px-3 py-1 text-[10px] font-black uppercase tracking-widest">Crypto Marketing Agency</span>
-                <h3 class="text-2xl font-black text-slate-900 tracking-tight leading-tight">
-                    All-in-one crypto marketing built for serious growth.
-                </h3>
-                <p class="text-sm md:text-base text-slate-600 font-semibold leading-relaxed">
-                    NomardDesk is the new all-in-one cryptocurrency marketing agency handling crypto advertising, video production, TikTok advertising, Telegram marketing, and more.
-                </p>
-                <p class="text-sm md:text-base text-slate-600 font-semibold leading-relaxed">
-                    We are a digital advertising agency that works to deliver beyond customer satisfaction through strong strategy, clean execution, and marketing systems built to help crypto brands grow.
-                </p>
-                <div class="grid grid-cols-2 gap-3 pt-2 text-[11px] font-black uppercase tracking-widest text-slate-500">
-                    <div class="rounded-2xl bg-slate-50 p-4">Crypto Ads</div>
-                    <div class="rounded-2xl bg-slate-50 p-4">Video Production</div>
-                    <div class="rounded-2xl bg-slate-50 p-4">TikTok Ads</div>
-                    <div class="rounded-2xl bg-slate-50 p-4">Telegram Marketing</div>
-                </div>
-            </div>
-        </section>
-
-    </main>
-
-    <!-- Footer -->
-    <footer id="contact" class="py-16 px-6 flex flex-col items-center gap-12 bg-white mt-12 border-t border-slate-100">
-        
-        <!-- Contact Grid -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-2xl">
-            <div class="flex flex-col gap-3">
-                <span class="text-[9px] font-black uppercase text-slate-400 tracking-widest text-center">Fastest Reply</span>
-                <a href="https://t.me/Nomardbot" target="_blank" class="brand-gradient text-white px-8 py-5 rounded-3xl font-black text-xs uppercase tracking-[0.2em] shadow-xl text-center flex items-center justify-center gap-3">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="bot" aria-hidden="true" class="lucide lucide-bot w-5 h-5"><path d="M12 8V4H8"></path><rect width="16" height="12" x="4" y="8" rx="2"></rect><path d="M2 14h2"></path><path d="M20 14h2"></path><path d="M15 13v2"></path><path d="M9 13v2"></path></svg>
-                    Message @Nomardbot
-                </a>
-            </div>
-            <div class="flex flex-col gap-3">
-                <span class="text-[9px] font-black uppercase text-slate-400 tracking-widest text-center">Direct Consultant</span>
-                <a href="https://t.me/ads2defiCEO" target="_blank" class="border-2 border-slate-200 text-slate-600 px-8 py-5 rounded-3xl font-black text-xs uppercase tracking-[0.2em] text-center flex items-center justify-center gap-3 hover:bg-slate-50 transition-all">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="user" aria-hidden="true" class="lucide lucide-user w-5 h-5"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-                    Message @ads2defiCEO
-                </a>
-            </div>
-        </div>
-
-        <!-- Social Ecosystem -->
-        <div class="flex flex-col items-center gap-8">
-            <p class="text-slate-400 text-[9px] font-black uppercase tracking-[0.4em]">Connect With Us</p>
-            <div class="flex flex-wrap justify-center gap-10 text-slate-300">
-                <a href="https://t.me/Ads2defi1" target="_blank" class="social-icon flex flex-col items-center gap-2">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" class="w-6 h-6"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"></path></svg>
-                    <span class="text-[8px] font-black uppercase">Channel</span>
-                </a>
-                <a href="https://www.instagram.com/nomarddesk?igsh=MTNybnNtOTUxcTdlYQ%3D%3D&amp;utm_source=qr" target="_blank" class="social-icon flex flex-col items-center gap-2">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" class="w-6 h-6"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"></path></svg>
-                    <span class="text-[8px] font-black uppercase">Instagram</span>
-                </a>
-                <a href="https://www.youtube.com/@nomarddesk1" target="_blank" class="social-icon flex flex-col items-center gap-2">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" class="w-6 h-6"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"></path></svg>
-                    <span class="text-[8px] font-black uppercase">YouTube</span>
-                </a>
-                <a href="https://www.facebook.com/nomarddesk" target="_blank" class="social-icon flex flex-col items-center gap-2">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" class="w-6 h-6"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"></path></svg>
-                    <span class="text-[8px] font-black uppercase">Facebook</span>
-                </a>
-                <a href="https://www.tiktok.com/@ads2defi" target="_blank" class="social-icon flex flex-col items-center gap-2">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" class="w-6 h-6"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"></path></svg>
-                    <span class="text-[8px] font-black uppercase">TikTok</span>
-                </a>
-                <a href="https://medium.com/@ads2defiCEO" target="_blank" class="social-icon flex flex-col items-center gap-2">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" class="w-6 h-6"><path d="M13.54 12a6.8 6.8 0 0 1-6.77 6.82A6.8 6.8 0 0 1 0 12a6.8 6.8 0 0 1 6.77-6.82A6.8 6.8 0 0 1 13.54 12zm7.42 0c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z"></path></svg>
-                    <span class="text-[8px] font-black uppercase">Medium</span>
-                </a>
-            </div>
-        </div>
-        
-        <div class="text-center pt-8 border-t border-slate-50 w-full">
-            <p class="text-slate-300 text-[10px] font-black uppercase tracking-[0.3em]">© 2026 NomardDesk • Telegram · TikTok · Web Agency</p>
-        </div>
-    </footer>
-
-    <!-- MODAL SYSTEM -->
-    <div id="modal-overlay" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 opacity-0 pointer-events-none flex items-center justify-center p-4">
-        <div id="modal-content" class="bg-white w-full max-w-5xl max-h-[90vh] rounded-[2.5rem] overflow-hidden relative shadow-2xl scale-95 flex flex-col">
-            
-            <!-- Header -->
-            <div class="px-8 py-6 border-b border-slate-50 flex items-center justify-between sticky top-0 bg-white z-10">
-                <div class="flex items-center gap-3">
-                    <div class="w-2 h-8 brand-blue rounded-full"></div>
-                    <h2 id="modal-title" class="text-xl md:text-2xl font-black text-brand-blue uppercase tracking-tight">Service Rates</h2>
-                </div>
-                <button onclick="closeModal()" class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-slate-100 transition-colors">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="x" aria-hidden="true" class="lucide lucide-x w-6 h-6 stroke-[2.5]"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>
-                </button>
-            </div>
-
-            <!-- Scrollable Body -->
-            <div id="modal-body" class="p-6 md:p-10 overflow-y-auto bg-slate-50/30">
-                <!-- Content injected here -->
-            </div>
-        </div>
+<header>
+  <nav class="wrap nav" aria-label="Main navigation">
+    <a class="brand" href="/"><span class="mark" aria-hidden="true">N</span>NomardDesk</a>
+    <div class="navlinks">
+      <a href="#services">Services</a>
+      <a href="#proofs">Proofs</a>
+      <a href="#case-studies">Case studies</a>
+      <a href="#reviews">Reviews</a>
+      <a href="/blog/">Blog</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+      <a class="button small" href="https://t.me/Nomardbot" target="_blank" rel="noopener">Message bot <span aria-hidden="true">↗</span></a>
     </div>
+  </nav>
+</header>
 
-    <!-- EMAIL SUBSCRIBE MODAL (NEW) -->
-    <div id="subscribe-overlay" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 opacity-0 pointer-events-none flex items-center justify-center p-4">
-        <div id="subscribe-card" class="bg-white w-full max-w-md max-h-[90vh] overflow-y-auto rounded-[2.5rem] relative shadow-2xl scale-95">
-            <!-- Gradient Header -->
-            <div class="brand-gradient p-8 text-white relative overflow-hidden">
-                <div class="absolute -right-10 -top-10 w-40 h-40 bg-white/10 rounded-full blur-3xl"></div>
-                <button type="button" onclick="skipSubscribe()" class="absolute top-5 right-5 z-20 w-9 h-9 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 transition-colors">
-                    <i data-lucide="x" class="w-5 h-5"></i>
-                </button>
-                <div class="relative z-10 flex flex-col items-center text-center gap-3">
-                    <div class="bg-white/20 p-4 rounded-2xl border border-white/20">
-                        <i data-lucide="mail" class="w-8 h-8"></i>
-                    </div>
-                    <h2 class="text-2xl font-black tracking-tight leading-tight">Get Free Telegram &amp; TikTok Ad Tips</h2>
-                    <p class="text-sm text-blue-50 font-medium">Join our insider list for free strategies, exclusive offers, and ad updates. No spam — ever.</p>
-                </div>
-            </div>
-            <!-- Form -->
-            <form id="subscribe-form" class="p-8 flex flex-col gap-4">
-                <input id="sub-name" type="text" required placeholder="Your name" class="sub-input w-full px-5 py-4 rounded-2xl border-2 border-slate-200 outline-none font-semibold text-slate-800 transition-all">
-                <input id="sub-email" type="email" required placeholder="Your email address" class="sub-input w-full px-5 py-4 rounded-2xl border-2 border-slate-200 outline-none font-semibold text-slate-800 transition-all">
-                <p id="subscribe-error" class="hidden text-center text-[11px] font-bold text-red-500">Hmm, that didn't go through. Please try again.</p>
-                <button type="submit" id="subscribe-submit" class="brand-gradient text-white py-4 rounded-2xl font-black text-xs uppercase tracking-[0.2em] shadow-xl active:scale-95 transition-all">Subscribe Now</button>
-                <button type="button" onclick="skipSubscribe()" class="text-slate-400 text-[11px] font-bold uppercase tracking-widest py-1 hover:text-slate-600 transition-colors">Skip for now</button>
-            </form>
-            <!-- Success -->
-            <div id="subscribe-success" class="hidden flex-col items-center text-center gap-3 p-8">
-                <div class="bg-green-100 text-green-600 p-4 rounded-full">
-                    <i data-lucide="check" class="w-8 h-8"></i>
-                </div>
-                <h3 class="text-xl font-black text-slate-800">You're in! 🎉</h3>
-                <p class="text-sm text-slate-500">Thanks for subscribing. Watch your inbox &amp; our Telegram for updates.</p>
-                <button type="button" onclick="closeSubscribe(true)" class="mt-2 brand-gradient text-white px-8 py-3 rounded-2xl font-black text-[11px] uppercase tracking-widest active:scale-95 transition-all">Browse Site</button>
-            </div>
+<main id="main">
+  <div class="wrap">
+    <div class="hero" id="top">
+      <div>
+        <p class="eyebrow">Telegram · TikTok · Web Growth Agency</p>
+        <h1>Telegram, TikTok &amp; web<br><span>growth agency.</span></h1>
+        <p class="lead">We fix rejected Telegram ads, set up and manage campaigns, make TikTok UGC video ads, build bots, and design websites. Real people, clear prices, fast replies.</p>
+        <div class="actions">
+          <a class="button" href="https://t.me/Nomardbot" target="_blank" rel="noopener">Message @Nomardbot <span aria-hidden="true">↗</span></a>
+          <a class="button light" href="#services">See services &amp; prices</a>
         </div>
+        <p class="fine">Not sure what you need? Send your channel or bot link and we'll point you to the right service.</p>
+      </div>
+
+      <a class="hero-card" href="https://t.me/Nomardbot" target="_blank" rel="noopener" aria-label="Message the NomardDesk fast response bot">
+        <p class="eyebrow live"><i aria-hidden="true"></i>Instant response available</p>
+        <h2>Fast Response Bot</h2>
+        <p class="sub">Message here for instant replies, 24/7 order updates, and monthly news.</p>
+        <div class="route"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg><span>No Premium needed</span></div>
+        <div class="route"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg><span>Instant setup info</span></div>
+        <div class="route"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg><span>24/7 order updates</span></div>
+        <div class="hero-cta">Click for instant response @Nomardbot</div>
+      </a>
     </div>
+  </div>
 
-    <!-- REVIEW FORM MODAL (NEW) -->
-    <div id="review-overlay" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 opacity-0 pointer-events-none flex items-center justify-center p-4">
-        <div id="review-card" class="bg-white w-full max-w-lg max-h-[90vh] overflow-hidden rounded-[2rem] relative shadow-2xl scale-95 flex flex-col">
-            <div class="px-6 py-4 border-b border-slate-100 flex items-center justify-between">
-                <h3 class="font-black text-slate-800 text-lg">Leave a Review</h3>
-                <button onclick="closeReviewForm()" aria-label="Close" class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-slate-100 transition-colors">
-                    <i data-lucide="x" class="w-5 h-5"></i>
-                </button>
-            </div>
-            <div id="review-form-body" class="overflow-y-auto flex-grow"></div>
-            <p class="text-[11px] text-slate-400 text-center px-6 py-3 border-t border-slate-100">Reviews are checked before they appear on the site.</p>
-        </div>
+  <div class="band"><div class="wrap">
+    <span><strong>Telegram Ads</strong> fixes &amp; setup</span>
+    <span><strong>TikTok</strong> UGC video ads</span>
+    <span><strong>Bots</strong> &amp; automation</span>
+    <span><strong>Websites</strong> that convert</span>
+  </div></div>
+
+  <!-- SERVICES: each card opens the same rate cards as before -->
+  <section id="services">
+    <div class="wrap">
+      <div class="section-head">
+        <div><p class="eyebrow">Service catalog · live rates</p><h2>Pick your service.</h2></div>
+        <p>Tap any service to see its packages, prices, and delivery times. Order straight from the card.</p>
+      </div>
+      <div class="grid cols-4" id="service-grid">
+        <article class="card">
+          <span class="tag">Fix, setup &amp; optimize</span>
+          <h3>Telegram Ad Services</h3>
+          <p>Get rejected ads approved, set up campaigns, and grow your channel or bot.</p>
+          <div class="from">From <b data-from="ad_services">$200</b></div>
+          <button class="button full" data-open="ad_services">See packages</button>
+          <a class="more" href="/telegram-ads">Telegram Ads guide ↗</a>
+        </article>
+        <article class="card">
+          <span class="tag">UGC video ads that convert</span>
+          <h3>TikTok Ad Services</h3>
+          <p>Ad fixing, setup, and management for TikTok, plus UGC video ads.</p>
+          <div class="from">From <b data-from="tiktok_ads">$200</b></div>
+          <button class="button light full" data-open="tiktok_ads">See packages</button>
+        </article>
+        <article class="card featured">
+          <span class="badge">Most used service</span>
+          <span class="tag">Casino / gambling / adult</span>
+          <h3>Prohibited Content Fix</h3>
+          <p>Content, bio, ad text, and banner changes for channels and bots in strict niches.</p>
+          <div class="from">From <b data-from="prohibited">$200</b></div>
+          <button class="button full" data-open="prohibited">See packages</button>
+        </article>
+        <article class="card">
+          <span class="tag">Irrelevant / link / editorial</span>
+          <h3>Error Fix Services</h3>
+          <p>Fast fixes for irrelevant destination, link format, and editorial rejections.</p>
+          <div class="from">From <b data-from="error_fixes">$50</b></div>
+          <button class="button light full" data-open="error_fixes">See packages</button>
+        </article>
+        <article class="card">
+          <span class="tag">Growth on autopilot</span>
+          <h3>Account Management</h3>
+          <p>We run your Telegram ads: creatives, channel research, and weekly reports.</p>
+          <div class="from">From <b data-from="management">$100</b></div>
+          <button class="button light full" data-open="management">See packages</button>
+        </article>
+        <article class="card">
+          <span class="tag">Automation &amp; custom tools</span>
+          <h3>Bot Development</h3>
+          <p>Telegram bots with buttons, commands, and custom automation.</p>
+          <div class="from">From <b data-from="bot_dev">$150</b></div>
+          <button class="button light full" data-open="bot_dev">See packages</button>
+        </article>
+        <article class="card">
+          <span class="tag">Yes, we build websites too</span>
+          <h3>Website Design</h3>
+          <p>Fast, mobile-ready websites, from one landing page to a full web app.</p>
+          <div class="from">From <b data-from="website_design">$150</b></div>
+          <button class="button light full" data-open="website_design">See packages</button>
+        </article>
+        <article class="card ask">
+          <span class="tag">Not sure where to start?</span>
+          <h3>Ask us first</h3>
+          <p>Send your channel, bot, or ad screenshot. We'll tell you which service fits.</p>
+          <div class="from"></div>
+          <a class="button full" href="https://t.me/Nomardbot" target="_blank" rel="noopener">Message @Nomardbot ↗</a>
+        </article>
+      </div>
+      <p class="note">Prices are service fees. Ad budget is separate. Telegram and TikTok make the final call on ad approval, and results vary.</p>
     </div>
+  </section>
 
-    <script>
-        lucide.createIcons();
 
-        const modalOverlay = document.getElementById('modal-overlay');
-        const modalContent = document.getElementById('modal-content');
-        const modalBody = document.getElementById('modal-body');
-        const modalTitle = document.getElementById('modal-title');
+  <!-- PROOF OF WORK -->
+  <section class="tint" id="proofs">
+    <div class="wrap">
+      <div class="section-head">
+        <div><p class="eyebrow">Proof of work</p><h2>Real chats. Real approvals.</h2></div>
+        <p>Screenshots from real client chats and ad dashboards. Client names, wallets, and stats links are blurred for privacy. Tap any card to see it full size.</p>
+      </div>
+    </div>
+    <div class="proof-marquee"><div class="proof-track" id="proof-list"></div></div>
+    <div class="wrap proof-cta">
+      <a class="button" href="https://t.me/Nomardbot" target="_blank" rel="noopener">Get the same for my ads ↗</a>
+    </div>
+  </section>
 
-        const rateCards = {
-            'ad_services': {
-                title: 'Telegram Ad Services',
-                packages: [
-                    {
-                        name: 'Basic Package',
-                        subtitle: 'Fix & Get Approved',
-                        price: '$200',
-                        delivery: '3-7 Days',
-                        items: ['Bot AD Destination Error Fixing', 'Channel AD Destination Error Fixing', 'Profile AD Destination Error Fixing'],
-                        accent: 'slate-500'
-                    },
-                    {
-                        name: 'Standard Package',
-                        subtitle: 'Fix, Setup & Optimize',
-                        note: 'Growing Business Pack',
-                        price: '$350',
-                        delivery: '24hrs Delivery',
-                        items: ['Already Approved Channel/Bot', 'Rebranding to Your Name', 'Telegram Ad Setup', 'Ownership Transfer', 'Traffic Redirect System'],
-                        accent: 'brand-blue',
-                        popular: true
-                    },
-                    {
-                        name: 'Premium Package',
-                        subtitle: 'Profit $1M From Telegram Ads',
-                        price: '$500',
-                        delivery: '1 Month',
-                        items: ['Bot Ad Fixing + Setup + Management', 'Channel Ad Fixing + Setup + Management', 'Profile Ad Fixing + Setup + Management'],
-                        accent: 'slate-800'
-                    }
-                ],
-                footer: "This service focuses only on resolving Telegram Ad destination errors."
-            },
-            'prohibited': {
-                title: 'Prohibited Content Fix',
-                header_info: 'For Casino / Gambling / Adult / Betting Channels & Bots',
-                packages: [
-                    {
-                        name: 'Basic Package',
-                        subtitle: 'Fix & Get Approved',
-                        price: '$200',
-                        delivery: '3-7 Days',
-                        items: ['Channel/Bot/Profile Content Modification', 'Profile Logo Modification (if needed)', 'Bio Optimization', 'Telegram-Approved Ad Text', 'Banner Design', 'Telegram Indexing'],
-                        accent: 'orange-500'
-                    },
-                    {
-                        name: 'Standard Package',
-                        subtitle: 'Instant Approval Service',
-                        note: 'Buy, Edit & Use',
-                        price: '$350',
-                        delivery: '24hrs Delivery',
-                        items: ['Already Approved Channel/Bot', 'Rebranding to Your Name', 'Telegram Ad Setup', 'Ownership Transfer', 'Traffic Redirect System'],
-                        accent: 'brand-blue'
-                    },
-                    {
-                        name: 'Premium Package',
-                        subtitle: 'Profit $1M From Telegram Ads',
-                        price: '$500',
-                        delivery: '1 Month Management',
-                        items: ['Everything in Standard Package', 'Profitable Target Research', 'Attention-Grabbing Ad Creatives', 'CPM Optimization', 'Ad Spend Management', 'Weekly Performance Reports'],
-                        accent: 'slate-800'
-                    }
-                ]
-            },
-            'bot_dev': {
-                title: 'Bot Development',
-                packages: [
-                    {
-                        name: 'Basic Package',
-                        subtitle: 'Rapid-Response Basic Bot',
-                        price: '$150',
-                        delivery: '24-48 Hours',
-                        desc: 'I will deploy a high-performance Telegram bot featuring custom interactive buttons and automated command handling.',
-                        items: ['Custom interactive buttons', 'Automated command handling', '1-click deployment after delivery'],
-                        accent: 'slate-500'
-                    },
-                    {
-                        name: 'Standard Package',
-                        subtitle: 'The Ready-to-Work Bot',
-                        price: '$250',
-                        delivery: '1-2 Hours',
-                        desc: 'Our team will provide a bot that has already passed bot moderation, then edit the code and commands to match your needs.',
-                        items: ['Already approved Telegram bot', 'Code modification for your use case', 'Custom commands setup', 'Instant ownership transfer', 'Ready to run Telegram advertising'],
-                        accent: 'brand-blue'
-                    },
-                    {
-                        name: 'Premium Package',
-                        subtitle: 'God-Mode Custom Automation',
-                        price: '$500',
-                        delivery: '1-5 Days',
-                        desc: 'The "Zero-Effort" solution - fully bespoke, high-performance bot capable of managing thousands of users and complex automations.',
-                        items: ['Arbitrage bot', 'Trading bot', 'Editing bot', 'Moderator bot', 'Volume bot', 'Automation bots'],
-                        accent: 'slate-800'
-                    }
-                ]
-            },
-            'error_fixes': {
-                title: 'Ad Error Fix Services',
-                header_info: 'Fix Telegram Ads rejected for Irrelevant Destinations, Link Format Errors, and Editorial Requirements.',
-                packages: [
-                    {
-                        name: 'Irrelevant Destinations Fix',
-                        price: '$50',
-                        delivery: '24 Hours',
-                        desc: 'Our team will either guide you step-by-step to fix the irrelevant destination error, or request access to your ad account and fix this issue.',
-                        items: ['Diagnosis of destination error', 'Step-by-step fix guidance or full service fix', 'Telegram ad compliance check'],
-                        accent: 'brand-blue'
-                    },
-                    {
-                        name: 'Link Format Error Fix',
-                        price: '$120',
-                        delivery: '24 Hours',
-                        desc: 'Our team will need temporary access to your Telegram channel and ad account to fix this complex error.',
-                        items: ['Link format error correction', 'Ad destination verification', 'Channel configuration fixes', 'Telegram ad compliance adjustments'],
-                        accent: 'slate-800'
-                    },
-                    {
-                        name: 'Editorial Requirements Fix',
-                        price: '$80',
-                        delivery: '24 Hours',
-                        desc: 'We will correct grammar, spelling, and formatting issues and create optimized ad text that meets Telegram editorial standards.',
-                        items: ['Grammar and spelling correction', 'Symbol and formatting adjustments', 'High-converting ad copy', 'Optimized banner suggestion'],
-                        accent: 'slate-500'
-                    }
-                ]
-            },
-            'management': {
-                title: 'Optimization & Management',
-                packages: [
-                    {
-                        name: 'ASI Package',
-                        subtitle: 'Advertising Sustainability Index',
-                        price: '$100',
-                        delivery: '5 Days',
-                        desc: 'Fix low views, low clicks, and low user joins in your Telegram ads. Builds a profitable ad structure.',
-                        items: ['5 professional ad banners', '5 attention-grabbing ad texts', 'Research of 20 profitable channels', 'Ad performance optimization strategy', 'Sustainable campaign setup'],
-                        accent: 'brand-blue'
-                    },
-                    {
-                        name: 'Account Management Package',
-                        subtitle: 'Profit $1M From Telegram Ads',
-                        price: '$250',
-                        delivery: 'Goal: Scale toward $1M',
-                        desc: 'Grow on autopilot without stress. Our team will manage your Telegram advertising and turn your channel into a cash-generating system.',
-                        items: ['Access to/use of ad account', 'Telegram ad campaign setup', 'Banner design & ad creatives', 'Target research and audience discovery', 'Weekly performance reports', 'Error detection and troubleshooting', 'Everything included in the ASI Package'],
-                        accent: 'slate-800',
-                        important: 'Ad funding is NOT included in this package.'
-                    }
-                ]
-            },
-            'tiktok_ads': {
-                title: 'TikTok Ad Services',
-                header_info: 'Everything we do for Telegram ads — fixing, setup, optimization & management — now for TikTok, plus scroll-stopping UGC video ad creation.',
-                packages: [
-                    {
-                        name: 'Basic Package',
-                        subtitle: 'Fix & Get Approved',
-                        price: '$200',
-                        delivery: '3-7 Days',
-                        items: ['Ad Account Destination Error Fixing', 'Video Ad Destination Error Fixing', 'Profile / Page Destination Error Fixing', '1 UGC Video Ad Created'],
-                        accent: 'slate-500'
-                    },
-                    {
-                        name: 'Standard Package',
-                        subtitle: 'Fix, Setup & Optimize',
-                        note: 'Growing Business Pack',
-                        price: '$350',
-                        delivery: '24hrs Delivery',
-                        items: ['Already Approved TikTok Ad Account', 'Rebranding to Your Name', 'TikTok Ad Setup', 'Ownership Transfer', 'Traffic Redirect System', '3 UGC Video Ads Created'],
-                        accent: 'brand-blue',
-                        popular: true
-                    },
-                    {
-                        name: 'Premium Package',
-                        subtitle: 'Profit $1M From TikTok Ads',
-                        price: '$500',
-                        delivery: '1 Month',
-                        items: ['Ad Account Fixing + Setup + Management', 'Video Ad Fixing + Setup + Management', 'Profile Ad Fixing + Setup + Management', 'UGC Video Ads Created Monthly', 'Daily Optimization & Scaling'],
-                        accent: 'slate-800'
-                    }
-                ],
-                footer: 'Includes professional UGC video ad creation — authentic, high-retention videos built to convert on TikTok.'
-            },
-            'website_design': {
-                title: 'Website Design',
-                header_info: 'Yes — we design websites too! Get a fast, modern, mobile-ready site that turns visitors into customers.',
-                packages: [
-                    {
-                        name: 'Basic Package',
-                        subtitle: 'Landing Page',
-                        price: '$150',
-                        delivery: '3-5 Days',
-                        desc: 'A single, high-converting landing page — perfect for a bot, channel, product, or service.',
-                        items: ['1-page responsive website', 'Mobile & tablet optimized', 'Telegram / WhatsApp integration', 'Lead capture / contact button', 'Basic SEO setup'],
-                        accent: 'slate-500'
-                    },
-                    {
-                        name: 'Standard Package',
-                        subtitle: 'Business Website',
-                        note: 'Most Requested',
-                        price: '$300',
-                        delivery: '5-7 Days',
-                        desc: 'A complete multi-page business website with custom design that builds trust and drives sales.',
-                        items: ['Up to 5 custom pages', 'Custom branded design', 'Contact & subscriber forms', 'Social media integration', 'On-page SEO', 'Hosting & domain setup help'],
-                        accent: 'brand-blue',
-                        popular: true
-                    },
-                    {
-                        name: 'Premium Package',
-                        subtitle: 'Custom Web App',
-                        price: '$600',
-                        delivery: '1-2 Weeks',
-                        desc: 'A fully custom website or web app with advanced features, animations, and integrations built around your goals.',
-                        items: ['Unlimited pages', 'E-commerce or booking system', 'Custom animations & effects', 'Payment gateway integration', 'Advanced SEO', '30 days post-launch support'],
-                        accent: 'slate-800'
-                    }
-                ],
-                footer: 'Every site is built mobile-first and optimized to load fast and convert visitors.'
-            },
-            'community': {
-                title: 'Community Membership',
-                header_info: 'A private community where Telegram advertisers share rejection patterns, get help on their ads, and access weekly live office hours.',
-                order_handle: 'SkillDropBot',
-                cta_label: 'Join The Community',
-                order_bot: true,
-                packages: [
-                    {
-                        name: 'Community Membership',
-                        subtitle: 'Monthly Access',
-                        note: 'Cancel Anytime',
-                        price: '$20',
-                        delivery: '$20.00 USD / 30 days',
-                        desc: 'Private community where Telegram advertisers share rejection patterns, get help on their ads, and access weekly live office hours. Billed monthly.',
-                        items: ['Private advertiser community', 'Share & learn ad rejection patterns', 'Get help on your own ads', 'Weekly live office hours', 'Billed monthly — cancel anytime'],
-                        accent: 'brand-blue',
-                        popular: true
-                    }
-                ],
-                footer: 'Billed monthly at $20.00 USD every 30 days. Cancel anytime.'
-            }
+  <!-- CASE STUDIES (from your Google Sheet) -->
+  <section id="case-studies">
+    <div class="wrap">
+      <div class="section-head">
+        <div><p class="eyebrow">Case studies</p><h2>Real results from real campaigns.</h2></div>
+        <p>Campaign breakdowns with the real numbers, so you can see how we work before you order.</p>
+      </div>
+      <div class="grid cols-3" id="case-studies-list"><div class="empty">Loading case studies…</div></div>
+    </div>
+  </section>
+
+  <!-- REVIEWS (from your Google Sheet) -->
+  <section class="tint" id="reviews">
+    <div class="wrap">
+      <div class="section-head">
+        <div><p class="eyebrow">Reviews</p><h2>What our clients say.</h2></div>
+        <button class="button light" onclick="openReviewForm()">Leave a review ↗</button>
+      </div>
+      <div class="grid cols-3" id="reviews-list"><div class="empty">Loading reviews…</div></div>
+    </div>
+  </section>
+
+  <!-- COMMUNITY -->
+  <section id="community">
+    <div class="wrap split">
+      <div>
+        <p class="eyebrow">Join our community</p>
+        <h2>Learn Telegram Ads<br>with other advertisers.</h2>
+        <p>A private community where Telegram advertisers share rejection patterns, get help on their own ads, and join weekly live office hours.</p>
+        <p>Prefer free tips first? Follow our <a href="https://t.me/Ads2defi1" target="_blank" rel="noopener">Telegram channel</a> and <a href="https://www.youtube.com/@nomarddesk1" target="_blank" rel="noopener">YouTube</a>.</p>
+      </div>
+      <div class="price-card">
+        <span class="tag">Membership · cancel anytime</span>
+        <div class="price">$20 <small>/ month</small></div>
+        <ul>
+          <li>Private advertiser community</li>
+          <li>Share and learn ad rejection patterns</li>
+          <li>Get help on your own ads</li>
+          <li>Weekly live office hours</li>
+        </ul>
+        <button class="button full" data-open="community">Join the community</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="tint" id="about">
+    <div class="wrap split">
+      <div>
+        <p class="eyebrow">About us</p>
+        <h2>All-in-one crypto marketing built for serious growth.</h2>
+      </div>
+      <div>
+        <p>NomardDesk is an all-in-one crypto marketing agency handling crypto advertising, video production, TikTok advertising, Telegram marketing, and more.</p>
+        <p>We work to deliver beyond customer satisfaction through strong strategy, clean execution, and marketing systems built to help crypto brands grow.</p>
+        <div class="pills"><span>Crypto ads</span><span>Video production</span><span>TikTok ads</span><span>Telegram marketing</span></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <section class="contact" id="contact">
+      <div>
+        <h2>Let's plan your next campaign.</h2>
+        <p>Tell us what you want to promote, who you want to reach, and where you need help. The bot replies fastest. For a direct chat, message our consultant.</p>
+      </div>
+      <div class="btns">
+        <a class="button" href="https://t.me/Nomardbot" target="_blank" rel="noopener">Message @Nomardbot ↗</a>
+        <a class="button ghost" href="https://t.me/ads2defiCEO" target="_blank" rel="noopener">Message @ads2defiCEO ↗</a>
+      </div>
+    </section>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div>
+        <a class="brand" href="/"><span class="mark" aria-hidden="true">N</span>NomardDesk</a>
+        <p>© 2026 NomardDesk · Telegram, TikTok &amp; Web Solutions</p>
+      </div>
+      <nav class="socials" aria-label="Social links">
+        <a href="https://t.me/Ads2defi1" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>Channel</a>
+        <a href="https://www.instagram.com/nomarddesk?igsh=MTNybnNtOTUxcTdlYQ%3D%3D&amp;utm_source=qr" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>Instagram</a>
+        <a href="https://www.youtube.com/@nomarddesk1" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>YouTube</a>
+        <a href="https://www.facebook.com/nomarddesk" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>Facebook</a>
+        <a href="https://www.tiktok.com/@ads2defi" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>TikTok</a>
+        <a href="https://medium.com/@ads2defiCEO" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.54 12a6.8 6.8 0 0 1-6.77 6.82A6.8 6.8 0 0 1 0 12a6.8 6.8 0 0 1 6.77-6.82A6.8 6.8 0 0 1 13.54 12zm7.42 0c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z"/></svg>Medium</a>
+      </nav>
+    </div>
+    <p class="legal">NomardDesk is an independent service provider and is not affiliated with Telegram or TikTok.</p>
+  </div>
+</footer>
+
+
+<!-- PROOF LIGHTBOX -->
+<div id="proof-overlay" class="overlay lightbox" aria-hidden="true">
+  <div class="sheet" role="dialog" aria-modal="true" aria-labelledby="lb-title">
+    <div class="sheet-head">
+      <h2 id="lb-title">Proof</h2>
+      <button class="x" onclick="closeProof()" aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
+    </div>
+    <div class="sheet-body"><img id="lb-img" alt=""></div>
+    <div class="lb-cap">
+      <p id="lb-text"></p>
+      <div class="lb-nav">
+        <button class="x" onclick="stepProof(-1)" aria-label="Previous"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg></button>
+        <button class="x" onclick="stepProof(1)" aria-label="Next"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- RATE CARD MODAL -->
+<div id="modal-overlay" class="overlay" aria-hidden="true">
+  <div class="sheet wide" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="sheet-head">
+      <h2 id="modal-title">Service Rates</h2>
+      <button class="x" onclick="closeModal()" aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
+    </div>
+    <div id="modal-body" class="sheet-body"></div>
+  </div>
+</div>
+
+<!-- SUBSCRIBE POPUP -->
+<div id="subscribe-overlay" class="overlay" aria-hidden="true">
+  <div class="sheet narrow" role="dialog" aria-modal="true" aria-labelledby="sub-title">
+    <div class="sub-top">
+      <button type="button" class="x" onclick="skipSubscribe()" aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
+      <h2 id="sub-title">Get free Telegram &amp; TikTok ad tips</h2>
+      <p>Join our insider list for free strategies, exclusive offers, and ad updates. No spam, ever.</p>
+    </div>
+    <form id="subscribe-form" class="sub-form">
+      <input id="sub-name" type="text" required placeholder="Your name" autocomplete="name">
+      <input id="sub-email" type="email" required placeholder="Your email address" autocomplete="email">
+      <p id="subscribe-error" class="sub-error">That didn't go through. Please try again.</p>
+      <button type="submit" id="subscribe-submit" class="button full">Subscribe now</button>
+      <button type="button" class="textlink" onclick="skipSubscribe()">Skip for now</button>
+    </form>
+    <div id="subscribe-success" class="sub-done">
+      <h3>You're in!</h3>
+      <p>Thanks for subscribing. Watch your inbox and our Telegram for updates.</p>
+      <button type="button" class="button" onclick="closeSubscribe(true)">Browse the site</button>
+    </div>
+  </div>
+</div>
+
+<!-- REVIEW FORM -->
+<div id="review-overlay" class="overlay" aria-hidden="true">
+  <div class="sheet mid" role="dialog" aria-modal="true" aria-labelledby="review-title">
+    <div class="sheet-head">
+      <h2 id="review-title">Leave a review</h2>
+      <button class="x" onclick="closeReviewForm()" aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
+    </div>
+    <div id="review-form-body" class="review-body"></div>
+    <p class="review-note">Reviews are checked before they appear on the site.</p>
+  </div>
+</div>
+
+<script>
+/* =====================================================================
+   RATE CARDS — your packages and prices (unchanged from your old site).
+   Edit prices here. The "From $X" on each service card updates itself.
+   ===================================================================== */
+const rateCards = {
+    'ad_services': {
+        title: 'Telegram Ad Services',
+        packages: [
+            { name: 'Basic Package', subtitle: 'Fix & Get Approved', price: '$200', delivery: '3-7 Days',
+              items: ['Bot AD Destination Error Fixing', 'Channel AD Destination Error Fixing', 'Profile AD Destination Error Fixing'], accent: 'slate-500' },
+            { name: 'Standard Package', subtitle: 'Fix, Setup & Optimize', note: 'Growing Business Pack', price: '$350', delivery: '24hrs Delivery',
+              items: ['Already Approved Channel/Bot', 'Rebranding to Your Name', 'Telegram Ad Setup', 'Ownership Transfer', 'Traffic Redirect System'], accent: 'brand-blue', popular: true },
+            { name: 'Premium Package', subtitle: 'Profit $1M From Telegram Ads', price: '$500', delivery: '1 Month',
+              items: ['Bot Ad Fixing + Setup + Management', 'Channel Ad Fixing + Setup + Management', 'Profile Ad Fixing + Setup + Management'], accent: 'slate-800' }
+        ],
+        footer: "This service focuses only on resolving Telegram Ad destination errors."
+    },
+    'prohibited': {
+        title: 'Prohibited Content Fix',
+        header_info: 'For Casino / Gambling / Adult / Betting Channels & Bots',
+        packages: [
+            { name: 'Basic Package', subtitle: 'Fix & Get Approved', price: '$200', delivery: '3-7 Days',
+              items: ['Channel/Bot/Profile Content Modification', 'Profile Logo Modification (if needed)', 'Bio Optimization', 'Telegram-Approved Ad Text', 'Banner Design', 'Telegram Indexing'], accent: 'orange-500' },
+            { name: 'Standard Package', subtitle: 'Instant Approval Service', note: 'Buy, Edit & Use', price: '$350', delivery: '24hrs Delivery',
+              items: ['Already Approved Channel/Bot', 'Rebranding to Your Name', 'Telegram Ad Setup', 'Ownership Transfer', 'Traffic Redirect System'], accent: 'brand-blue' },
+            { name: 'Premium Package', subtitle: 'Profit $1M From Telegram Ads', price: '$500', delivery: '1 Month Management',
+              items: ['Everything in Standard Package', 'Profitable Target Research', 'Attention-Grabbing Ad Creatives', 'CPM Optimization', 'Ad Spend Management', 'Weekly Performance Reports'], accent: 'slate-800' }
+        ]
+    },
+    'bot_dev': {
+        title: 'Bot Development',
+        packages: [
+            { name: 'Basic Package', subtitle: 'Rapid-Response Basic Bot', price: '$150', delivery: '24-48 Hours',
+              desc: 'I will deploy a high-performance Telegram bot featuring custom interactive buttons and automated command handling.',
+              items: ['Custom interactive buttons', 'Automated command handling', '1-click deployment after delivery'], accent: 'slate-500' },
+            { name: 'Standard Package', subtitle: 'The Ready-to-Work Bot', price: '$250', delivery: '1-2 Hours',
+              desc: 'Our team will provide a bot that has already passed bot moderation, then edit the code and commands to match your needs.',
+              items: ['Already approved Telegram bot', 'Code modification for your use case', 'Custom commands setup', 'Instant ownership transfer', 'Ready to run Telegram advertising'], accent: 'brand-blue' },
+            { name: 'Premium Package', subtitle: 'God-Mode Custom Automation', price: '$500', delivery: '1-5 Days',
+              desc: 'The "Zero-Effort" solution - fully bespoke, high-performance bot capable of managing thousands of users and complex automations.',
+              items: ['Arbitrage bot', 'Trading bot', 'Editing bot', 'Moderator bot', 'Volume bot', 'Automation bots'], accent: 'slate-800' }
+        ]
+    },
+    'error_fixes': {
+        title: 'Ad Error Fix Services',
+        header_info: 'Fix Telegram Ads rejected for Irrelevant Destinations, Link Format Errors, and Editorial Requirements.',
+        packages: [
+            { name: 'Irrelevant Destinations Fix', price: '$50', delivery: '24 Hours',
+              desc: 'Our team will either guide you step-by-step to fix the irrelevant destination error, or request access to your ad account and fix this issue.',
+              items: ['Diagnosis of destination error', 'Step-by-step fix guidance or full service fix', 'Telegram ad compliance check'], accent: 'brand-blue' },
+            { name: 'Link Format Error Fix', price: '$120', delivery: '24 Hours',
+              desc: 'Our team will need temporary access to your Telegram channel and ad account to fix this complex error.',
+              items: ['Link format error correction', 'Ad destination verification', 'Channel configuration fixes', 'Telegram ad compliance adjustments'], accent: 'slate-800' },
+            { name: 'Editorial Requirements Fix', price: '$80', delivery: '24 Hours',
+              desc: 'We will correct grammar, spelling, and formatting issues and create optimized ad text that meets Telegram editorial standards.',
+              items: ['Grammar and spelling correction', 'Symbol and formatting adjustments', 'High-converting ad copy', 'Optimized banner suggestion'], accent: 'slate-500' }
+        ]
+    },
+    'management': {
+        title: 'Optimization & Management',
+        packages: [
+            { name: 'ASI Package', subtitle: 'Advertising Sustainability Index', price: '$100', delivery: '5 Days',
+              desc: 'Fix low views, low clicks, and low user joins in your Telegram ads. Builds a profitable ad structure.',
+              items: ['5 professional ad banners', '5 attention-grabbing ad texts', 'Research of 20 profitable channels', 'Ad performance optimization strategy', 'Sustainable campaign setup'], accent: 'brand-blue' },
+            { name: 'Account Management Package', subtitle: 'Profit $1M From Telegram Ads', price: '$250', delivery: 'Goal: Scale toward $1M',
+              desc: 'Grow on autopilot without stress. Our team will manage your Telegram advertising and turn your channel into a cash-generating system.',
+              items: ['Access to/use of ad account', 'Telegram ad campaign setup', 'Banner design & ad creatives', 'Target research and audience discovery', 'Weekly performance reports', 'Error detection and troubleshooting', 'Everything included in the ASI Package'],
+              accent: 'slate-800', important: 'Ad funding is NOT included in this package.' }
+        ]
+    },
+    'tiktok_ads': {
+        title: 'TikTok Ad Services',
+        header_info: 'Everything we do for Telegram ads — fixing, setup, optimization & management — now for TikTok, plus scroll-stopping UGC video ad creation.',
+        packages: [
+            { name: 'Basic Package', subtitle: 'Fix & Get Approved', price: '$200', delivery: '3-7 Days',
+              items: ['Ad Account Destination Error Fixing', 'Video Ad Destination Error Fixing', 'Profile / Page Destination Error Fixing', '1 UGC Video Ad Created'], accent: 'slate-500' },
+            { name: 'Standard Package', subtitle: 'Fix, Setup & Optimize', note: 'Growing Business Pack', price: '$350', delivery: '24hrs Delivery',
+              items: ['Already Approved TikTok Ad Account', 'Rebranding to Your Name', 'TikTok Ad Setup', 'Ownership Transfer', 'Traffic Redirect System', '3 UGC Video Ads Created'], accent: 'brand-blue', popular: true },
+            { name: 'Premium Package', subtitle: 'Profit $1M From TikTok Ads', price: '$500', delivery: '1 Month',
+              items: ['Ad Account Fixing + Setup + Management', 'Video Ad Fixing + Setup + Management', 'Profile Ad Fixing + Setup + Management', 'UGC Video Ads Created Monthly', 'Daily Optimization & Scaling'], accent: 'slate-800' }
+        ],
+        footer: 'Includes professional UGC video ad creation — authentic, high-retention videos built to convert on TikTok.'
+    },
+    'website_design': {
+        title: 'Website Design',
+        header_info: 'Yes — we design websites too! Get a fast, modern, mobile-ready site that turns visitors into customers.',
+        packages: [
+            { name: 'Basic Package', subtitle: 'Landing Page', price: '$150', delivery: '3-5 Days',
+              desc: 'A single, high-converting landing page — perfect for a bot, channel, product, or service.',
+              items: ['1-page responsive website', 'Mobile & tablet optimized', 'Telegram / WhatsApp integration', 'Lead capture / contact button', 'Basic SEO setup'], accent: 'slate-500' },
+            { name: 'Standard Package', subtitle: 'Business Website', note: 'Most Requested', price: '$300', delivery: '5-7 Days',
+              desc: 'A complete multi-page business website with custom design that builds trust and drives sales.',
+              items: ['Up to 5 custom pages', 'Custom branded design', 'Contact & subscriber forms', 'Social media integration', 'On-page SEO', 'Hosting & domain setup help'], accent: 'brand-blue', popular: true },
+            { name: 'Premium Package', subtitle: 'Custom Web App', price: '$600', delivery: '1-2 Weeks',
+              desc: 'A fully custom website or web app with advanced features, animations, and integrations built around your goals.',
+              items: ['Unlimited pages', 'E-commerce or booking system', 'Custom animations & effects', 'Payment gateway integration', 'Advanced SEO', '30 days post-launch support'], accent: 'slate-800' }
+        ],
+        footer: 'Every site is built mobile-first and optimized to load fast and convert visitors.'
+    },
+    'community': {
+        title: 'Community Membership',
+        header_info: 'A private community where Telegram advertisers share rejection patterns, get help on their ads, and access weekly live office hours.',
+        order_handle: 'SkillDropBot',
+        cta_label: 'Join The Community',
+        order_bot: true,
+        packages: [
+            { name: 'Community Membership', subtitle: 'Monthly Access', note: 'Cancel Anytime', price: '$20', delivery: '$20.00 USD / 30 days',
+              desc: 'Private community where Telegram advertisers share rejection patterns, get help on their ads, and access weekly live office hours. Billed monthly.',
+              items: ['Private advertiser community', 'Share & learn ad rejection patterns', 'Get help on your own ads', 'Weekly live office hours', 'Billed monthly — cancel anytime'], accent: 'brand-blue', popular: true }
+        ],
+        footer: 'Billed monthly at $20.00 USD every 30 days. Cancel anytime.'
+    }
+};
+
+/* ---------- helpers ---------- */
+function esc(s) {
+    return String(s).replace(/[&<>"']/g, function (c) {
+        return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+    });
+}
+function priceNum(p) { var n = parseFloat(String(p).replace(/[^0-9.]/g, '')); return isNaN(n) ? Infinity : n; }
+
+/* "From $X" on each service card, always matching the rate cards */
+document.querySelectorAll('[data-from]').forEach(function (el) {
+    var g = rateCards[el.dataset.from];
+    if (!g) return;
+    var min = Math.min.apply(null, g.packages.map(function (p) { return priceNum(p.price); }));
+    if (isFinite(min)) el.textContent = '$' + min;
+});
+
+/* ---------- rate card modal ---------- */
+const modalOverlay = document.getElementById('modal-overlay');
+const modalBody = document.getElementById('modal-body');
+const modalTitle = document.getElementById('modal-title');
+let currentGroup = null;
+
+function openModal(key) {
+    const group = rateCards[key];
+    if (!group) return;
+    currentGroup = group;
+    modalTitle.textContent = group.title;
+    const n = group.packages.length;
+    let html = group.header_info ? '<p class="modal-info">' + esc(group.header_info) + '</p>' : '';
+    html += '<div class="grid ' + (n === 1 ? '' : 'cols-' + Math.min(n, 3)) + '" style="' + (n === 1 ? 'max-width:400px;margin:0 auto' : '') + '">';
+    group.packages.forEach(function (pkg, i) {
+        const featured = pkg.accent === 'brand-blue';
+        html += '<article class="card pkg' + (featured ? ' featured' : '') + '">' +
+            (pkg.popular ? '<span class="badge teal">Most popular</span>' : '') +
+            '<span class="tag" style="color:#94a3b8">' + esc(pkg.name) + '</span>' +
+            '<div class="price">' + esc(pkg.price) + '</div>' +
+            (pkg.subtitle ? '<span class="subtitle">' + esc(pkg.subtitle) + '</span>' : '') +
+            (pkg.note ? '<span class="pill">' + esc(pkg.note) + '</span>' : '') +
+            (pkg.desc ? '<p class="desc">' + esc(pkg.desc) + '</p>' : '') +
+            '<ul>' + pkg.items.map(function (it) { return '<li>' + esc(it) + '</li>'; }).join('') + '</ul>' +
+            (pkg.important ? '<div class="important">Important: ' + esc(pkg.important) + '</div>' : '') +
+            '<div class="delivery"><span>Est. delivery</span><b>' + esc(pkg.delivery) + '</b></div>' +
+            '<button class="button full ' + (featured ? '' : 'dark') + '" data-order="' + i + '">' + esc(group.cta_label || 'Order now') + '</button>' +
+            '</article>';
+    });
+    html += '</div>';
+    if (group.footer) html += '<p class="modal-foot">' + esc(group.footer) + '</p>';
+    modalBody.innerHTML = html;
+    modalBody.scrollTop = 0;
+    modalOverlay.classList.add('open');
+    modalOverlay.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('modal-active');
+}
+
+function closeModal() {
+    modalOverlay.classList.remove('open');
+    modalOverlay.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('modal-active');
+}
+
+function handleOrder(pkg, group, price, handle, isBot) {
+    const dest = handle || 'ads2defiCEO';
+    if (isBot) { window.open('https://t.me/' + dest, '_blank'); return; }
+    const message = 'Hello! I am interested in the ' + pkg + ' for ' + group + ' (' + price + ').';
+    window.open('https://t.me/' + dest + '?text=' + encodeURIComponent(message), '_blank');
+}
+
+modalBody.addEventListener('click', function (e) {
+    const btn = e.target.closest('[data-order]');
+    if (!btn || !currentGroup) return;
+    const pkg = currentGroup.packages[+btn.dataset.order];
+    handleOrder(pkg.name, currentGroup.title, pkg.price, currentGroup.order_handle || 'ads2defiCEO', !!currentGroup.order_bot);
+});
+document.querySelectorAll('[data-open]').forEach(function (b) {
+    b.addEventListener('click', function () { openModal(b.dataset.open); });
+});
+modalOverlay.addEventListener('click', function (e) { if (e.target === modalOverlay) closeModal(); });
+document.addEventListener('keydown', function (e) {
+    if (e.key !== 'Escape') return;
+    if (modalOverlay.classList.contains('open')) closeModal();
+    if (reviewOverlay.classList.contains('open')) closeReviewForm();
+});
+
+
+/* =====================================================================
+   PROOF OF WORK — to add a new proof:
+   1) Blur client names, photos, wallets and stats links in the screenshot
+   2) Upload it to the /proofs folder
+   3) Add one line below (newest first)
+   ===================================================================== */
+const PROOFS = [
+  { src: '/proofs/proof-1.webp', amount: '70 USDT fee paid', quote: '“Seems like u did it. Great job.”', name: 'Mini App ads client', text: 'Mini App ads went live. The client said "great job" and paid the 70 USDT fee.' },
+  { src: '/proofs/proof-2.webp', amount: 'Ads live same day', quote: '“Can’t believe this man. It’s insane.”', name: 'Telegram Ads client', text: 'The client could not believe his ads went live, then paid the service fee.' },
+  { src: '/proofs/proof-5.webp', amount: 'In review → approved', quote: 'A batch of ads stuck “In Review,” fixed and approved.', name: 'Telegram Ads client', text: 'A batch of ads stuck "In Review." We fixed them and got them approved.' },
+  { src: '/proofs/proof-3.webp', amount: '12–15 deposits / day', quote: '“This bot is good… in last 20 days deposit up to 175.”', name: 'Bot client', text: 'The client says the bot he got from us brings 12-15 deposits a day, about 175 in 20 days.' },
+  { src: '/proofs/proof-4.webp', amount: '2.8M views in one day', quote: '2,800,127 views · 24,089 clicks · 5,416 actions', name: 'Campaign stats', text: 'Telegram Ads dashboard, 25 Mar 2026: 2,800,127 views, 24,089 clicks, 5,416 actions.' },
+  { src: '/proofs/proof-6.webp', amount: 'Ad approved', quote: 'Approved and live. Stats link sent to the client.', name: 'Ad approval', text: 'Ad approved after review. Live stats link sent straight to the client.' }
+];
+
+const proofList = document.getElementById('proof-list');
+function proofCard(p, i, copy) {
+  return '<button class="proof" data-proof="' + i + '"' + (copy ? ' aria-hidden="true" tabindex="-1"' : ' aria-label="View proof: ' + esc(p.amount) + '"') + '>' +
+    '<img src="' + esc(p.src) + '" alt="' + (copy ? '' : esc(p.amount)) + '" loading="lazy">' +
+    '<div class="proof-meta"><div class="proof-amount">' + esc(p.amount) + '</div>' +
+    '<div class="proof-quote">' + esc(p.quote) + '</div>' +
+    '<div class="proof-name">' + esc(p.name) + '</div></div></button>';
+}
+// two copies back to back = seamless loop
+proofList.innerHTML = PROOFS.map(function (p, i) { return proofCard(p, i, false); }).join('') +
+                      PROOFS.map(function (p, i) { return proofCard(p, i, true); }).join('');
+
+const proofOverlay = document.getElementById('proof-overlay');
+let proofIndex = 0;
+function showProof(i) {
+  proofIndex = (i + PROOFS.length) % PROOFS.length;
+  const p = PROOFS[proofIndex];
+  document.getElementById('lb-img').src = p.src;
+  document.getElementById('lb-img').alt = p.amount;
+  document.getElementById('lb-title').textContent = p.amount;
+  document.getElementById('lb-text').textContent = p.text;
+}
+function openProof(i) {
+  showProof(i);
+  proofOverlay.classList.add('open'); proofOverlay.setAttribute('aria-hidden', 'false');
+  document.body.classList.add('modal-active');
+}
+function closeProof() {
+  proofOverlay.classList.remove('open'); proofOverlay.setAttribute('aria-hidden', 'true');
+  document.body.classList.remove('modal-active');
+}
+function stepProof(d) { showProof(proofIndex + d); }
+proofList.addEventListener('click', function (e) {
+  const b = e.target.closest('[data-proof]'); if (b) openProof(+b.dataset.proof);
+});
+proofOverlay.addEventListener('click', function (e) { if (e.target === proofOverlay) closeProof(); });
+document.addEventListener('keydown', function (e) {
+  if (!proofOverlay.classList.contains('open')) return;
+  if (e.key === 'Escape') closeProof();
+  if (e.key === 'ArrowRight') stepProof(1);
+  if (e.key === 'ArrowLeft') stepProof(-1);
+});
+
+/* =====================================================================
+   EMAIL SUBSCRIBE POPUP (same Formspree endpoint as before)
+   ===================================================================== */
+const FORMSPREE_ENDPOINT = "https://formspree.io/f/xqeogpwp";
+const TELEGRAM_LEAD_HANDLE = "ads2defiCEO";
+
+const subOverlay = document.getElementById('subscribe-overlay');
+const subForm = document.getElementById('subscribe-form');
+const subSuccess = document.getElementById('subscribe-success');
+let subscribeTimer = null;
+
+function alreadySubscribed() {
+    try { return localStorage.getItem('nd_subscribed') === 'true'; } catch (e) { return false; }
+}
+function showSubscribe() {
+    if (alreadySubscribed()) return;
+    if (modalOverlay.classList.contains('open') || reviewOverlay.classList.contains('open') || document.getElementById('proof-overlay').classList.contains('open')) {
+        subscribeTimer = setTimeout(showSubscribe, 5000); return;  // don't cover an open rate card
+    }
+    subOverlay.classList.add('open'); subOverlay.setAttribute('aria-hidden', 'false');
+}
+function hideSubscribe() { subOverlay.classList.remove('open'); subOverlay.setAttribute('aria-hidden', 'true'); }
+function skipSubscribe() {
+    hideSubscribe();
+    if (alreadySubscribed()) return;
+    clearTimeout(subscribeTimer);
+    subscribeTimer = setTimeout(showSubscribe, 5000);
+}
+function closeSubscribe(done) {
+    hideSubscribe();
+    if (!done && !alreadySubscribed()) { clearTimeout(subscribeTimer); subscribeTimer = setTimeout(showSubscribe, 5000); }
+}
+
+subForm.addEventListener('submit', async function (e) {
+    e.preventDefault();
+    const name = document.getElementById('sub-name').value.trim();
+    const email = document.getElementById('sub-email').value.trim();
+    if (!name || !email) return;
+    const submitBtn = document.getElementById('subscribe-submit');
+    const errorEl = document.getElementById('subscribe-error');
+    errorEl.style.display = 'none';
+    const originalLabel = submitBtn.textContent;
+    submitBtn.disabled = true; submitBtn.textContent = 'Subscribing…';
+    try {
+        if (FORMSPREE_ENDPOINT) {
+            const res = await fetch(FORMSPREE_ENDPOINT, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                body: JSON.stringify({ name: name, email: email })
+            });
+            if (!res.ok) throw new Error('Formspree submission failed');
+        } else {
+            const msg = 'New website subscriber:\nName: ' + name + '\nEmail: ' + email;
+            window.open('https://t.me/' + TELEGRAM_LEAD_HANDLE + '?text=' + encodeURIComponent(msg), '_blank');
+        }
+        try { localStorage.setItem('nd_subscribed', 'true'); } catch (err) {}
+        clearTimeout(subscribeTimer);
+        subForm.style.display = 'none';
+        subSuccess.style.display = 'block';
+    } catch (err) {
+        submitBtn.disabled = false; submitBtn.textContent = originalLabel;
+        errorEl.style.display = 'block';
+    }
+});
+subOverlay.addEventListener('click', function (e) { if (e.target === subOverlay) skipSubscribe(); });
+if (!alreadySubscribed()) subscribeTimer = setTimeout(showSubscribe, 3000);
+
+/* =====================================================================
+   REVIEWS + CASE STUDIES from your Google Sheet (same setup as before)
+   ===================================================================== */
+const SHEET_ID = "1mswOy0udUi1Nom23UmtixsQER6o0Kwn1vP5rM5tMARM";
+const REVIEWS_TAB = "Form Responses 1";
+const CASESTUDIES_TAB = "CaseStudies";
+const REVIEW_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSfIE8VJ3JLGHBCtueKQEPsyZuhebsaD7Jlqt78NJt6oLBKb4A/viewform?embedded=true";
+
+const reviewOverlay = document.getElementById('review-overlay');
+const reviewBody = document.getElementById('review-form-body');
+function openReviewForm() {
+    if (REVIEW_FORM_URL && !reviewBody.dataset.loaded) {
+        reviewBody.innerHTML = '<iframe src="' + REVIEW_FORM_URL + '" title="Leave a review"></iframe>';
+        reviewBody.dataset.loaded = '1';
+    } else if (!REVIEW_FORM_URL) {
+        reviewBody.innerHTML = '<p style="padding:30px;text-align:center;color:#52616f">The review form is not connected yet.</p>';
+    }
+    reviewOverlay.classList.add('open'); reviewOverlay.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('modal-active');
+}
+function closeReviewForm() {
+    reviewOverlay.classList.remove('open'); reviewOverlay.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('modal-active');
+}
+reviewOverlay.addEventListener('click', function (e) { if (e.target === reviewOverlay) closeReviewForm(); });
+
+function fetchSheet(tab) {
+    return new Promise(function (resolve) {
+        if (!SHEET_ID) { resolve([]); return; }
+        var cb = '__gviz_' + Math.random().toString(36).slice(2);
+        var s = document.createElement('script');
+        var done = false;
+        function cleanup() {
+            done = true;
+            try { delete window[cb]; } catch (e) { window[cb] = undefined; }
+            if (s.parentNode) s.parentNode.removeChild(s);
+            clearTimeout(timer);
+        }
+        var timer = setTimeout(function () { if (!done) { cleanup(); resolve([]); } }, 15000);
+        window[cb] = function (resp) {
+            if (done) return;
+            cleanup();
+            try {
+                var cols = (resp.table.cols || []).map(function (c) { return (c.label || '').trim().toLowerCase(); });
+                var rows = (resp.table.rows || []).map(function (r) {
+                    var o = {};
+                    (r.c || []).forEach(function (cell, i) { o[cols[i] || ('col' + i)] = (cell && cell.v != null) ? cell.v : ''; });
+                    return o;
+                });
+                resolve(rows);
+            } catch (e) { resolve([]); }
         };
+        s.onerror = function () { if (!done) { cleanup(); resolve([]); } };
+        s.src = 'https://docs.google.com/spreadsheets/d/' + SHEET_ID +
+            '/gviz/tq?tqx=out:json;responseHandler:' + cb + '&headers=1&sheet=' + encodeURIComponent(tab);
+        document.head.appendChild(s);
+    });
+}
+function pick(row) {
+    const names = Array.prototype.slice.call(arguments, 1);
+    for (const key in row) {
+        for (let j = 0; j < names.length; j++) { if (key.indexOf(names[j]) !== -1) return row[key]; }
+    }
+    return '';
+}
+function truthy(v) {
+    const s = String(v).toLowerCase().trim();
+    return s === 'yes' || s === 'true' || s === 'approved' || s === 'y' || s === '1' || s === 'published' || s === 'x';
+}
+function parseRating(v) {
+    var s = String(v).toLowerCase().trim();
+    var n = parseInt(s, 10);
+    if (n >= 1 && n <= 5) return n;
+    if (s.indexOf('very dissatisf') !== -1) return 1;
+    if (s.indexOf('dissatisf') !== -1) return 2;
+    if (s.indexOf('neutral') !== -1) return 3;
+    if (s.indexOf('very satisf') !== -1 || s.indexOf('extremely') !== -1) return 5;
+    if (s.indexOf('satisf') !== -1) return 4;
+    return 5;
+}
+function safeUrl(u) { u = String(u).trim(); return /^https?:\/\//i.test(u) ? u : ''; }
 
-        function openModal(key) {
-            const group = rateCards[key];
-            modalTitle.innerText = group.title;
-            
-            let html = '';
-            if (group.header_info) {
-                html += `<p class="text-center text-sm font-semibold text-slate-500 mb-8 max-w-2xl mx-auto leading-relaxed">${group.header_info}</p>`;
-            }
-            const colClass = group.packages.length === 1 ? 'grid grid-cols-1 max-w-sm mx-auto' : `grid grid-cols-1 lg:grid-cols-${group.packages.length}`;
-            html += `<div class="${colClass} gap-6">`;
-            
-            group.packages.forEach(pkg => {
-                const isBlue = pkg.accent === 'brand-blue';
-                const accentColor = isBlue ? '#1b8a8a' : (pkg.accent === 'orange-500' ? '#f97316' : '#1e293b');
-                
-                html += `
-                    <div class="bg-white rounded-[2.5rem] border ${isBlue ? 'border-brand-blue ring-8 ring-brand-blue/5' : 'border-slate-100'} p-8 flex flex-col relative shadow-sm">
-                        ${pkg.popular ? '<span class="absolute top-0 right-0 bg-brand-blue text-white text-[9px] px-4 py-2 font-black uppercase rounded-bl-3xl">Most Popular</span>' : ''}
-                        
-                        <div class="mb-8">
-                            <h4 class="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-2">${pkg.name}</h4>
-                            <div class="text-4xl font-black text-slate-900 mb-1">${pkg.price}</div>
-                            <p class="text-xs font-bold text-brand-blue uppercase tracking-tighter">${pkg.subtitle || ''}</p>
-                            ${pkg.note ? `<span class="inline-block mt-3 bg-blue-50 text-brand-blue text-[9px] font-black uppercase tracking-widest px-3 py-1 rounded-full">${pkg.note}</span>` : ''}
-                        </div>
-
-                        <div class="flex-grow space-y-6">
-                            ${pkg.desc ? `<p class="text-[11px] text-slate-500 leading-relaxed font-medium bg-slate-50 p-4 rounded-2xl italic">"${pkg.desc}"</p>` : ''}
-                            
-                            <ul class="space-y-4">
-                                ${pkg.items.map(item => `
-                                    <li class="flex items-start gap-3 text-[13px] font-bold text-slate-700 leading-snug">
-                                        <i data-lucide="check-circle-2" class="mt-0.5 shrink-0 w-4 h-4" style="color: ${accentColor}"></i>
-                                        <span>${item}</span>
-                                    </li>
-                                `).join('')}
-                            </ul>
-                        </div>
-
-                        ${pkg.important ? `<div class="mt-6 p-4 bg-red-50 text-red-700 text-[10px] font-black rounded-2xl border border-red-100 uppercase tracking-tight">Important: ${pkg.important}</div>` : ''}
-
-                        <div class="mt-8 pt-8 border-t border-slate-50">
-                            <div class="flex justify-between items-center mb-6">
-                                <span class="text-[10px] font-black text-slate-300 uppercase">Est. Delivery</span>
-                                <span class="text-[10px] font-black text-brand-blue uppercase">${pkg.delivery}</span>
-                            </div>
-                            <button onclick="handleOrder('${pkg.name}', '${group.title}', '${pkg.price}', '${group.order_handle || 'ads2defiCEO'}', ${group.order_bot ? 'true' : 'false'})"
-                                class="w-full py-5 rounded-3xl font-black text-xs uppercase tracking-[0.2em] shadow-xl transform active:scale-95 transition-all
-                                ${isBlue ? 'brand-gradient text-white' : 'bg-slate-900 text-white'}">
-                                ${group.cta_label || 'Order Now'}
-                            </button>
-                        </div>
-                    </div>
-                `;
-            });
-
-            html += `</div>`;
-            if (group.footer) {
-                html += `<p class="text-center text-[11px] text-slate-400 mt-8 italic max-w-2xl mx-auto">${group.footer}</p>`;
-            }
-            modalBody.innerHTML = html;
-            lucide.createIcons();
-            
-            modalOverlay.classList.remove('opacity-0', 'pointer-events-none');
-            modalContent.classList.remove('scale-95', 'opacity-0');
-            modalContent.classList.add('scale-100', 'opacity-100');
-            document.body.classList.add('modal-active');
+async function loadReviews() {
+    const box = document.getElementById('reviews-list');
+    try {
+        const rows = await fetchSheet(REVIEWS_TAB);
+        const ok = rows.filter(function (r) { return truthy(pick(r, 'show', 'approve', 'status', 'display')); });
+        if (!ok.length) {
+            box.innerHTML = '<div class="empty">No reviews yet. Be the first! <br><br><button class="button small" onclick="openReviewForm()">Leave a review</button></div>';
+            return;
         }
+        box.innerHTML = ok.map(function (r) {
+            const name = esc(pick(r, 'name') || 'Verified Client');
+            const role = esc(pick(r, 'role', 'company', 'business'));
+            const text = esc(pick(r, 'summary', 'experience', 'review', 'message', 'feedback', 'comment', 'testimonial'));
+            const rating = parseRating(pick(r, 'satisfied', 'rating', 'star'));
+            const stars = '★★★★★☆☆☆☆☆'.slice(5 - rating, 10 - rating);
+            return '<article class="card review"><div class="stars" aria-label="' + rating + ' out of 5 stars">' + stars + '</div>' +
+                '<blockquote>"' + text + '"</blockquote>' +
+                '<div class="who"><b>' + name + '</b>' + (role ? '<span>' + role + '</span>' : '') + '</div></article>';
+        }).join('');
+    } catch (e) {
+        box.innerHTML = '<div class="empty">Reviews will appear here soon.</div>';
+    }
+}
 
-        function closeModal() {
-            modalOverlay.classList.add('opacity-0', 'pointer-events-none');
-            modalContent.classList.remove('scale-100', 'opacity-100');
-            modalContent.classList.add('scale-95', 'opacity-0');
-            document.body.classList.remove('modal-active');
-        }
+async function loadCaseStudies() {
+    const box = document.getElementById('case-studies-list');
+    try {
+        const rows = await fetchSheet(CASESTUDIES_TAB);
+        const ok = rows.filter(function (r) { return truthy(pick(r, 'publish', 'show', 'live', 'status')); });
+        if (!ok.length) { box.innerHTML = '<div class="empty">Case studies coming soon.</div>'; return; }
+        box.innerHTML = ok.map(function (r) {
+            const head = esc(pick(r, 'headline', 'title') || 'Case Study');
+            const summary = esc(pick(r, 'summary', 'description', 'detail', 'result'));
+            const pdf = safeUrl(pick(r, 'pdf', 'link', 'file', 'url'));
+            const img = safeUrl(pick(r, 'image', 'cover', 'photo', 'thumbnail'));
+            return '<article class="card cs">' +
+                (img ? '<img src="' + esc(img) + '" alt="' + head + '" loading="lazy">' : '<div class="bar"></div>') +
+                '<div class="body"><span class="tag">Case study</span><h3 style="margin:4px 0">' + head + '</h3>' +
+                '<p>' + summary + '</p>' +
+                (pdf ? '<a class="link" href="' + esc(pdf) + '" target="_blank" rel="noopener">View case study ↗</a>' : '') +
+                '</div></article>';
+        }).join('');
+    } catch (e) {
+        box.innerHTML = '<div class="empty">Case studies coming soon.</div>';
+    }
+}
 
-        function handleOrder(pkg, group, price, handle, isBot) {
-            const dest = handle || 'ads2defiCEO';
-            if (isBot) {
-                // Bot handles its own join / onboarding flow — open it directly
-                window.open(`https://t.me/${dest}`, '_blank');
-                return;
-            }
-            const message = `Hello! I am interested in the ${pkg} for ${group} (${price}).`;
-            window.open(`https://t.me/${dest}?text=${encodeURIComponent(message)}`, '_blank');
-        }
-
-        modalOverlay.addEventListener('click', (e) => { if(e.target === modalOverlay) closeModal(); });
-
-        /* ===================== EMAIL SUBSCRIBE POPUP ===================== */
-        /* WHERE DO SUBSCRIBER EMAILS GO?
-           Option A (recommended): create a FREE form at https://formspree.io,
-           copy your endpoint (looks like https://formspree.io/f/abcdwxyz) and paste it below.
-           Option B (default): if left blank, each new subscriber is sent straight to your
-           Telegram (@ads2defiCEO) so you never miss a lead. */
-        const FORMSPREE_ENDPOINT = "https://formspree.io/f/xqeogpwp"; // your Formspree endpoint — leads land in your Formspree inbox
-        const TELEGRAM_LEAD_HANDLE = "ads2defiCEO";
-
-        const subOverlay = document.getElementById('subscribe-overlay');
-        const subCard = document.getElementById('subscribe-card');
-        const subForm = document.getElementById('subscribe-form');
-        const subSuccess = document.getElementById('subscribe-success');
-        let subscribeTimer = null;
-
-        function alreadySubscribed() {
-            return localStorage.getItem('nd_subscribed') === 'true';
-        }
-
-        function showSubscribe() {
-            if (alreadySubscribed()) return;
-            subOverlay.classList.remove('opacity-0', 'pointer-events-none');
-            subCard.classList.remove('scale-95');
-        }
-
-        function hideSubscribe() {
-            subOverlay.classList.add('opacity-0', 'pointer-events-none');
-            subCard.classList.add('scale-95');
-        }
-
-        // Skip = hide now, then bring the form back after 5 seconds (the site stays usable)
-        function skipSubscribe() {
-            hideSubscribe();
-            if (alreadySubscribed()) return;
-            clearTimeout(subscribeTimer);
-            subscribeTimer = setTimeout(showSubscribe, 5000);
-        }
-
-        function closeSubscribe(done) {
-            hideSubscribe();
-            if (!done && !alreadySubscribed()) {
-                clearTimeout(subscribeTimer);
-                subscribeTimer = setTimeout(showSubscribe, 5000);
-            }
-        }
-
-        subForm.addEventListener('submit', async function (e) {
-            e.preventDefault();
-            const name = document.getElementById('sub-name').value.trim();
-            const email = document.getElementById('sub-email').value.trim();
-            if (!name || !email) return;
-
-            const submitBtn = document.getElementById('subscribe-submit');
-            const errorEl = document.getElementById('subscribe-error');
-            errorEl.classList.add('hidden');
-            const originalLabel = submitBtn.textContent;
-            submitBtn.disabled = true;
-            submitBtn.textContent = 'Subscribing…';
-
-            try {
-                if (FORMSPREE_ENDPOINT) {
-                    // Formspree AJAX submission — JSON keeps the visitor on the page (no redirect)
-                    const res = await fetch(FORMSPREE_ENDPOINT, {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-                        body: JSON.stringify({ name: name, email: email })
-                    });
-                    if (!res.ok) throw new Error('Formspree submission failed');
-                } else {
-                    const msg = `New website subscriber:\nName: ${name}\nEmail: ${email}`;
-                    window.open(`https://t.me/${TELEGRAM_LEAD_HANDLE}?text=${encodeURIComponent(msg)}`, '_blank');
-                }
-
-                localStorage.setItem('nd_subscribed', 'true');
-                clearTimeout(subscribeTimer);
-                subForm.classList.add('hidden');
-                subSuccess.classList.remove('hidden');
-                subSuccess.classList.add('flex');
-            } catch (err) {
-                submitBtn.disabled = false;
-                submitBtn.textContent = originalLabel;
-                errorEl.classList.remove('hidden');
-            }
-        });
-
-        // Clicking the dark background behaves like "Skip"
-        subOverlay.addEventListener('click', function (e) {
-            if (e.target === subOverlay) skipSubscribe();
-        });
-
-        // First appearance: 3 seconds after the visitor lands
-        if (!alreadySubscribed()) {
-            subscribeTimer = setTimeout(showSubscribe, 3000);
-        }
-    </script>
-
-    <script>
-        /* ============================================================
-           NomardDesk dynamic content — Reviews + Case Studies
-           Powered by a Google Sheet you control (no code, no API key).
-
-           ONE-TIME SETUP:
-           1) Create a Google FORM for reviews with these questions:
-                Name  |  Role / Company (optional)  |  Rating (1-5)  |  Review
-              Then Responses -> "Link to Sheets" to create the Google Sheet.
-           2) In that Sheet's responses tab, add ONE column with header:  Show
-              Type  yes  in it to APPROVE a review (delete the row to decline).
-           3) Add a 2nd tab named exactly:  CaseStudies
-              Header row:  Headline | Summary | PDF | Image | Published
-              Add a row, paste your PDF link + type a headline, put  yes  under Published.
-           4) Share the Sheet: Share -> "Anyone with the link" = Viewer.
-           5) Paste the Sheet ID (between /d/ and /edit in its URL) into SHEET_ID,
-              and the Form's embed URL (Send -> < >) into REVIEW_FORM_URL.
-           ============================================================ */
-        const SHEET_ID = "1mswOy0udUi1Nom23UmtixsQER6o0Kwn1vP5rM5tMARM";  // reviews + case studies sheet
-        const REVIEWS_TAB = "Form Responses 1";    // responses tab name (Google's default)
-        const CASESTUDIES_TAB = "CaseStudies";     // 2nd tab name
-        const REVIEW_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSfIE8VJ3JLGHBCtueKQEPsyZuhebsaD7Jlqt78NJt6oLBKb4A/viewform?embedded=true";  // Leave a Review form
-
-        /* ---------- Mobile nav ---------- */
-        function toggleMobileMenu() {
-            const m = document.getElementById('mobile-menu');
-            if (m.classList.contains('hidden')) {
-                m.classList.remove('hidden'); m.classList.add('flex');
-                document.getElementById('nav-open-icon').classList.add('hidden');
-                document.getElementById('nav-close-icon').classList.remove('hidden');
-                document.getElementById('nav-toggle').setAttribute('aria-expanded', 'true');
-            } else { closeMobileMenu(); }
-        }
-        function closeMobileMenu() {
-            const m = document.getElementById('mobile-menu');
-            m.classList.add('hidden'); m.classList.remove('flex');
-            document.getElementById('nav-open-icon').classList.remove('hidden');
-            document.getElementById('nav-close-icon').classList.add('hidden');
-            document.getElementById('nav-toggle').setAttribute('aria-expanded', 'false');
-        }
-
-        /* ---------- Review form modal (Google Form) ---------- */
-        const reviewOverlay = document.getElementById('review-overlay');
-        const reviewCard = document.getElementById('review-card');
-        const reviewBody = document.getElementById('review-form-body');
-        function openReviewForm() {
-            if (REVIEW_FORM_URL && !reviewBody.dataset.loaded) {
-                reviewBody.innerHTML = '<iframe src="' + REVIEW_FORM_URL + '" title="Leave a review" style="width:100%;height:68vh;border:0;"></iframe>';
-                reviewBody.dataset.loaded = '1';
-            } else if (!REVIEW_FORM_URL) {
-                reviewBody.innerHTML = '<p class="p-8 text-center text-sm text-slate-500">The review form is not connected yet. Add your Google Form link in the site settings.</p>';
-            }
-            reviewOverlay.classList.remove('opacity-0', 'pointer-events-none');
-            reviewCard.classList.remove('scale-95');
-            document.body.classList.add('modal-active');
-        }
-        function closeReviewForm() {
-            reviewOverlay.classList.add('opacity-0', 'pointer-events-none');
-            reviewCard.classList.add('scale-95');
-            document.body.classList.remove('modal-active');
-        }
-        reviewOverlay.addEventListener('click', function (e) { if (e.target === reviewOverlay) closeReviewForm(); });
-
-        /* ---------- Google Sheet reader (keyless, JSONP — works cross-origin) ---------- */
-        function fetchSheet(tab) {
-            return new Promise(function (resolve) {
-                if (!SHEET_ID) { resolve([]); return; }
-                var cb = '__gviz_' + Math.random().toString(36).slice(2);
-                var s = document.createElement('script');
-                var done = false;
-                function cleanup() {
-                    done = true;
-                    try { delete window[cb]; } catch (e) { window[cb] = undefined; }
-                    if (s.parentNode) s.parentNode.removeChild(s);
-                    clearTimeout(timer);
-                }
-                var timer = setTimeout(function () { if (!done) { cleanup(); resolve([]); } }, 15000);
-                window[cb] = function (resp) {
-                    if (done) return;
-                    cleanup();
-                    try {
-                        var cols = (resp.table.cols || []).map(function (c) { return (c.label || '').trim().toLowerCase(); });
-                        var rows = (resp.table.rows || []).map(function (r) {
-                            var o = {};
-                            (r.c || []).forEach(function (cell, i) { o[cols[i] || ('col' + i)] = (cell && cell.v != null) ? cell.v : ''; });
-                            return o;
-                        });
-                        resolve(rows);
-                    } catch (e) { resolve([]); }
-                };
-                s.onerror = function () { if (!done) { cleanup(); resolve([]); } };
-                s.src = 'https://docs.google.com/spreadsheets/d/' + SHEET_ID +
-                    '/gviz/tq?tqx=out:json;responseHandler:' + cb + '&headers=1&sheet=' + encodeURIComponent(tab);
-                document.head.appendChild(s);
-            });
-        }
-        function pick(row) {
-            const names = Array.prototype.slice.call(arguments, 1);
-            for (const key in row) {
-                for (let j = 0; j < names.length; j++) { if (key.indexOf(names[j]) !== -1) return row[key]; }
-            }
-            return '';
-        }
-        function truthy(v) {
-            const s = String(v).toLowerCase().trim();
-            return s === 'yes' || s === 'true' || s === 'approved' || s === 'y' || s === '1' || s === 'published' || s === 'x';
-        }
-        function esc(s) {
-            return String(s).replace(/[&<>"']/g, function (c) {
-                return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
-            });
-        }
-
-        function parseRating(v) {
-            var s = String(v).toLowerCase().trim();
-            var n = parseInt(s, 10);
-            if (n >= 1 && n <= 5) return n;
-            if (s.indexOf('very dissatisf') !== -1) return 1;
-            if (s.indexOf('dissatisf') !== -1) return 2;
-            if (s.indexOf('neutral') !== -1) return 3;
-            if (s.indexOf('very satisf') !== -1 || s.indexOf('extremely') !== -1) return 5;
-            if (s.indexOf('satisf') !== -1) return 4;
-            return 5;
-        }
-
-        /* ---------- Render Reviews ---------- */
-        async function loadReviews() {
-            const box = document.getElementById('reviews-list');
-            try {
-                const rows = await fetchSheet(REVIEWS_TAB);
-                const ok = rows.filter(function (r) { return truthy(pick(r, 'show', 'approve', 'status', 'display')); });
-                if (!ok.length) {
-                    box.innerHTML = '<div class="md:col-span-2 text-center bg-white border border-slate-100 rounded-2xl py-10 px-6"><p class="text-slate-500 font-semibold">No reviews yet — be the first!</p><button onclick="openReviewForm()" class="mt-4 brand-gradient text-white text-[11px] font-black uppercase tracking-widest px-5 py-3 rounded-full">Leave a Review</button></div>';
-                    return;
-                }
-                box.innerHTML = ok.map(function (r) {
-                    const name = esc(pick(r, 'name') || 'Verified Client');
-                    const role = esc(pick(r, 'role', 'company', 'business'));
-                    const text = esc(pick(r, 'summary', 'experience', 'review', 'message', 'feedback', 'comment', 'testimonial'));
-                    const rating = parseRating(pick(r, 'satisfied', 'rating', 'star'));
-                    const stars = '★★★★★☆☆☆☆☆'.slice(5 - rating, 10 - rating);
-                    return '<div class="bg-white border border-slate-100 rounded-2xl p-6 shadow-sm flex flex-col gap-3">' +
-                        '<div class="text-base tracking-widest" style="color:#f5a623">' + stars + '</div>' +
-                        '<p class="text-sm text-slate-700 leading-relaxed flex-grow">"' + text + '"</p>' +
-                        '<div class="pt-3 border-t border-slate-50"><p class="font-black text-slate-800 text-sm">' + name + '</p>' +
-                        (role ? '<p class="text-xs text-slate-400 font-semibold">' + role + '</p>' : '') +
-                        '</div></div>';
-                }).join('');
-            } catch (e) {
-                box.innerHTML = '<div class="md:col-span-2 text-center text-slate-400 text-sm py-8">Reviews will appear here once your Google Sheet is connected.</div>';
-            }
-        }
-
-        /* ---------- Render Case Studies ---------- */
-        async function loadCaseStudies() {
-            const box = document.getElementById('case-studies-list');
-            try {
-                const rows = await fetchSheet(CASESTUDIES_TAB);
-                const ok = rows.filter(function (r) { return truthy(pick(r, 'publish', 'show', 'live', 'status')); });
-                if (!ok.length) {
-                    box.innerHTML = '<div class="md:col-span-2 text-center text-slate-400 text-sm py-8">Case studies coming soon.</div>';
-                    return;
-                }
-                box.innerHTML = ok.map(function (r) {
-                    const head = esc(pick(r, 'headline', 'title') || 'Case Study');
-                    const summary = esc(pick(r, 'summary', 'description', 'detail', 'result'));
-                    const pdf = String(pick(r, 'pdf', 'link', 'file', 'url'));
-                    const img = String(pick(r, 'image', 'cover', 'photo', 'thumbnail'));
-                    return '<div class="bg-white border border-slate-100 rounded-2xl overflow-hidden shadow-sm flex flex-col">' +
-                        (img ? '<img src="' + esc(img) + '" alt="' + head + '" loading="lazy" class="w-full h-40 object-cover">' : '<div class="w-full h-2 brand-gradient"></div>') +
-                        '<div class="p-6 flex flex-col gap-2 flex-grow"><h3 class="font-black text-slate-800 text-lg leading-tight">' + head + '</h3>' +
-                        (summary ? '<p class="text-sm text-slate-500 leading-relaxed flex-grow line-clamp-4">' + summary + '</p>' : '<div class="flex-grow"></div>') +
-                        (pdf ? '<a href="' + esc(pdf) + '" target="_blank" rel="noopener" class="mt-3 inline-flex items-center gap-2 text-brand-blue font-black text-[11px] uppercase tracking-widest">View Case Study <i data-lucide="arrow-right" class="w-4 h-4"></i></a>' : '') +
-                        '</div></div>';
-                }).join('');
-                lucide.createIcons();
-            } catch (e) {
-                box.innerHTML = '<div class="md:col-span-2 text-center text-slate-400 text-sm py-8">Case studies coming soon.</div>';
-            }
-        }
-
-        loadReviews();
-        loadCaseStudies();
-    </script>
-
-</body></html>
+loadReviews();
+loadCaseStudies();
+</script>
+</body>
+</html>
