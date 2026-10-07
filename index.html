@@ -225,6 +225,30 @@ footer{background:white;border-top:1px solid var(--line);padding:32px 0}
 .plan.plan-2{border:2px solid var(--teal);background:#f0f8f6}
 @media(max-width:650px){.payplans{grid-template-columns:1fr}}
 
+
+/* featured case study + static reviews */
+.case-feature{grid-column:1/-1;display:grid;grid-template-columns:1.1fr 1fr;gap:0;padding:0;overflow:hidden}
+.case-feature .cf-body{padding:30px}
+.case-feature h3{font-size:26px;margin:8px 0 10px}
+.case-feature .cf-img{background:#e7efe9;display:flex;align-items:center;justify-content:center;padding:26px}
+.case-feature .cf-img img{width:100%;max-width:440px;border-radius:16px;box-shadow:0 20px 40px -24px rgba(15,23,42,.35);display:block}
+.cf-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:18px 0}
+.cf-stats div{background:var(--paper);border-radius:14px;padding:12px}
+.cf-stats small{display:block;font-size:10px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:#94a3b8}
+.cf-stats b{font-size:18px;letter-spacing:-.5px;white-space:nowrap}
+.cf-result{background:var(--pale);border:1px solid #cfe5df;border-radius:16px;padding:14px 16px;font-size:14px;color:#25313d;margin-top:6px}
+.cf-result b{color:var(--teal)}
+.review .who .country{display:block;color:var(--muted);font-size:12px;margin-top:2px}
+@media(max-width:850px){.case-feature{grid-template-columns:1fr}.cf-stats{grid-template-columns:1fr 1fr}}
+
+
+.case-half{padding:0;overflow:hidden}
+.case-half .ch-img{background:#e7efe9;padding:20px;display:flex;align-items:center;justify-content:center;height:260px}
+.case-half .ch-img img{max-width:100%;max-height:100%;border-radius:14px;box-shadow:0 18px 36px -22px rgba(15,23,42,.35);display:block}
+.case-half .cf-body{padding:26px}
+.case-half h3{font-size:22px;margin:8px 0 10px}
+.case-half .cf-stats{grid-template-columns:1fr 1fr}
+
 @media(max-width:1000px){.cols-4{grid-template-columns:repeat(2,1fr)}.cols-3{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:850px){.navlinks{gap:16px}.navlinks .button{display:none}.hero{gap:30px}.hero-card{padding:24px}.grid{gap:14px}.card{padding:22px}.split{gap:35px}.section-head h2,.split h2{font-size:30px}}
 @media(max-width:650px){
@@ -394,7 +418,7 @@ footer{background:white;border-top:1px solid var(--line);padding:32px 0}
         <div><p class="eyebrow">Case studies</p><h2>Real results from real campaigns.</h2></div>
         <p>Campaign breakdowns with the real numbers, so you can see how we work before you order.</p>
       </div>
-      <div class="grid cols-3" id="case-studies-list"><div class="empty">Loading case studies…</div></div>
+      <div class="grid cols-2" id="case-studies-list"></div>
     </div>
   </section>
 
@@ -405,7 +429,7 @@ footer{background:white;border-top:1px solid var(--line);padding:32px 0}
         <div><p class="eyebrow">Reviews</p><h2>What our clients say.</h2></div>
         <button class="button light" onclick="openReviewForm()">Leave a review ↗</button>
       </div>
-      <div class="grid cols-3" id="reviews-list"><div class="empty">Loading reviews…</div></div>
+      <div class="grid cols-3" id="reviews-list"></div>
     </div>
   </section>
 
@@ -745,6 +769,7 @@ document.addEventListener('keydown', function (e) {
    3) Add one line below (newest first)
    ===================================================================== */
 const PROOFS = [
+  { src: '/proofs/case-report.webp', amount: '15 sign-ups, 3 deposits', quote: '“This is our report, have 15 register, 3 deposit.”', name: 'Gaming client · 3 days', text: 'Client report after 3 days: 15 new registrations, 3 first-time deposits, $130 total deposits.' },
   { src: '/proofs/proof-1.webp', amount: 'Final 70 USDT paid', quote: '“Seems like u did it. Great job.”', name: 'Mini App ads · 2-part payment', text: 'This client paid part upfront. Once his Mini App ads went live, he said "great job" and paid the final 70 USDT.' },
   { src: '/proofs/proof-2.webp', amount: 'Ads live same day', quote: '“Can’t believe this man. It’s insane.”', name: 'Telegram Ads client', text: 'The client could not believe his ads went live, then paid the service fee.' },
   { src: '/proofs/proof-5.webp', amount: 'In review → approved', quote: 'A batch of ads stuck “In Review,” fixed and approved.', name: 'Telegram Ads client', text: 'A batch of ads stuck "In Review." We fixed them and got them approved.' },
@@ -945,16 +970,85 @@ function parseRating(v) {
 }
 function safeUrl(u) { u = String(u).trim(); return /^https?:\/\//i.test(u) ? u : ''; }
 
+
+/* =====================================================================
+   FEATURED CASE STUDY + REVIEWS shown on the page (Google can read these).
+   Your Google Sheet case studies and reviews still load after them.
+   ===================================================================== */
+const FEATURED_CASES_HTML = `
+<article class="card case-feature">
+  <div class="cf-body">
+    <span class="tag">Case study · our own campaign</span>
+    <h3>What 40 TON of Telegram Ads really brought us</h3>
+    <p>People always ask: "What CPM did you set, and were the channels active?" Here are our real numbers from a few months of ads for our own channel, bots included.</p>
+    <div class="cf-stats">
+      <div><small>Spent</small><b>40 TON</b></div>
+      <div><small>CPM</small><b>0.80–2.00</b></div>
+      <div><small>Views</small><b>11,000+</b></div>
+      <div><small>Joins</small><b>100</b></div>
+    </div>
+    <p>Some of those 100 joins were bots. After filtering them out, we estimate <b>20–34 real members</b> stayed. That's the honest picture of cheap traffic.</p>
+    <div class="cf-result">The interesting part: one client who found us through that campaign sent this report after just <b>3 days</b> of working with us: <b>15 registrations and 3 first-time deposits</b> in the gaming niche.</div>
+  </div>
+  <div class="cf-img"><img src="/proofs/case-report.webp" alt="Client report: 15 new registrations, $130 total deposit, 3 deposits" loading="lazy"></div>
+</article>
+<article class="card case-half">
+  <div class="ch-img"><img src="/proofs/case-deposits.webp" alt="Telegram Ads dashboard for the client's bot campaigns" loading="lazy"></div>
+  <div class="cf-body">
+    <span class="tag">Case study · client project</span>
+    <h3>500+ first-time deposits in 1 month</h3>
+    <p>We ran Telegram Ads to the client's bot and brought in over 500 first-time depositors in one month.</p>
+    <div class="cf-stats">
+      <div><small>Views</small><b>360,432</b></div>
+      <div><small>Actions</small><b>8,427</b></div>
+      <div><small>Ad spend</small><b>5,539 TON</b></div>
+      <div><small>Depositors</small><b>~500</b></div>
+    </div>
+    <div class="cf-result">Three things made the difference: <b>the right creative, correct CPM targeting, and a clean funnel.</b></div>
+  </div>
+</article>
+<article class="card case-half">
+  <div class="ch-img"><img src="/proofs/case-football.webp" alt="Approved Telegram ad for a UK football tips channel" loading="lazy"></div>
+  <div class="cf-body">
+    <span class="tag">Case study · football channel</span>
+    <h3>From rejected to 4,039 bot starts</h3>
+    <p>Great content, a few users, and every ad rejected. Stuck before they even started. We got the ad approved and built one clean path: ad → bot → Start → group.</p>
+    <div class="cf-stats">
+      <div><small>Views</small><b>278K</b></div>
+      <div><small>Clicks</small><b>7,695</b></div>
+      <div><small>Bot starts</small><b>4,039</b></div>
+      <div><small>Cost / start</small><b>~$0.11</b></div>
+    </div>
+    <div class="cf-result">A <b>52% action rate</b>: over half of every click entered the funnel. The content was never the problem. Getting approved and routing the traffic was.</div>
+  </div>
+</article>`;
+
+/* Reviews: only half the username + country are shown, for privacy */
+const STATIC_REVIEWS = [
+  { user: 'perjake99',    country: '',               text: 'He’s the master of Telegram! I really appreciate him and want to sincerely thank him for all his help. He really knows what he’s doing.' },
+  { user: 'epicvidstube', country: 'United Kingdom', text: 'Great, helped me get my ads approved.' },
+  { user: 'horacio_ortiz', country: 'Mexico',        text: 'Excellent work, he really wants you to succeed.' }
+];
+function halfName(u) {
+  u = String(u); var keep = Math.ceil(u.length / 2);
+  return u.slice(0, keep) + '*'.repeat(u.length - keep);
+}
+function staticReviewsHtml() {
+  return STATIC_REVIEWS.map(function (r) {
+    return '<article class="card review"><div class="stars" aria-label="5 out of 5 stars">★★★★★</div>' +
+      '<blockquote>"' + esc(r.text) + '"</blockquote>' +
+      '<div class="who"><b>' + esc(halfName(r.user)) + '</b>' +
+      (r.country ? '<span class="country">' + esc(r.country) + '</span>' : '') + '</div></article>';
+  }).join('');
+}
+
 async function loadReviews() {
     const box = document.getElementById('reviews-list');
     try {
         const rows = await fetchSheet(REVIEWS_TAB);
         const ok = rows.filter(function (r) { return truthy(pick(r, 'show', 'approve', 'status', 'display')); });
-        if (!ok.length) {
-            box.innerHTML = '<div class="empty">No reviews yet. Be the first! <br><br><button class="button small" onclick="openReviewForm()">Leave a review</button></div>';
-            return;
-        }
-        box.innerHTML = ok.map(function (r) {
+        if (!ok.length) { box.innerHTML = staticReviewsHtml(); return; }
+        box.innerHTML = staticReviewsHtml() + ok.map(function (r) {
             const name = esc(pick(r, 'name') || 'Verified Client');
             const role = esc(pick(r, 'role', 'company', 'business'));
             const text = esc(pick(r, 'summary', 'experience', 'review', 'message', 'feedback', 'comment', 'testimonial'));
@@ -965,7 +1059,7 @@ async function loadReviews() {
                 '<div class="who"><b>' + name + '</b>' + (role ? '<span>' + role + '</span>' : '') + '</div></article>';
         }).join('');
     } catch (e) {
-        box.innerHTML = '<div class="empty">Reviews will appear here soon.</div>';
+        box.innerHTML = staticReviewsHtml();
     }
 }
 
@@ -974,8 +1068,8 @@ async function loadCaseStudies() {
     try {
         const rows = await fetchSheet(CASESTUDIES_TAB);
         const ok = rows.filter(function (r) { return truthy(pick(r, 'publish', 'show', 'live', 'status')); });
-        if (!ok.length) { box.innerHTML = '<div class="empty">Case studies coming soon.</div>'; return; }
-        box.innerHTML = ok.map(function (r) {
+        if (!ok.length) { box.innerHTML = FEATURED_CASES_HTML; return; }
+        box.innerHTML = FEATURED_CASES_HTML + ok.map(function (r) {
             const head = esc(pick(r, 'headline', 'title') || 'Case Study');
             const summary = esc(pick(r, 'summary', 'description', 'detail', 'result'));
             const pdf = safeUrl(pick(r, 'pdf', 'link', 'file', 'url'));
@@ -988,10 +1082,12 @@ async function loadCaseStudies() {
                 '</div></article>';
         }).join('');
     } catch (e) {
-        box.innerHTML = '<div class="empty">Case studies coming soon.</div>';
+        box.innerHTML = FEATURED_CASES_HTML;
     }
 }
 
+document.getElementById('reviews-list').innerHTML = staticReviewsHtml();
+document.getElementById('case-studies-list').innerHTML = FEATURED_CASES_HTML;
 loadReviews();
 loadCaseStudies();
 </script>
